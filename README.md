@@ -10,6 +10,8 @@ This browser based web application to ...
 Hi my name is Betty, I'm excited about this project because it's my first hands-on experience in creating a coding project.
 Hi my name is Princeton. I am excited to work on this project to improve my coding skills and problem solving skills.	
 Hi my name is Paul. I'm excited about this project because it will be fun to apply what we are learning.
+Hi im ryan im excited for this project because its fun to work with people
+
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
