@@ -6,7 +6,10 @@
 
 ## General Info
 This browser based web application to ...
-* Hi my name is Betty, I'm excited about this project because it's my first hands-on experience in creating a coding project.
+
+Hi my name is Betty, I'm excited about this project because it's my first hands-on experience in creating a coding project.
+Hi my name is Princeton. I am excited to work on this project to improve my coding skills and problem solving skills.
+
 	
 ## Technologies
 Technologies used for this project:
