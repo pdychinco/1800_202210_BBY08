@@ -1,1 +1,7 @@
+.navbar {
+  justify-content: space-between;
+}
 
+#login {
+  float: right;
+}
