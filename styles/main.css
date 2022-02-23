@@ -1,3 +1,6 @@
-#searchinput {
-  width: 1fr;
+.d-flex {
+  grid-template-columns: 2 / span 2;
+  grid-template-rows: 2;
+  width: 50%;
+  display: grid;
 }
