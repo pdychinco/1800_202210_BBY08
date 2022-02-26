@@ -4,8 +4,8 @@
 <head>
 
   <title>Team BBY08 Project</title>
-  <meta name="description" content="COMP 1800 team project"/>
-  <meta name="author" content="BBY08"/>
+  <meta name="description" content="COMP 1800 team project">
+  <meta name="author" content="BBY08">
 
   <!------------------------>
   <!-- Required meta tags -->
@@ -35,60 +35,77 @@
 
 <body>
 
-  <div>
+  <!---------------------------------------------->
+  <!---------- Navigation Bar goes here ---------->
+  <!---------------------------------------------->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-5">
+    <div class="container-fluid">
 
-    <!---------------------------------------------->
-    <!---------- Navigation Bar goes here ---------->
-    <!---------------------------------------------->
-    <nav class="navbar navbar-light bg-light bg-info sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-          What is my craving?
-        </a>
-        <button id="login" type="button">Log In</button>
-      </div>
-    </nav>
+      <a class="navbar-brand" href="#">
+        <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        What's my craving?
+      </a>
 
-    <!---------------------------------------------->
-    <!-------- Welcome Jumbotron goes here --------->
-    <!---------------------------------------------->
-    <div class="p-5 mb-4 bg-light rounded-3 text-center" id="hero">
-      <div class="container py-5">
-        <img src="./images/mascot.jpeg" alt="mascot" width="20%" height="20%" />
-        <h1 class="display-5 fw-bold">Welcome to FoodPicker</h1>
-        <p class="fs-4">Start the discovering food now!</p>
-        <button class="btn btn-primary btn-lg" type="button">Begin Food Survey</button>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Restaurants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Location</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reservation</a>
+        </li>
+      </ul>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-info">Login</button>
+        <button type="button" class="btn btn-outline-primary">Sign Up</button>
       </div>
+
     </div>
+  </nav>
 
-    <!---------------------------------------------->
-    <!-------------- Footer goes here -------------->
-    <!---------------------------------------------->
-    <div class="footer">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2022 Team BBY08</p>
+  <!---------------------------------------------->
+  <!-------- Welcome Jumbotron goes here --------->
+  <!---------------------------------------------->
 
-        <a href="/"
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap" /></svg>
-        </a>
-
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
-        </ul>
-
-      </footer>
+  <div class="p-5 mb-4 bg-light text-center d-sm-flex align-items-center">
+    <div class="container py-5">
+      <img src="./images/mascot.jpeg" alt="mascot" width="20%" height="20%" />
+      <h1 class="display-5 fw-bold">Welcome to <span class="text-danger">FoodPicker</span></h1>
+      <p class="fs-4">Start discovering food and eat like an olympian.</p>
+      <button class="btn btn-primary btn-lg" type="button">Begin Survey</button>
     </div>
   </div>
 
   <!---------------------------------------------->
-  <!-------- JavaScript functions go here -------->
+  <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
-  <script src="./scripts/skeleton.js"></script>
+  <div class="footer">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-muted">&copy; 2022 BBY08</p>
+
+      <a href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-muted">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-muted">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-muted">Contact</a>
+        </li>
+      </ul>
+    </footer>
+  </div>
 
 </body>
 
