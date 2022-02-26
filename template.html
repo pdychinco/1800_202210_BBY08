@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
   <title>Team BBY08 Project</title>
-  <meta name="description" content="COMP 1800 team project">
-  <meta name="author" content="BBY08">
+  <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
   <!------------------------>
   <!-- Required meta tags -->
@@ -25,89 +23,40 @@
   <!-------------------------------------------------------->
   <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
   <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
   <!-------------------------------------------->
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
   <link type="text/css" href="./styles/style.css">
-
 </head>
 
 <body>
-
   <!---------------------------------------------->
   <!---------- Navigation Bar goes here ---------->
   <!---------------------------------------------->
-  <nav class="navbar navbar-dark bg-dark sticky-top p-5">
-    <div class="container-fluid">
-      <div>
-      <a class="navbar-brand" href="#">
-        <img src="./images/restaurant.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
-      </a>
-      <p class="text-white float-md-end pt-3">Satisfy your cravings.</p>
-      </div>
-
-      <ul class="nav d-none d-lg-flex d-xl-flex d-xxl-flex">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Restaurants</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Experiences</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Events</a>
-        </li>
-      </ul>
-
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-info">Login</button>
-        <button type="button" class="btn btn-outline-primary ">Sign Up</button>
-      </div>
-
-    </div>
-  </nav>
+  <nav id="navbarPlaceholder"></nav>
 
   <!---------------------------------------------->
   <!-------- Welcome Jumbotron goes here --------->
   <!---------------------------------------------->
-
-  <div class="p-5 mb-4 bg-light text-center d-sm-flex align-items-center">
-    <div class="container py-5">
-      <img src="./images/mascot.jpeg" alt="mascot" width="20%" height="20%" />
-      <h1 class="display-5 fw-bold">Welcome to <span class="text-danger">FoodPicker</span></h1>
-      <p class="fs-4">Start discovering food and eat like an olympian.</p>
-      <button class="btn btn-primary btn-lg" type="button">Begin Survey</button>
-    </div>
-  </div>
+  <nav id="heroPlaceholder"></nav>
 
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
-  <div class="footer">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">&copy; 2022 BBY08</p>
+  <nav id="footerPlaceholder"></nav>
 
-      <a href="/"
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap" />
-        </svg>
-      </a>
-
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-muted">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-muted">FAQ</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-muted">Contact</a>
-        </li>
-      </ul>
-    </footer>
-  </div>
-
+  <!---------------------------------------------->
+  <!--- Your own JavaScript functions go here ---->
+  <!---------------------------------------------->
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>

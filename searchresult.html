@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
   <title>Team BBY08 Project</title>
-  <meta name="description" content="COMP 1800 team project" />
-  <meta name="author" content="BBY08" />
+  <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
   <!------------------------>
   <!-- Required meta tags -->
@@ -25,363 +23,340 @@
   <!-------------------------------------------------------->
   <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
   <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
   <!-------------------------------------------->
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
   <link type="text/css" href="./styles/style.css">
-
 </head>
 
 <body>
-  <div>
+  <!---------------------------------------------->
+  <!---------- Navigation Bar goes here ---------->
+  <!---------------------------------------------->
+  <nav id="navbarPlaceholder"></nav>
 
-    <!---------------------------------------------->
-    <!---------- Navigation Bar goes here ---------->
-    <!---------------------------------------------->
-    <nav class="navbar navbar-light bg-light bg-info sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top" />
-          What is my craving?
-        </a>
-        <button id="login" type="button">Log In</button>
-      </div>
-    </nav>
 
-    <!---------------------------------------------->
-    <!--------- Restaurant Cards goes here --------->
-    <!---------------------------------------------->
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
+  <!---------------------------------------------->
+  <!--------- Restaurant Cards goes here --------->
+  <!---------------------------------------------->
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
         </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
         </div>
       </div>
-    </div>
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
-        </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
-        </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
       </div>
     </div>
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
+  </div>
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
         </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
         </div>
       </div>
-    </div>
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
-        </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
-        </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
       </div>
     </div>
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
+  </div>
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
         </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
         </div>
       </div>
-    </div>
-    <div class="card mb-3 .clearfix">
-      <div class="row g-0 justify-content-between">
-        <div class="col-md-8">
-          <div class="card-body col-md-8">
-            <h5 class="card-title">Restauarnt Name</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-              risus vitae urna elementum efficitur. Integer finibus quam non
-              risus ullamcorper, vitae scelerisque magna fermentum.
-              Suspendisse suscipit purus velit, sit amet ultrices nulla
-              aliquet eu. Quisque sapien nibh, viverra sed magna non,
-              consequat iaculis turpis. Aliquam libero erat, posuere eu massa
-              quis, efficitur dignissim magna. Morbi in fringilla est,
-              tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
-              feugiat odio lorem, nec tincidunt felis sagittis sed.
-              Pellentesque eget euismod nulla. Duis at suscipit massa, ut
-              aliquam sapien. Pellentesque consectetur metus sed justo ornare
-              dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
-              dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
-              pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
-              ligula et, viverra pharetra sem. In blandit, metus at imperdiet
-              egestas, erat velit dapibus purus, convallis convallis sapien
-              arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
-              varius faucibus. Morbi malesuada sed sem at porta. Cras
-              scelerisque odio sodales, imperdiet ligula non, lobortis diam.
-              Maecenas at felis non dolor convallis faucibus et ut orci. Sed
-              ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
-              velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
-              nibh a, egestas vulputate nunc. Sed non sagittis lacus,
-              dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
-              tortor posuere vel. Vivamus malesuada dui magna. In vulputate
-              quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
-              efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
-              in ultricies aliquet. Aenean quis commodo sapien, in posuere
-              lacus.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Star Rating Location</small>
-            </p>
-          </div>
-          <div class="card-body col-md-4">
-            <p class="card-text">more text</p>
-          </div>
-        </div>
-        <div class="col-md-1 float-md-end">
-          <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
-            alt="..." />
-        </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
       </div>
     </div>
-
-    <!---------------------------------------------->
-    <!-------------- Footer goes here -------------->
-    <!---------------------------------------------->
-    <div class="footer">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2022 Team BBY08</p>
-
-        <a href="/"
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap" />
-          </svg>
-        </a>
-
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">Contact</a>
-          </li>
-        </ul>
-      </footer>
+  </div>
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
+        </div>
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
+        </div>
+      </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
+        </div>
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
+        </div>
+      </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3 .clearfix">
+    <div class="row g-0 justify-content-between">
+      <div class="col-md-8">
+        <div class="card-body col-md-8">
+          <h5 class="card-title">Restaurant Name</h5>
+          <p class="card-text">
+            <small class="text-muted">Star Rating Location</small>
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+            risus vitae urna elementum efficitur. Integer finibus quam non
+            risus ullamcorper, vitae scelerisque magna fermentum.
+            Suspendisse suscipit purus velit, sit amet ultrices nulla
+            aliquet eu. Quisque sapien nibh, viverra sed magna non,
+            consequat iaculis turpis. Aliquam libero erat, posuere eu massa
+            quis, efficitur dignissim magna. Morbi in fringilla est,
+            tincidunt ornare est. Nunc vulputate scelerisque aliquam. Ut
+            feugiat odio lorem, nec tincidunt felis sagittis sed.
+            Pellentesque eget euismod nulla. Duis at suscipit massa, ut
+            aliquam sapien. Pellentesque consectetur metus sed justo ornare
+            dictum. Vestibulum diam ex, vehicula in quam et, dictum aliquam
+            dui. In sed dictum elit. Vestibulum rhoncus ipsum risus, vel
+            pellentesque diam fermentum nec. Fusce ante augue, tincidunt nec
+            ligula et, viverra pharetra sem. In blandit, metus at imperdiet
+            egestas, erat velit dapibus purus, convallis convallis sapien
+            arcu et turpis. Aliquam in lobortis tortor. Nunc rutrum nibh ac
+            varius faucibus. Morbi malesuada sed sem at porta. Cras
+            scelerisque odio sodales, imperdiet ligula non, lobortis diam.
+            Maecenas at felis non dolor convallis faucibus et ut orci. Sed
+            ut viverra ante. Vivamus accumsan erat lectus, ut tincidunt
+            velit dictum nec. Duis ac massa massa. Sed lacus leo, iaculis eu
+            nibh a, egestas vulputate nunc. Sed non sagittis lacus,
+            dignissim dapibus nulla. Sed commodo ligula neque, nec placerat
+            tortor posuere vel. Vivamus malesuada dui magna. In vulputate
+            quam nibh, vel condimentum ipsum suscipit vitae. Pellentesque
+            efficitur tortor vel rhoncus dictum. Suspendisse tincidunt nisl
+            in ultricies aliquet. Aenean quis commodo sapien, in posuere
+            lacus.
+          </p>
+        </div>
+        <div class="card-body col-md-4">
+          <p class="card-text">more text</p>
+        </div>
+      </div>
+      <div class="col-md-1 float-md-end">
+        <img src="https://dummyimage.com/200x200/000/fff&text=restaurant+image" class="img-fluid rounded-start"
+          alt="..." />
+      </div>
     </div>
   </div>
 
+  <!---------------------------------------------->
+  <!-------------- Footer goes here -------------->
+  <!---------------------------------------------->
+  <nav id="footerPlaceholder"></nav>
+
+  <!---------------------------------------------->
+  <!--- Your own JavaScript functions go here ---->
+  <!---------------------------------------------->
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
