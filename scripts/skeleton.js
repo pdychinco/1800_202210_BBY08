@@ -6,5 +6,6 @@ function loadSkeleton(){
   console.log($('#navbarPlaceholder').load('./text/nav.html'));
   console.log($('#footerPlaceholder').load('./text/footer.html'));
   console.log($('#heroPlaceholder').load('./text/hero.html'));
+  console.log($('#surveyPlaceholder').load('./text/surveyskeleton.html'));
 }
 loadSkeleton();  //invoke the function
