@@ -23,28 +23,80 @@ function insertName() {
 }
 insertName();
 
+function writeRestaurants() {
+    //define a variable for the collection you want to create in Firestore to populate data
+    var restaurantsRef = db.collection("restaurants");
+  
+    restaurantsRef.add({
+        code: "RS01",
+        name: "restaurantName",
+        details: "restaurantInfo",
+        address: "restaurantAddress",
+        price: "restaurantPrice",
+        pictures: "restaurantPicture",
+        review: "restaurantReview",
+        stars: "restaurantRating",
+        venue_size: "restaurantCapacity",
+        favourite_history: "favourites",
+        distance_from_user: "distance"
+    });
+    restaurantsRef.add({
+        code: "RS02",
+        name: "restaurantName",
+        details: "restaurantInfo",
+        address: "restaurantAddress",
+        price: "restaurantPrice",
+        pictures: "restaurantPicture",
+        review: "restaurantReview",
+        stars: "restaurantRating",
+        venue_size: "restaurantCapacity",
+        favourite_history: "favourites",
+        distance_from_user: "distance"
+    });
+    restaurantsRef.add({
+        code: "RS03",
+        name: "restaurantName",
+        details: "restaurantInfo",
+        address: "restaurantAddress",
+        price: "restaurantPrice",
+        pictures: "restaurantPicture",
+        review: "restaurantReview",
+        stars: "restaurantRating",
+        venue_size: "restaurantCapacity",
+        favourite_history: "favourites",
+        distance_from_user: "distance"
+    });
+  }
+/*
+  writeRestaurants();
+*/
+
+
+/*
 function writeRestaurantData() {
   max = 7;
   //define a variable for the collection you want to create in Firestore to populate data
-  var hikesRef = db.collection("restaurants");
+  var restaurantRef = db.collection("restaurants");
   for (i = 1; i <= max; i++) {
-      hikesRef.add({ //add to database, autogen ID
+      restaurantRef.add({ //add to database, autogen ID
           code: "id" + i,
-          name: "restaurant" + i,
-          details: "foodie" + i,
-          address: "foodie" + i,
-          price: "foodie" + i,
-          pictures: "foodie" + i,
-          review: "foodie" + i,
-          stars: "foodie" + i,
-          venue_size: "foodie" + i,
-          favoruite_history: "foodie" + i,
-          distance_from_user: "foodie" + i,
-      })
- }
+          name: "restaurantName" + i,
+          details: "restaurantInfo" + i,
+          address: "restaurantAddress" + i,
+          price: "restaurantPrice" + i,
+          pictures: "restaurantPicture" + i,
+          review: "restaurantReview" + i,
+          stars: "restaurantRating" + i,
+          venue_size: "restaurantCapacity" + i,
+          favourite_history: "favourites" + i,
+          distance_from_user: "distance" + i,
+    });
 }
+writeRestaurantData();
+*/
+
 function displayCards(collection) {
-  let cardTemplate = document.getElementById("reviewTemplate");
+  let cardTemplate = document.getElementById("reviewCardTemplate");
 
   db.collection(collection).get()
       .then(snap => {
@@ -52,8 +104,9 @@ function displayCards(collection) {
           snap.forEach(doc => { //iterate thru each doc
               var title = doc.data().name;   // get value of the "name" key
               var details = doc.data().details;   // get value of the "details" key
-              let newcard = cardTemplate.content.cloneNode(true);
               var code = doc.data().code;
+              let newcard = cardTemplate.content.cloneNode(true);
+              
               
               //update title and text and image
               newcard.querySelector('.card-title').innerHTML = title;
@@ -61,9 +114,9 @@ function displayCards(collection) {
               newcard.querySelector('.card-image').src = "./images/" + code + ".jpg"; //hikes.jpg
 
               //give unique ids to all elements for future use
-              // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-              // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-              // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+              newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+              newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+              newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
               //attach to gallery
               document.getElementById(collection + "-go-here").appendChild(newcard);
@@ -71,77 +124,4 @@ function displayCards(collection) {
           })
       })
 }
-
 displayCards("restaurants");
-
-// TESTING
-// TESTING
-// TESTING
-// TESTING
-// TESTING
-// TESTING
-// TESTING
-
-function writeHikes2() {
-  //define a variable for the collection you want to create in Firestore to populate data
-  var hikesRef = db.collection("hikes");
-
-  hikesRef.add({
-      code:"hike1",
-      name: "The Trail",    //replace with your own city?
-      city: "Surrey",
-      province: "BC",
-      level: "easy",
-      length: "10 km",
-      details: "ryan goes here regularly"
-  });
-  hikesRef.add({
-      code:"hike2",
-      name: "The Trailer",    //replace with your own city?
-      city: "Sorth Vancouver",
-      province: "BC",
-      level: "moderate",
-      length: "10.5 km",
-      details: "ryan goes here sometimes"
-  });
-  hikesRef.add({
-      code:"hike3",
-      name: "Mount Trailer",    //replace with your own city?
-      city: "Weast Vancouver",
-      province: "BC",
-      level: "hard",
-      length: "8.2 km",
-      details: "Elmo goes here regularly"
-  });
-}
-
-function displayCards(collection) {
-  let cardTemplate = document.getElementById("hikeCardTemplate");
-
-  db.collection(collection).get()
-      .then(snap => {
-          var i = 1;
-          snap.forEach(doc => { //iterate thru each doc
-              var title = doc.data().name;   // get value of the "name" key
-              var details = doc.data().details;   // get value of the "details" key
-              let newcard = cardTemplate.content.cloneNode(true);
-              var code = doc.data().code;
-              
-              //update title and text and image
-              newcard.querySelector('.card-title').innerHTML = title;
-              newcard.querySelector('.card-text').innerHTML = details;
-              newcard.querySelector('.card-image').src = "./images/" + code + ".jpg"; //hikes.jpg
-
-              //give unique ids to all elements for future use
-              // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-              // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-              // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-              //attach to gallery
-              document.getElementById(collection + "-go-here").appendChild(newcard);
-              i++;
-          })
-      })
-}
-
-displayCards("hikes");
