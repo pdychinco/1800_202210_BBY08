@@ -141,7 +141,7 @@ function displayCards(collection) {
               //update title and text and image
               newcard.querySelector('.card-title').innerHTML = title;
               newcard.querySelector('.card-text').innerHTML = details;
-              newcard.querySelector('.card-image').src = "./images/" + code + ".jpg"; //hikes.jpg
+              newcard.querySelector('.card-image').src = "./images/" + code + ".jpeg"; //hikes.jpg
 
               //give unique ids to all elements for future use
               newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
