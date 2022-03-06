@@ -66,10 +66,40 @@ function writeRestaurants() {
         favourite_history: "favourites",
         distance_from_user: "distance"
     });
+    restaurantsRef.add({
+        code: "JDF01",
+        name: "Suika",
+        details: "Japanese Izakaya restaurant in Vancouver, BC.",
+        address: "1626 W Broadway, Vancouver, BC V6J 1X6",
+        telephone: "604-730-1678",
+        email: "info@suika-snackbar.com",
+        price: "$$",
+        favourite: "This is one of Jane Doe's favourite restaurants"
+      });
+    restaurantsRef.add({
+        code: "JDF02",
+        name: "Kook Korean BBQ",
+        details: "Korean BBQ restaurant in Vancouver, BC.",
+        address: "2800 E1st Ave #211A Vancouver, BC V5M 4N8",
+        telephone: "604-566-5665",
+        email: "info@kookbbq.ca",
+        price: "$$",
+        favourite: "This is one of Jane Doe's favourite restaurants"
+      });
+      restaurantsRef.add({
+        code: "JDF03",
+        name: "Medina Cafe",
+        details: "Mediterranean Brunch Cafe in Vancouver, BC.",
+        address: "780 Richards St. Vancouver, BC V6B 3A4",
+        telephone: "604-879-3114",
+        email: "info@medinacafe.com",
+        price: "$",
+        favourite: "This is one of Jane Doe's favourite restaurants"
+      });
   }
-/*
-  writeRestaurants();
-*/
+
+//   writeRestaurants();
+
 
 
 /*
@@ -96,7 +126,7 @@ writeRestaurantData();
 */
 
 function displayCards(collection) {
-  let cardTemplate = document.getElementById("reviewCardTemplate");
+  let cardTemplate = document.getElementById("restaurantCardTemplate");
 
   db.collection(collection).get()
       .then(snap => {
