@@ -1,3 +1,6 @@
+// Survey click counter to match question 
+var clickCounter = 1
+
 function insertName() {
   firebase.auth().onAuthStateChanged(user => {
       // Check if user is signed in:
@@ -108,10 +111,8 @@ function writeFavourites() {
 
 
 function writeQuestions() {
-  console.log("starting write question");
   //define a variable for the collection you want to create in Firestore to populate data
   var questionsRef = db.collection("survey");
-  console.log(questionsRef);
 
   questionsRef.add({
       code: "SUV01",
@@ -137,49 +138,49 @@ function writeQuestions() {
       option3: "I like to have some control",
       option4: "Get me that 9-5 office job day in day out"
     });
-    console.log(questionsRef);
 }
 
   // writeQuestions();
 
 function displayQuestion(collection) {
-  let surveyPlaceholder = document.getElementById("surveyPlaceholder");
+  let surveyPlaceholder = document
 
   db.collection(collection).get()
       .then(snap => {
-          var i = 1;
-          snap.forEach(doc => { //iterate thru each doc
-              var question = doc.data().quesiton;   // get value of the "question" key
-              var option1 = doc.data().option1;   // get value of the "option1" key
-              var option2 = doc.data().option2;// get value of the "option2" key
-              var option3 = doc.data().option3;// get value of the "option3" key
-              var option4 = doc.data().option4;// get value of the "option4" key
-              var code = doc.data().code;
-              let newsurvey = surveyPlaceholder.content.cloneNode(true);
-              
-              
-              //update title and text and image
-              newsurvey.querySelector('#question').innerHTML = question;
-              newsurvey.querySelector('#optionRadio1').innerHTML = option1;
-              newsurvey.querySelector('#optionRadio2').innerHTML = option2;
-              newsurvey.querySelector('#optionRadio3').innerHTML = option3;
-              newsurvey.querySelector('#optionRadio4').innerHTML = option4;
-              newsurvey.querySelector('.card-image').src = "./images/" + code + ".jpeg"; //hikes.jpg
-
-              //give unique ids to all elements for future use
-              newsurvey.querySelector('#question').setAttribute("id", "question" + i);
-              newsurvey.querySelector('#optionRadio1').setAttribute("id", "option1" + i);
-              newsurvey.querySelector('#optionRadio2').setAttribute("id", "option2" + i);
-              newsurvey.querySelector('#optionRadio3').setAttribute("id", "option3" + i);
-              newsurvey.querySelector('#optionRadio4').setAttribute("id", "option4" + i);
-
-              //attach to gallery
-              document.getElementById(collection + "-go-here").appendChild(newsurvey);
-              i++;
-          })
-      })
+        snap.forEach(doc => {
+        if("SUV0" + clickCounter == doc.data().code) {
+          var question = doc.data().question;   // get value of the "question" key
+          var option1 = doc.data().option1;   // get value of the "option1" key
+          var option2 = doc.data().option2;// get value of the "option2" key
+          var option3 = doc.data().option3;// get value of the "option3" key
+          var option4 = doc.data().option4;// get value of the "option4" key
+          
+          //update title and text and image
+          surveyPlaceholder.querySelector('#question').innerHTML = question;
+          surveyPlaceholder.querySelector('#optionRadioText1').innerHTML = option1;
+          surveyPlaceholder.querySelector('#optionRadioText2').innerHTML = option2;
+          surveyPlaceholder.querySelector('#optionRadioText3').innerHTML = option3;
+          surveyPlaceholder.querySelector('#optionRadioText4').innerHTML = option4;
+        }
+    })
+  })
 }
-displayCards("survey");
+displayQuestion("survey");
+
+
+function addClick() {
+  clickCounter += 1;
+  displayQuestion("survey");
+  console.log(clickCounter);
+}
+
+function minusClick() {
+  if (clickCounter != 0) {
+    clickCounter -= 1;
+  }
+  displayQuestion("survey");
+  console.log(clickCounter);
+}
 
 /*
 function writeRestaurantData() {
@@ -208,7 +209,7 @@ function displayCards(collection) {
   let cardTemplate = document.getElementById("restaurantCardTemplate");
 
   db.collection(collection).get()
-      .then(snap => {
+      .onSnapshot(doc => {
           var i = 1;
           snap.forEach(doc => { //iterate thru each doc
               var title = doc.data().name;   // get value of the "name" key
