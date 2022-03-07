@@ -138,6 +138,38 @@ function writeQuestions() {
       option3: "I like to have some control",
       option4: "Get me that 9-5 office job day in day out"
     });
+    questionsRef.add({
+      code: "SUV04",
+      question: "How much time do you have to eat?",
+      option1: "15 minutes",
+      option2: "30 minutes",
+      option3: "1 hour",
+      option4: "2 hours+"
+    });
+    questionsRef.add({
+      code: "SUV05",
+      question: "How much do you want to spend?",
+      option1: "I ain't got a penny to my name",
+      option2: "My McDonald's pay cheque can cover it",
+      option3: "I want to have a full experience",
+      option4: "Put it on my Dad's Black Card"
+    });
+    questionsRef.add({
+      code: "SUV06",
+      question: "What food type are you currently craving?",
+      option1: "Sweet",
+      option2: "Spicy",
+      option3: "Deep Fried",
+      option4: "Savory"
+    });
+    questionsRef.add({
+      code: "SUV07",
+      question: "When you ask yourself, \"What should I be eating,\" what is the first thing that pops into your head?",
+      option1: "Anything fried to cripsy perfection",
+      option2: "Whatever was caught fresh today",
+      option3: "Ice cream is the only option",
+      option4: "What else does a rabbit eat?"
+    });
 }
 
   // writeQuestions();
@@ -149,6 +181,9 @@ function displayQuestion(collection) {
       .then(snap => {
         snap.forEach(doc => {
         if("SUV0" + clickCounter == doc.data().code) {
+          if(doc.data().code == "SUV07") {
+            surveyPlaceholder.querySelector('#next').innerHTML = "Submit";
+          }
           var question = doc.data().question;   // get value of the "question" key
           var option1 = doc.data().option1;   // get value of the "option1" key
           var option2 = doc.data().option2;// get value of the "option2" key
@@ -169,8 +204,14 @@ displayQuestion("survey");
 
 
 function addClick() {
-  clickCounter += 1;
-  displayQuestion("survey");
+  if (clickCounter != 7) {
+    clickCounter += 1;
+    displayQuestion("survey");
+  } else {
+    location.href = "../../searchresult.html"
+  }
+  
+  
   console.log(clickCounter);
 }
 
