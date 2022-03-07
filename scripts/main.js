@@ -208,7 +208,7 @@ function addClick() {
     clickCounter += 1;
     displayQuestion("survey");
   } else {
-    location.href = "../../searchresult.html"
+    location.href = "../searchresult.html"
   }
   
   
