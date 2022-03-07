@@ -102,8 +102,10 @@ function writeRestaurants() {
 
 
 function writeQuestions() {
+  console.log("starting write question");
   //define a variable for the collection you want to create in Firestore to populate data
   var questionsRef = db.collection("survey");
+  console.log(questionsRef);
 
   questionsRef.add({
       code: "SUV01",
@@ -129,9 +131,10 @@ function writeQuestions() {
       option3: "I like to have some control",
       option4: "Get me that 9-5 office job day in day out"
     });
+    console.log(questionsRef);
 }
 
-  writeQuestions();
+  // writeQuestions();
 
 function displayQuestion(collection) {
   let surveyPlaceholder = document.getElementById("surveyPlaceholder");
