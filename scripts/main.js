@@ -104,6 +104,79 @@ function writeFavourites() {
   }
 
 //   writeFavourites();
+  // writeRestaurants();
+
+
+function writeQuestions() {
+  //define a variable for the collection you want to create in Firestore to populate data
+  var questionsRef = db.collection("survey");
+
+  questionsRef.add({
+      code: "SUV01",
+      question: "How hungry are you?",
+      option1: "I need food immediately or else I'm going to murder.",
+      option2: "Hangry me is coming out soon",
+      option3: "I can wait a bit",
+      option4: "I just ate, but I love food"
+    });
+    questionsRef.add({
+      code: "SUV02",
+      question: "What is your preferred way of eating your food?",
+      option1: "Fork and knife only",
+      option2: "Chopsticks",
+      option3: "All natural hands is all I need",
+      option4: "Where's my soup and dessert spoon?"
+    });
+    questionsRef.add({
+      code: "SUV03",
+      question: "How adventurous are you?",
+      option1: "Adventure is my middle name",
+      option2: "I like to explore new experiences",
+      option3: "I like to have some control",
+      option4: "Get me that 9-5 office job day in day out"
+    });
+}
+
+  writeQuestions();
+
+function displayQuestion(collection) {
+  let surveyPlaceholder = document.getElementById("surveyPlaceholder");
+
+  db.collection(collection).get()
+      .then(snap => {
+          var i = 1;
+          snap.forEach(doc => { //iterate thru each doc
+              var question = doc.data().quesiton;   // get value of the "question" key
+              var option1 = doc.data().option1;   // get value of the "option1" key
+              var option2 = doc.data().option2;// get value of the "option2" key
+              var option3 = doc.data().option3;// get value of the "option3" key
+              var option4 = doc.data().option4;// get value of the "option4" key
+              var code = doc.data().code;
+              let newsurvey = surveyPlaceholder.content.cloneNode(true);
+              
+              
+              //update title and text and image
+              newsurvey.querySelector('#question').innerHTML = question;
+              newsurvey.querySelector('#optionRadio1').innerHTML = option1;
+              newsurvey.querySelector('#optionRadio2').innerHTML = option2;
+              newsurvey.querySelector('#optionRadio3').innerHTML = option3;
+              newsurvey.querySelector('#optionRadio4').innerHTML = option4;
+              newsurvey.querySelector('.card-image').src = "./images/" + code + ".jpeg"; //hikes.jpg
+
+              //give unique ids to all elements for future use
+              newsurvey.querySelector('#question').setAttribute("id", "question" + i);
+              newsurvey.querySelector('#optionRadio1').setAttribute("id", "option1" + i);
+              newsurvey.querySelector('#optionRadio2').setAttribute("id", "option2" + i);
+              newsurvey.querySelector('#optionRadio3').setAttribute("id", "option3" + i);
+              newsurvey.querySelector('#optionRadio4').setAttribute("id", "option4" + i);
+
+              //attach to gallery
+              document.getElementById(collection + "-go-here").appendChild(newsurvey);
+              i++;
+          })
+      })
+}
+displayCards("survey");
 
 /*
 function writeRestaurantData() {
