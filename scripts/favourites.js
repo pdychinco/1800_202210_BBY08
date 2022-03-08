@@ -63,4 +63,5 @@ function displayCards(collection) {
           })
       })
 }
+
 displayCards("favourites");

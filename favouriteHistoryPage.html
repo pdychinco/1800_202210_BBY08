@@ -45,17 +45,35 @@
   <!---------------------------------------------->
   <!------ My Favourite Restaurant goes here ----->
   <!---------------------------------------------->
-  <br/><br/><br/>
-  <div class="container">
-    <h1 class="text-center py-5">My Favourite Restaurants</h1>
+  <div class="container-fluid bg-primary text-light p-5">
+    <div class="container bg-info p-5">
+        <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
+        <hr>
+        <p>Quote of the day: <span id="restaurant-goes-here">...</span></p>
+    </div>
+</div>
+
+<div class="container">
+    <h1>My Favourite Restaurants</h1>
     <!-- Here is container for cards  -->
     <div class="container">
-      <div id="favourites-go-here" class="row row-cols-auto">
-      </div>
+        <div id="favourites-go-here" class="row row-cols-auto">
+        </div>
     </div>
-  </div>
-  <nav id="favouritesCardTemplatePlaceholder"></nav>
-  <br/><br/><br/><br/><br/><br/>
+</div>
+
+<!-- Templates for general use, not displayed -->
+<template id="favouritesCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem;">
+        <img class="card-image card-img-top" src="..." alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+            <a class="btn btn-primary card-href">See More</a>
+        </div>
+    </div>
+</template>
   
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
