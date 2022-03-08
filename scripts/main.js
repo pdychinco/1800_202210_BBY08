@@ -183,6 +183,8 @@ function displayQuestion(collection) {
         if("SUV0" + clickCounter == doc.data().code) {
           if(doc.data().code == "SUV07") {
             surveyPlaceholder.querySelector('#next').innerHTML = "Submit";
+          } else if (doc.data().code == "SUV06") {
+            surveyPlaceholder.querySelector('#next').innerHTML = "Next";
           }
           var question = doc.data().question;   // get value of the "question" key
           var option1 = doc.data().option1;   // get value of the "option1" key
