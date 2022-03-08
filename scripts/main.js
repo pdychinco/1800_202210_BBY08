@@ -218,7 +218,7 @@ function addClick() {
 }
 
 function minusClick() {
-  if (clickCounter != 0) {
+  if (clickCounter > 1) {
     clickCounter -= 1;
   }
   displayQuestion("survey");
@@ -248,7 +248,7 @@ function writeRestaurantData() {
 writeRestaurantData();
 */
 
-function displayCards(collection) {
+function displayRestaurantCards(collection) {
   let cardTemplate = document.getElementById("restaurantCardTemplate");
 
   db.collection(collection).get()
@@ -278,9 +278,9 @@ function displayCards(collection) {
           })
       })
 }
-displayCards("restaurants");
+displayRestaurantCards("restaurants");
 
-function displayCards(collection) {
+function displayFavouritesCards(collection) {
     let cardTemplate = document.getElementById("favouritesCardTemplate");
   
     db.collection(collection).get()
@@ -310,4 +310,4 @@ function displayCards(collection) {
             })
         })
   }
-  displayCards("favourites");
+  displayFavouritesCards("favourites");
