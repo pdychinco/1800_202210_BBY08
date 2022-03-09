@@ -130,6 +130,7 @@ function addClick() {
   } else {
     saveSurveyInput(ans);
     location.href = "../searchresult.html"
+    filterRestaurant();
   }
   console.log(clickCounter);
 }
@@ -144,4 +145,12 @@ function minusClick() {
 
 function saveSurveyInput(input) {
   localStorage.setItem("ans" + clickCounter, input)
+}
+
+function filterRestaurant() {
+  let ansDict = {}
+  for(let i = 1; i <= clickCounter; i++) {
+    ansDict["ans" + i] = localStorage.getItem("ans" + i);
+  }
+  console.log(ansDict);
 }
