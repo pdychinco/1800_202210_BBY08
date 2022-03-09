@@ -122,14 +122,15 @@ displayQuestion("survey");
 
 
 function addClick() {
+  let ans = document.querySelector('input[name="optionRadioDefault"]:checked').value;
   if (clickCounter != 7) {
+    saveSurveyInput(ans);
     clickCounter += 1;
     displayQuestion("survey");
   } else {
+    saveSurveyInput(ans);
     location.href = "../searchresult.html"
   }
-  
-  
   console.log(clickCounter);
 }
 
@@ -139,4 +140,8 @@ function minusClick() {
   }
   displayQuestion("survey");
   console.log(clickCounter);
+}
+
+function saveSurveyInput(input) {
+  localStorage.setItem("ans" + clickCounter, input)
 }
