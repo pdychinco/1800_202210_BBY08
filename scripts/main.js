@@ -1,5 +1,6 @@
 // Survey click counter to match question 
 var clickCounter = 1
+var ansDict = {}
 
 function insertName() {
   firebase.auth().onAuthStateChanged(user => {
@@ -148,7 +149,6 @@ function saveSurveyInput(input) {
 }
 
 function filterRestaurant() {
-  let ansDict = {}
   for(let i = 1; i <= clickCounter; i++) {
     ansDict["ans" + i] = localStorage.getItem("ans" + i);
   }
