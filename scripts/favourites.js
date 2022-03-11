@@ -9,7 +9,15 @@ function writeFavourites() {
       address: "1626 W Broadway, Vancouver, BC V6J 1X6",
       telephone: "604-730-1678",
       email: "info@suika-snackbar.com",
-      price: "$$"
+      price: "$$",
+      stats: {
+        SUV02: "option1",
+        SUV03: "option3",
+        SUV04: "option2",
+        SUV05: "option1",
+        SUV06: "option3",
+        SUV07: "option4"
+      }
     });
   favouritesRef.add({
       code: "JDF02",
@@ -18,7 +26,15 @@ function writeFavourites() {
       address: "2800 E1st Ave #211A Vancouver, BC V5M 4N8",
       telephone: "604-566-5665",
       email: "info@kookbbq.ca",
-      price: "$$"
+      price: "$$",
+      stats: {
+        SUV02: "option4",
+        SUV03: "option4",
+        SUV04: "option3",
+        SUV05: "option4",
+        SUV06: "option1",
+        SUV07: "option2"
+      }
     });
   favouritesRef.add({
       code: "JDF03",
@@ -27,9 +43,18 @@ function writeFavourites() {
       address: "780 Richards St. Vancouver, BC V6B 3A4",
       telephone: "604-879-3114",
       email: "info@medinacafe.com",
-      price: "$"
+      price: "$",
+      stats: {
+        SUV02: "option3",
+        SUV03: "option2",
+        SUV04: "option1",
+        SUV05: "option2",
+        SUV06: "option4",
+        SUV07: "option4"
+      }
     });
-}
+  }
+
 
 //   writeFavourites();
 
