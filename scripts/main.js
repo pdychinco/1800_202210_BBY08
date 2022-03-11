@@ -1,6 +1,7 @@
 // Survey click counter to match question 
-var clickCounter = 1
-var ansDict = {}
+var clickCounter = 1;
+var questionLimit = 0;
+var ansDict = {};
 
 function insertName() {
   firebase.auth().onAuthStateChanged(user => {
@@ -89,8 +90,6 @@ function writeQuestions() {
     });
 }
 
-  // writeQuestions();
-
 function displayQuestion(collection) {
   let surveyPlaceholder = document
 
@@ -98,9 +97,12 @@ function displayQuestion(collection) {
       .then(snap => {
         snap.forEach(doc => {
         if("SUV0" + clickCounter == doc.data().code) {
-          if(doc.data().code == "SUV07") {
+          if("SUV02" == "SUV0" + clickCounter) {
+            setQuizLength();
+          }
+          if(doc.data().code == "SUV0" + questionLimit) {
             surveyPlaceholder.querySelector('#next').innerHTML = "Submit";
-          } else if (doc.data().code == "SUV06") {
+          } else if (doc.data().code == "SUV0" + questionLimit - 1) {
             surveyPlaceholder.querySelector('#next').innerHTML = "Next";
           }
           var question = doc.data().question;   // get value of the "question" key
@@ -124,16 +126,17 @@ displayQuestion("survey");
 
 function addClick() {
   let ans = document.querySelector('input[name="optionRadioDefault"]:checked').value;
-  if (clickCounter != 7) {
+  if (clickCounter != questionLimit) {
     saveSurveyInput(ans);
     clickCounter += 1;
     displayQuestion("survey");
+    console.log(clickCounter);
   } else {
     saveSurveyInput(ans);
-    location.href = "../searchresult.html"
     filterRestaurant();
+    location.href = "../searchresult.html";
+   
   }
-  console.log(clickCounter);
 }
 
 function minusClick() {
@@ -141,7 +144,6 @@ function minusClick() {
     clickCounter -= 1;
   }
   displayQuestion("survey");
-  console.log(clickCounter);
 }
 
 function saveSurveyInput(input) {
@@ -152,5 +154,22 @@ function filterRestaurant() {
   for(let i = 1; i <= clickCounter; i++) {
     ansDict["ans" + i] = localStorage.getItem("ans" + i);
   }
-  console.log(ansDict);
+}
+
+function setQuizLength() {
+  if(localStorage.getItem("ans1") != null) {
+    let userInput = localStorage.getItem("ans1");
+    
+
+    if(userInput == "option1") {
+      questionLimit = 3;
+    } else if (userInput == "option2") {
+      questionLimit = 4;
+    } else if (userInput == "option3") {
+      questionLimit = 5;
+    } else {
+      questionLimit = 7;
+    }
+  }
+  
 }
