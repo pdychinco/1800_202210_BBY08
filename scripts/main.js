@@ -92,9 +92,6 @@ function displayQuestion(collection) {
       .then(snap => {
         snap.forEach(doc => {
         if("SUV0" + clickCounter == doc.data().code) {
-          // if("SUV01" == "SUV0" + clickCounter) {
-          //   surveyPlaceholder.getElementById("back").style.visibility = hidden;
-          // }
           if("SUV02" == "SUV0" + clickCounter) {
             setQuizLength();
           }
@@ -148,9 +145,33 @@ function saveSurveyInput(input) {
   localStorage.setItem("ans" + clickCounter, input)
 }
 
-function filterRestaurant() {
+function getSurveyInput() {
   for(let i = 1; i <= clickCounter; i++) {
     ansDict["ans" + i] = localStorage.getItem("ans" + i);
+  }
+}
+
+function filterRestaurant() {
+  getSurveyInput();
+  for(let i = 1; i<= clickCounter; i++) {
+    switch(ansDict["ans" + i]) {
+      case "option1":
+        console.log(i);
+        console.log("selected option 1");
+        break;
+      case "option2":
+        console.log(i);
+        console.log("selected option 2");
+        break;
+      case "option3":
+        console.log(i);
+        console.log("selected option 3");
+        break;
+      case "option4":
+        console.log(i);
+        console.log("selected option 4");
+        break;
+    }
   }
 }
 
@@ -158,7 +179,6 @@ function setQuizLength() {
   if(localStorage.getItem("ans1") != null) {
     let userInput = localStorage.getItem("ans1");
     
-
     if(userInput == "option1") {
       questionLimit = 3;
     } else if (userInput == "option2") {
