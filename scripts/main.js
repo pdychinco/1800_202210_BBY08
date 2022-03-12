@@ -164,15 +164,19 @@ function filterRestaurant() {
       case "option1":
         console.log(i);
         console.log("selected option 1");
+        break;
       case "option2":
         console.log(i);
         console.log("selected option 2");
+        break;
       case "option3":
         console.log(i);
         console.log("selected option 3");
+        break;
       case "option4":
         console.log(i);
         console.log("selected option 4");
+        break;
     }
   }
 }
@@ -181,7 +185,6 @@ function setQuizLength() {
   if(localStorage.getItem("ans1") != null) {
     let userInput = localStorage.getItem("ans1");
     
-
     if(userInput == "option1") {
       questionLimit = 3;
     } else if (userInput == "option2") {
