@@ -4,27 +4,21 @@ var questionLimit = 0;
 var ansDict = {};
 
 function insertName() {
+  // to check if the user is logged in:
   firebase.auth().onAuthStateChanged(user => {
-      // Check if user is signed in:
-      if (user) {                                                                 
-          // Do something for the current logged-in user here: 
-          console.log(user.uid);
-          //go to the correct user document by referencing to the user uid
-          currentUser = db.collection("users").doc(user.uid);
-          //get the document for current user.
-          currentUser.get()
-          .then(userDoc => {
-             var user_Name = userDoc.data().name;
-             console.log(user_Name);
-             //method #1:  insert with html only
-             //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-             //method #2:  insert using jquery
-             $("#name-goes-here").text(user_Name);                         //using jquery
+      if (user) {
+          console.log(user.uid); // let me to know who is the user that logged in to get the UID
+          currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
+          currentUser.get().then(userDoc => {
+              //get the user name
+              var user_Name = userDoc.data().name;
+              console.log(user_Name);
+              $("#name-goes-here").text(user_Name); //jquery
+              // document.getElementByID("name-goes-here").innetText=user_Name;
           })
-      } else {
-          // No user is signed in.
       }
-  });
+
+  })
 }
 insertName();
 

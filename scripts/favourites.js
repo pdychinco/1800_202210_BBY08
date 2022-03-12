@@ -1,3 +1,35 @@
+
+function read_display_Recommendation() {
+  //console.log("inside the function")
+
+  //get into the right collection
+  db.collection("recommendations").doc("japanese")
+      .onSnapshot(function (japaneseDoc) {
+          //console.log(tuesdayDoc.data());
+          document.getElementById("recommendation-goes-here").innerHTML = japaneseDoc.data().name;
+      })
+}
+read_display_Recommendation();
+
+function insertName() {
+  // to check if the user is logged in:
+  firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+          console.log(user.uid); // let me to know who is the user that logged in to get the UID
+          currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
+          currentUser.get().then(userDoc => {
+              //get the user name
+              var user_Name = userDoc.data().name;
+              console.log(user_Name);
+              $("#name-goes-here").text(user_Name); //jquery
+              // document.getElementByID("name-goes-here").innetText=user_Name;
+          })
+      }
+
+  })
+}
+insertName();
+
 function writeFavourites() {
   //define a variable for the collection you want to create in Firestore to populate data
   var favouritesRef = db.collection("favourites");
@@ -65,3 +97,11 @@ function displayCards(collection) {
 }
 
 displayCards("favourites");
+
+document.getElementByID("bookmark").addEventListener("click", function () {
+  var item1 = document.getElementById("item1").value;
+  var item2 = document.getElementById("item2").value;
+
+  localStorage.setItem("item1", item1);
+  window.location.href="next.html?item="+item2;
+})
