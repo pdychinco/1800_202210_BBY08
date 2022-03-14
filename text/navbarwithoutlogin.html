@@ -1,24 +1,25 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
 <nav class="navbar sticky-top navbar-dark bg-dark p-5">
   <div class="container-fluid">
-    
+
     <div class="sticky-top">
       <a class="navbar-brand" href="../index.html">
-        <img src="./images/restaurant.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
+        <img src="./images/restaurant.png" alt="" width="50" height="50" class="d-inline-block align-text-top my-3">
       </a>
-      <p class="text-white float-md-end pt-3">Satisfy your cravings.</p>
+      <p class="text-white float-md-end pt-3" style="font-size: 15px;"><span style="color:rgb(243, 255, 174); font-size: 23px;">
+        TossUp</span> <br>Satisfy <i>your</i> cravings</p>
     </div>
 
-    <ul class="nav d-none d-lg-flex d-xl-flex d-xxl-flex">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Restaurants</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Experiences</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Events</a>
-      </li>
-    </ul>
-
-  </div>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search Restaurants" aria-label="Search">
+      <button class="btn btn-danger" type="submit">Go</button>
+    </form>
+<div>
+  <i class="material-icons text-white my-2" style="font-size: 28px;">account_circle</i>
+  <a class="nav-link" href="addFav.html" style="float:right; color: rgb(152, 248, 255); text-transform: uppercase; font-size: 20px;">Profile</a>
+</div>
+      
 </nav>

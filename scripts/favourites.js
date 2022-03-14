@@ -23,6 +23,7 @@ function insertName() {
               console.log(user_Name);
               $("#name-goes-here").text(user_Name); //jquery
               // document.getElementByID("name-goes-here").innetText=user_Name;
+
           })
       }
 
@@ -123,10 +124,9 @@ function displayCards(collection) {
 
 displayCards("favourites");
 
-document.getElementByID("bookmark").addEventListener("click", function () {
-  var item1 = document.getElementById("item1").value;
-  var item2 = document.getElementById("item2").value;
 
-  localStorage.setItem("item1", item1);
-  window.location.href="next.html?item="+item2;
-})
+db.collection('favourites').where('user', '==', 'userID').get().then((snapshot) => {
+  snapshot.docs.forEach(doc => {
+    renderFavourites(doc);
+  })
+});
