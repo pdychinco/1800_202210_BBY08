@@ -189,5 +189,4 @@ function setQuizLength() {
       questionLimit = 7;
     }
   }
-  
 }
