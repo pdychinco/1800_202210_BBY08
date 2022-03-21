@@ -8,5 +8,6 @@ function loadSkeleton(){
   console.log($('#footerPlaceholder').load('./text/footer.html'));
   console.log($('#heroPlaceholder').load('./text/hero.html'));
   console.log($('#surveyPlaceholder').load('./text/surveyskeleton.html'));
+  console.log($('#searchPlaceholder').load('./text/search.html'));
 }
 loadSkeleton();  //invoke the function

@@ -46,7 +46,33 @@
   <!---------------------------------------------->
   <!--------- Restaurant Cards goes here --------->
   <!---------------------------------------------->
-  <div class="card mb-3 .clearfix">
+
+
+  <template id="searchCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem;">
+      <img class="card-image card-img-top w-100 h-100" src="..." alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <a class="btn btn-primary card-href">See More</a>
+      </div>
+    </div>
+  </template>
+
+
+  <div class="container">
+    <h1>Results</h1>
+    <!-- Here is container for cards  -->
+    <div class="container">
+        <div id="searchCardGroup" class="row row-cols-auto">
+        </div>
+    </div>
+</div>
+
+
+
+  <!-- <div class="card mb-3 .clearfix">
     <div class="row g-0 justify-content-between">
       <div class="col-md-8">
         <div class="card-body col-md-8">
@@ -345,7 +371,7 @@
           alt="..." />
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
@@ -356,9 +382,12 @@
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/filter.js"></script>
+  <script src="./scripts/script.js"></script>
+  
+ 
 </body>
 
 </html>
