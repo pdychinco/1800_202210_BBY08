@@ -57,24 +57,26 @@
     </div>
   </div>
 
-  <h1 class="text-center p-5">My Favourited Restaurants</h1>
+  <div class="container">
+    <h1>Trending Restaurants</h1>
+    <!-- Here is container for cards  -->
+    <br /><br />
+  </div>
+
 
   <template id="restaurantCardTemplate">
-
     <div class="card">
       <img class="card-img-top w-100 h-100">
       <div class="card-body">
+        <!-- Below is the icon we added to the card template that will be shown in each card later -->
+        <i class="material-icons" style="float: right;">favorite_border</i>
         <h5 class="card-title">placeholder</h5>
-
-
         <p class="card-length">placeholder</p>
-        <a href="#" class="link-primary">Write a review</a>
+        <a href="review.html" class="link-primary">Write a review</a>
         <br>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
         </p>
         <a href="#" class="btn btn-primary" style="float: right">Read more</a>
-        <!-- Below is the icon we added to the card template that will be shown in each card later -->
-        <i class="material-icons">favorite_border</i>
       </div>
     </div>
   </template>
@@ -84,7 +86,8 @@
     <div class="card-group" id="restaurantCardGroup">
     </div>
   </div>
-  <br><br><br><br>
+
+
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
@@ -98,7 +101,7 @@
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
   <script src="./scripts/data.js"></script>
-  <script src="./scripts/favourites.js"></script>
+
 </body>
 
 </html>
