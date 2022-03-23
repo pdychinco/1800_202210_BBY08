@@ -1,77 +1,65 @@
-function writeRestaurants() {
-  //define a variable for the collection you want to create in Firestore to populate data
-  var restaurantsRef = db.collection("restaurants");
+let restaurantID = localStorage.getItem("id");
 
-  restaurantsRef.add({
-      code: "RS01",
-      name: "restaurantName",
-      details: "restaurantInfo",
-      address: "restaurantAddress",
-      price: "restaurantPrice",
-      pictures: "restaurantPicture",
-      review: "restaurantReview",
-      stars: "restaurantRating",
-      venue_size: "restaurantCapacity",
-      favourite_history: "favourites",
-      distance_from_user: "distance"
-  });
-  restaurantsRef.add({
-      code: "RS02",
-      name: "restaurantName",
-      details: "restaurantInfo",
-      address: "restaurantAddress",
-      price: "restaurantPrice",
-      pictures: "restaurantPicture",
-      review: "restaurantReview",
-      stars: "restaurantRating",
-      venue_size: "restaurantCapacity",
-      favourite_history: "favourites",
-      distance_from_user: "distance"
-  });
-  restaurantsRef.add({
-      code: "RS03",
-      name: "restaurantName",
-      details: "restaurantInfo",
-      address: "restaurantAddress",
-      price: "restaurantPrice",
-      pictures: "restaurantPicture",
-      review: "restaurantReview",
-      stars: "restaurantRating",
-      venue_size: "restaurantCapacity",
-      favourite_history: "favourites",
-      distance_from_user: "distance"
-  });
+db.collection("restaurants").where("id", "==", restaurantID)
+    .get()
+    .then(queryRestaurant => {
+        //see how many results you have got from the query
+        size = queryRestaurant.size;
+        // get the documents of query
+        Restaurants = queryRestaurant.docs;
+
+        // We want to have one document per hike, so if the the result of 
+        //the query is more than one, we can check it right now and clean the DB if needed.
+        if (size = 1) {
+            var thisRestaurant = Restaurants[0].data();
+            restaurantName = thisRestaurant.name;
+            console.log(restaurantName);
+            document.getElementById("RestaurantName").innerHTML = restaurantName;
+        } else {
+            console.log("Query has more than one data")
+        }
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+function writeReview() {
+    console.log("in")
+    let Title = document.getElementById("title").value;
+    let Level = document.getElementById("level").value;
+    let Season = document.getElementById("season").value;
+    let Description = document.getElementById("description").value;
+    let Flooded = document.querySelector('input[name="flooded"]:checked').value;
+    let Scrambled = document.querySelector('input[name="scrambled"]:checked').value;
+    console.log(Title, Level, Season, Description, Flooded, Scrambled);
+
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            var userID = user.uid;
+            //get the document for current user.
+            currentUser.get()
+                .then(userDoc => {
+                    var userEmail = userDoc.data().email;
+                    db.collection("Reviews").add({
+                        id: restaurantID,
+                        userID: userID,
+                        title: Title,
+                        level: Level,
+                        season: Season,
+                        description: Description,
+                        flooded: Flooded,
+                        scrambled: Scrambled
+
+                    }).then(()=>{
+                        window.location.href = "index.html";
+                    })
+                })
+                   
+        } else {
+            // No user is signed in.
+        }
+    });
+
 }
-
-//   writeRestaurants();
-
-function displayCards(collection) {
-  let cardTemplate = document.getElementById("restaurantsCardTemplate");
-
-  db.collection(collection).get()
-      .then(snap => {
-          var i = 1;
-          snap.forEach(doc => { //iterate thru each doc
-              var title = doc.data().name;   // get value of the "name" key
-              var details = doc.data().details;   // get value of the "details" key
-              let newcard = cardTemplate.content.cloneNode(true);
-              var code = doc.data().code;
-
-              //update title and text and image
-              newcard.querySelector('.card-title').innerHTML = title;
-              newcard.querySelector('.card-text').innerHTML = details;
-              newcard.querySelector('.card-image').src = "./images/" + code + ".jpg"; //hikes.jpg
-
-              //give unique ids to all elements for future use
-              newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-              newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-              newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-              //attach to gallery
-              document.getElementById(collection + "-go-here").appendChild(newcard);
-              i++;
-          })
-      })
-}
-
-displayCards("restaurants");
