@@ -1,110 +1,125 @@
-function read_display_Recommendation() {
-  //console.log("inside the function")
-
-  //get into the right collection
-  db.collection("recommendations").doc("japanese")
-    .onSnapshot(function (japaneseDoc) {
-      //console.log(tuesdayDoc.data());
-      document.getElementById("recommendation-goes-here").innerHTML = japaneseDoc.data().name;
-    })
-}
-read_display_Recommendation();
-
-function insertName() {
-  // to check if the user is logged in:
-  firebase.auth().onAuthStateChanged(user => {
+var currentUser;
+firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      console.log(user.uid); // let me to know who is the user that logged in to get the UID
-      currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
-      currentUser.get().then(userDoc => {
+        currentUser = db.collection("users").doc(user.uid); //global
+        console.log(currentUser);
+
+        // the following functions are always called when someone is logged in
+        read_display_Recommendation();
+        insertName();
+        populateCardsDynamically();
+    } else {
+        // No user is signed in.
+        console.log("No user is signed in");
+        window.location.href = "login.html";
+    }
+});
+
+function read_display_Recommendation() {
+    db.collection("recommendations").doc("korean")
+        .onSnapshot(function (koreanDoc) {
+            document.getElementById("recommendation-goes-here").innerHTML = koreanDoc.data().name;
+        })
+}
+
+
+// Insert name function using the global variable "currentUser"
+function insertName() {
+    currentUser.get().then(userDoc => {
         //get the user name
         var user_Name = userDoc.data().name;
         console.log(user_Name);
         $("#name-goes-here").text(user_Name); //jquery
-        // document.getElementByID("name-goes-here").innetText=user_Name;
-
-      })
-    }
-
-  })
+    })
 }
-insertName();
 
 function writeRestaurants() {
-  var restaurantRef = db.collection("restaurants");
+    //define a variable for the collection you want to create in Firestore to populate data
+    var restaurantRef = db.collection("restaurants");
 
-  restaurantRef.add({
-    rest_ID: "RS01",
-    name: "Suika",
-    city: "Vancouver",
-    details: "Japanese Izakaya restaurant in Vancouver, BC.",
-    address: "1626 W Broadway, Vancouver, BC V6J 1X6",
-    telephone: "604-730-1678",
-    email: "info@suika-snackbar.com",
-    rating: 5,
-    lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-  });
-
-  restaurantRef.add({
-    rest_ID: "RS02",
-    name: "Kook Korean BBQ",
-    details: "Korean BBQ restaurant in Vancouver, BC.",
-    address: "2800 E1st Ave #211A Vancouver, BC V5M 4N8",
-    telephone: "604-566-5665",
-    email: "info@kookbbq.ca",
-    price: 3,
-    rating: 5,
-    lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-  });
-
-  restaurantRef.add({
-    rest_ID: "RS03",
-    name: "Medina Cafe",
-    details: "Mediterranean Brunch Cafe in Vancouver, BC.",
-    address: "780 Richards St. Vancouver, BC V6B 3A4",
-    telephone: "604-879-3114",
-    email: "info@medinacafe.com",
-    price: 2,
-    rating: 5,
-    lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-  });
+    restaurantRef.add({
+        id: "RS01",
+        name: "Suika",
+        city: "Vancouver",
+        details: "Japanese Izakaya restaurant in Vancouver, BC.",
+        address: "1626 W Broadway, Vancouver, BC V6J 1X6",
+        telephone: "604-730-1678",
+        email: "info@suika-snackbar.com",
+        rating: 5,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS02",
+        name: "Kook Korean BBQ",
+        details: "Korean BBQ restaurant in Vancouver, BC.",
+        address: "2800 E1st Ave #211A Vancouver, BC V5M 4N8",
+        telephone: "604-566-5665",
+        email: "info@kookbbq.ca",
+        price: 3,
+        rating: 5,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS03",
+        name: "Medina Cafe",
+        details: "Mediterranean Brunch Cafe in Vancouver, BC.",
+        address: "780 Richards St. Vancouver, BC V6B 3A4",
+        telephone: "604-879-3114",
+        email: "info@medinacafe.com",
+        price: 2,
+        rating: 5,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
 }
-
 //writeRestaurants();
 
-function displayRestaurants() {
-  let restaurantCardTemplate = document.getElementById("restaurantCardTemplate");
-  let restaurantCardGroup = document.getElementById("restaurantCardGroup");
-  
-  db.collection("restaurants").get()
-      .then(allRestaurants => {
-          allRestaurants.forEach(doc => {
-              var restaurantName = doc.data().name; //gets the name field
-              var restaurantID = doc.data().rest_ID; //gets the unique ID field
-              var restaurantDetails = doc.data().details;
+function populateCardsDynamically() {
+    let restaurantCardTemplate = document.getElementById("restaurantCardTemplate");
+    let restaurantCardGroup = document.getElementById("restaurantCardGroup");
 
+    db.collection("restaurants")
+        // .orderBy("length") //NEW LINE;  what do you want to sort by?
+        // .limit(2)
+        .get()
+        .then(allRestaurants => {
+            //gets one doc
+            allRestaurants.forEach(doc => {
+                var restaurantName = doc.data().name; //gets the name field
+                var restaurantID = doc.data().id; //gets the unique ID field
+                // var hikeLength = doc.data().length; //gets the length field
+                let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
+                testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
 
-              let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
-              testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
-              testRestaurantCard.querySelector('.card-length').innerHTML = restaurantDetails;
-              testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(rest_ID);
-              //this is the line added so that it makes the icon clickable and call another function
-              testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
-              testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-              restaurantCardGroup.appendChild(testRestaurantCard);
-              
-          })
+                //NEW LINE: update to display length, duration, last updated
+                testRestaurantCard.querySelector('.card-length').innerHTML =
+                    "Details: " + doc.data().details + "<br>" +
+                    "Telephone: " + doc.data().telephone + "<br>" +
+                    "Email: " + doc.data().email;
 
-      })
+                testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+
+                //next 2 lines are new for demo#11
+                //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
+                //so later we know which hike to bookmark based on which hike was clicked
+                testRestaurantCard.querySelector('i').id = 'save-' + restaurantID;
+                // this line will call a function to save the hikes to the user's document             
+                testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
+                testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
+                testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+                restaurantCardGroup.appendChild(testRestaurantCard);
+            })
+
+        })
 }
-displayRestaurants();
+// populateCardsDynamically();
 
-function addLikes(restID) {  
-  console.log("inside");
-  const currUserId = firebase.auth().currentUser.uid;
-  const userDoc = firebase.firestore().collection("users").doc(currUserId);
-  console.log("Adding " + restID + " to your favorites");
-  db.collection("restaurants").where("rest_ID", "==", restID)
+function setRestaurantData(id) {
+    localStorage.setItem('restaurantID', id);
+}
+
+function addLikes(restaurantID) {  
+  db.collection("restaurants").where("id", "==", restaurantID)
   .get()
   .then(queryRestaurant => {
       //see how many results you have got from the query
@@ -119,9 +134,17 @@ function addLikes(restID) {
               //Firebase documentation has this method for incrementation.
               scores: firebase.firestore.FieldValue.increment(1),
           })
-          userDoc.update({
-            favorites: firebase.firestore.FieldValue.arrayUnion(restID)
-          })
+          currentUser.set({
+            favourites: firebase.firestore.FieldValue.arrayUnion(restaurantID)
+        }, {
+            merge: true
+        })
+        .then(function () {
+            console.log("restaurant has been favourited for: " + currentUser);
+            var iconID = 'save-' + restaurantID;
+            //console.log(iconID);
+            document.getElementById(iconID).innerText = 'favorite';
+        });
       } else {
           console.log("Query has more than one data")
       }

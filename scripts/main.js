@@ -22,6 +22,8 @@ function insertName() {
 }
 insertName();
 
+
+
 function writeQuestions() {
   //define a variable for the collection you want to create in Firestore to populate data
   var questionsRef = db.collection("survey");
