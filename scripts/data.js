@@ -45,6 +45,7 @@ function writeRestaurants() {
         address: "1626 W Broadway, Vancouver, BC V6J 1X6",
         telephone: "604-730-1678",
         email: "info@suika-snackbar.com",
+        price: 4,
         rating: 5,
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
@@ -78,8 +79,8 @@ function populateCardsDynamically() {
     let restaurantCardGroup = document.getElementById("restaurantCardGroup");
 
     db.collection("restaurants")
-        // .orderBy("length") //NEW LINE;  what do you want to sort by?
-        // .limit(2)
+        .orderBy("price") //sort by price and display 3
+        .limit(3)
         .get()
         .then(allRestaurants => {
             //gets one doc
@@ -92,9 +93,11 @@ function populateCardsDynamically() {
 
                 //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
-                    "Details: " + doc.data().details + "<br>" +
+                    doc.data().details + "<br>" +
                     "Telephone: " + doc.data().telephone + "<br>" +
-                    "Email: " + doc.data().email;
+                    "Email: " + doc.data().email + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
 
