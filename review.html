@@ -87,35 +87,49 @@
         <label>How satisfied were you with your dining experience?
           <span style="display:inline-block;"></span></label><br><br>
         <label for="customRange2" class="form-label">Give a rating from 1 to 5:</label>
-        <input type="text" id="textInput" value="" style="width: 40px; text-align: center; margin-left: 10px;"> <br><br>
-        <input style="width: 500px;" type="range" class="form-range" min="0" max="5" id="customRange2"
+        <input type="text" id="rating" value="" style="width: 40px; text-align: center; margin-left: 10px;"> <br><br>
+        <input style="width: 500px;" type="range" class="form-range w-50" min="0" max="5" id="customRange2"
           onchange="updateTextInput(this.value);"><br>
 
       </div>
+      
+      <br>
+
+      <div class="container text-center py-3">
+        <img id="mypic-goes-here" src="images/blah.jpg" width=50 height=50/>
+        <input type="file" id="mypic-input" accept="image/*" />
+</div>
+      <div class="input-group mb-3 w-50">
+        <input type="file" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+      </div>
+
+
+
+
+
 
 
 
 
       <br>
 
-      <label>Would you recommend this restaurant to a friend?<span
-          style="display:inline-block; width: 20pt;"></span></label>
-
-
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="recommend" value="Yes">
+    
+        <label>Would you recommend this restaurant to a friend?<span style="display:inline-block; width: 20pt;"></span></label>
+        
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="scrambled" value="Yes">
             <label>Yes</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="recommend" value="No">
+            <input class="form-check-input" type="radio" name="scrambled" value="No">
             <label>No</label>
         </div>
 
-
-      <br>
-      <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writeReview()">Submit</button>
-      </div>
+        <br>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writeReview()">Submit</button>
+        </div>
       </div>
     </form>
 
@@ -135,12 +149,10 @@
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
-  <script src="./scripts/authentication.js"></script>
-  <script src="./scripts/main.js"></script>
   <script src="./scripts/reviews.js"></script>
   <script src="./scripts/restaurantData.js"></script>
+  <script src="./scripts/authentication.js"></script>
   
 </body>
 

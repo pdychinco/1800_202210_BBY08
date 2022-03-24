@@ -98,13 +98,14 @@ function writeRestaurants() {
 }
 //writeRestaurants();
 
+//populates retaurants in order based on scores
 function populateCardsDynamically() {
     let restaurantCardTemplate = document.getElementById("restaurantCardTemplate");
     let restaurantCardGroup = document.getElementById("restaurantCardGroup");
 
     db.collection("restaurants")
-        .orderBy("price") //sort by price and display 3
-        .limit(3)
+        .orderBy("scores", "desc")
+        .limit(4)
         .get()
         .then(allRestaurants => {
             //gets one doc
@@ -141,9 +142,98 @@ function populateCardsDynamically() {
 }
 // populateCardsDynamically();
 
+//populates restaurants in order based on ratings
+function populateCardsDynamically2() {
+    let restaurantCardTemplate = document.getElementById("restaurantCardTemplate2");
+    let restaurantCardGroup = document.getElementById("restaurantCardGroup2");
+
+    db.collection("restaurants")
+        .orderBy("rating", "desc")
+        .limit(4)
+        .get()
+        .then(allRestaurants => {
+            //gets one doc
+            allRestaurants.forEach(doc => {
+                var restaurantName = doc.data().name; //gets the name field
+                var restaurantID = doc.data().id; //gets the unique ID field
+                // var hikeLength = doc.data().length; //gets the length field
+                let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
+                testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
+
+                //NEW LINE: update to display length, duration, last updated
+                testRestaurantCard.querySelector('.card-length').innerHTML =
+                    doc.data().details + "<br>" +
+                    "Telephone: " + doc.data().telephone + "<br>" +
+                    "Email: " + doc.data().email + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Price: " + doc.data().price;
+
+                testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+
+                //next 2 lines are new for demo#11
+                //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
+                //so later we know which hike to bookmark based on which hike was clicked
+                testRestaurantCard.querySelector('i').id = 'save-' + restaurantID;
+                // this line will call a function to save the hikes to the user's document             
+                testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
+                testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
+                testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+                restaurantCardGroup.appendChild(testRestaurantCard);
+            })
+
+        })
+}
+populateCardsDynamically2();
+
+//populates restaurants in order based on ratings
+function populateCardsDynamically3() {
+    let restaurantCardTemplate = document.getElementById("restaurantCardTemplate3");
+    let restaurantCardGroup = document.getElementById("restaurantCardGroup3");
+
+    db.collection("restaurants")
+        .orderBy("price")
+        .limit(4)
+        .get()
+        .then(allRestaurants => {
+            //gets one doc
+            allRestaurants.forEach(doc => {
+                var restaurantName = doc.data().name; //gets the name field
+                var restaurantID = doc.data().id; //gets the unique ID field
+                // var hikeLength = doc.data().length; //gets the length field
+                let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
+                testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
+
+                //NEW LINE: update to display length, duration, last updated
+                testRestaurantCard.querySelector('.card-length').innerHTML =
+                    doc.data().details + "<br>" +
+                    "Telephone: " + doc.data().telephone + "<br>" +
+                    "Email: " + doc.data().email + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Price: " + doc.data().price;
+
+                testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+
+                //next 2 lines are new for demo#11
+                //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
+                //so later we know which hike to bookmark based on which hike was clicked
+                testRestaurantCard.querySelector('i').id = 'save-' + restaurantID;
+                // this line will call a function to save the hikes to the user's document             
+                testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
+                testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
+                testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+                restaurantCardGroup.appendChild(testRestaurantCard);
+            })
+
+        })
+}
+populateCardsDynamically3();
+
 function setRestaurantData(id) {
     localStorage.setItem('restaurantID', id);
 }
+
 
 function addLikes(restaurantID) {  
   db.collection("restaurants").where("id", "==", restaurantID)
@@ -180,3 +270,53 @@ function addLikes(restaurantID) {
       console.log("Error getting documents: ", error);
   });
 }
+
+function addRestaurants() {
+    var restaurantRef = db.collection("restaurants");
+
+    restaurantRef.add({
+        id: "RS04",
+        name: "Mott 32",
+        details: "High-end restaurant featuring innovative Chinese dishes in Vancouver, BC.",
+        address: "1161 W Georgia St, Vancouver, BC V6E 0C6",
+        telephone: "604-861-0032",
+        email: "reservations.van@mott32.ca",
+        price: 5,
+        rating: 3,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS05",
+        name: "John 3:16 Malaysian Delights",
+        details: "Southeast Asian eats family-owned cafe in Richmond, BC.",
+        address: "6832 &, 6838 No. 3 Rd, Richmond, BC V6Y 2C4",
+        telephone: "604-214-8181",
+        email: "john316mydelights@gmail.com",
+        price: 2,
+        rating: 4,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS06",
+        name: "Sushi By Yuji",
+        details: "Small local sushi restaurant in Vancouver, BC.",
+        address: "2252 Kingsway, Vancouver, BC V5N 2T7",
+        telephone: "604-434-0003",
+        email: "Not available.",
+        price: 2,
+        rating: 4,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS07",
+        name: "L'Abattoir",
+        details: "High-end French restaurant located in the historic Gastown in Vancouver, BC.",
+        address: "217 Carrall St Vancouver, BC V6B 2J2",
+        telephone: "604-568-1701",
+        email: "info@labattoir.ca",
+        price: 5,
+        rating: 4,
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+}
+//addRestaurants();
