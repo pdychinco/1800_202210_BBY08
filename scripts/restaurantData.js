@@ -69,7 +69,7 @@ function writeRestaurants() {
         SUV04: "option1",
         SUV05: "option2",
         SUV06: "option4",
-        SUV07: "option4",
+        SUV07: "option1",
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
     restaurantRef.add({
@@ -86,11 +86,96 @@ function writeRestaurants() {
         SUV04: "option1",
         SUV05: "option2",
         SUV06: "option4",
+        SUV07: "option2",
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS04",
+        name: "Mott 32",
+        details: "High-end restaurant featuring innovative Chinese dishes in Vancouver, BC.",
+        address: "1161 W Georgia St, Vancouver, BC V6E 0C6",
+        telephone: "604-861-0032",
+        email: "reservations.van@mott32.ca",
+        price: 5,
+        rating: 3,
+        SUV02: "option3",
+        SUV03: "option4",
+        SUV04: "option1",
+        SUV05: "option2",
+        SUV06: "option4",
+        SUV07: "option4",
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS05",
+        name: "John 3:16 Malaysian Delights",
+        details: "Southeast Asian eats family-owned cafe in Richmond, BC.",
+        address: "6832 &, 6838 No. 3 Rd, Richmond, BC V6Y 2C4",
+        telephone: "604-214-8181",
+        email: "john316mydelights@gmail.com",
+        price: 2,
+        rating: 4,
+        SUV02: "option3",
+        SUV03: "option2",
+        SUV04: "option1",
+        SUV05: "option2",
+        SUV06: "option4",
+        SUV07: "option4",
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS06",
+        name: "Sushi By Yuji",
+        details: "Small local sushi restaurant in Vancouver, BC.",
+        address: "2252 Kingsway, Vancouver, BC V5N 2T7",
+        telephone: "604-434-0003",
+        email: "Not available.",
+        price: 2,
+        rating: 4,
+        SUV02: "option3",
+        SUV03: "option2",
+        SUV04: "option1",
+        SUV05: "option2",
+        SUV06: "option4",
+        SUV07: "option4",
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS07",
+        name: "L'Abattoir",
+        details: "High-end French restaurant located in the historic Gastown in Vancouver, BC.",
+        address: "217 Carrall St Vancouver, BC V6B 2J2",
+        telephone: "604-568-1701",
+        email: "info@labattoir.ca",
+        price: 5,
+        rating: 4,
+        SUV02: "option3",
+        SUV03: "option4",
+        SUV04: "option1",
+        SUV05: "option2",
+        SUV06: "option4",
+        SUV07: "option4",
+        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    restaurantRef.add({
+        id: "RS08",
+        name: "Jolibee",
+        details: "Filipino Fast Food located on Granville Strip in Vancouver, BC.",
+        address: "833 Granville Street, Vancouver, BC V5M 2C9",
+        telephone: "Not available",
+        email: "Not available",
+        price: 1,
+        rating: 4,
+        SUV02: "option1",
+        SUV03: "option1",
+        SUV04: "option3",
+        SUV05: "option2",
+        SUV06: "option4",
         SUV07: "option4",
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
 }
-//writeRestaurants();
+// writeRestaurants();
 
 //populates retaurants in order based on scores
 function populateCardsDynamically() {
@@ -268,49 +353,6 @@ function addLikes(restaurantID) {
 function addRestaurants() {
     var restaurantRef = db.collection("restaurants");
 
-    restaurantRef.add({
-        id: "RS04",
-        name: "Mott 32",
-        details: "High-end restaurant featuring innovative Chinese dishes in Vancouver, BC.",
-        address: "1161 W Georgia St, Vancouver, BC V6E 0C6",
-        telephone: "604-861-0032",
-        email: "reservations.van@mott32.ca",
-        price: 5,
-        rating: 3,
-        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    restaurantRef.add({
-        id: "RS05",
-        name: "John 3:16 Malaysian Delights",
-        details: "Southeast Asian eats family-owned cafe in Richmond, BC.",
-        address: "6832 &, 6838 No. 3 Rd, Richmond, BC V6Y 2C4",
-        telephone: "604-214-8181",
-        email: "john316mydelights@gmail.com",
-        price: 2,
-        rating: 4,
-        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    restaurantRef.add({
-        id: "RS06",
-        name: "Sushi By Yuji",
-        details: "Small local sushi restaurant in Vancouver, BC.",
-        address: "2252 Kingsway, Vancouver, BC V5N 2T7",
-        telephone: "604-434-0003",
-        email: "Not available.",
-        price: 2,
-        rating: 4,
-        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    restaurantRef.add({
-        id: "RS07",
-        name: "L'Abattoir",
-        details: "High-end French restaurant located in the historic Gastown in Vancouver, BC.",
-        address: "217 Carrall St Vancouver, BC V6B 2J2",
-        telephone: "604-568-1701",
-        email: "info@labattoir.ca",
-        price: 5,
-        rating: 4,
-        lastupdate: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    
 }
 //addRestaurants();
