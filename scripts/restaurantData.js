@@ -47,6 +47,14 @@ function writeRestaurants() {
         email: "info@suika-snackbar.com",
         price: 4,
         rating: 5,
+        stats: {
+            SUV02: "option1",
+            SUV03: "option3",
+            SUV04: "option2",
+            SUV05: "option1",
+            SUV06: "option3",
+            SUV07: "option4"
+          },
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
     restaurantRef.add({
@@ -58,6 +66,14 @@ function writeRestaurants() {
         email: "info@kookbbq.ca",
         price: 3,
         rating: 5,
+        stats: {
+            SUV02: "option3",
+            SUV03: "option2",
+            SUV04: "option1",
+            SUV05: "option2",
+            SUV06: "option4",
+            SUV07: "option4"
+          },
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
     restaurantRef.add({
@@ -69,6 +85,14 @@ function writeRestaurants() {
         email: "info@medinacafe.com",
         price: 2,
         rating: 5,
+        stats: {
+            SUV02: "option3",
+            SUV03: "option2",
+            SUV04: "option1",
+            SUV05: "option2",
+            SUV06: "option4",
+            SUV07: "option4"
+          },
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
 }
