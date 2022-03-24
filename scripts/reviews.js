@@ -1,4 +1,8 @@
-let restaurantID = localStorage.getItem("id");
+function setRestaurantData(id){
+    localStorage.setItem ('restaurantID', id);
+}
+
+let restaurantID = localStorage.getItem("restaurantID");
 
 db.collection("restaurants").where("id", "==", restaurantID)
     .get()
@@ -6,15 +10,15 @@ db.collection("restaurants").where("id", "==", restaurantID)
         //see how many results you have got from the query
         size = queryRestaurant.size;
         // get the documents of query
-        Restaurants = queryRestaurant.docs;
+        restaurantID = queryRestaurant.docs;
 
         // We want to have one document per hike, so if the the result of 
         //the query is more than one, we can check it right now and clean the DB if needed.
         if (size = 1) {
-            var thisRestaurant = Restaurants[0].data();
+            var thisRestaurant = restaurantID[0].data();
             restaurantName = thisRestaurant.name;
             console.log(restaurantName);
-            document.getElementById("RestaurantName").innerHTML = restaurantName;
+            document.getElementById("restaurantName").innerHTML = restaurantName;
         } else {
             console.log("Query has more than one data")
         }
@@ -26,12 +30,11 @@ db.collection("restaurants").where("id", "==", restaurantID)
 function writeReview() {
     console.log("in")
     let Title = document.getElementById("title").value;
-    let Level = document.getElementById("level").value;
-    let Season = document.getElementById("season").value;
     let Description = document.getElementById("description").value;
-    let Flooded = document.querySelector('input[name="flooded"]:checked').value;
-    let Scrambled = document.querySelector('input[name="scrambled"]:checked').value;
-    console.log(Title, Level, Season, Description, Flooded, Scrambled);
+    let Memorable = document.getElementById("memorable").value;
+    let Rating = document.getElementById("customRange2").value;
+    let Recommend = document.querySelector('input[name="recommend"]:checked').value;
+    console.log(Title, Description, Memorable, Rating, Recommend);
 
 
     firebase.auth().onAuthStateChanged(user => {
@@ -42,18 +45,17 @@ function writeReview() {
             currentUser.get()
                 .then(userDoc => {
                     var userEmail = userDoc.data().email;
-                    db.collection("Reviews").add({
+                    db.collection("reviews").add({
                         id: restaurantID,
                         userID: userID,
                         title: Title,
-                        level: Level,
-                        season: Season,
                         description: Description,
-                        flooded: Flooded,
-                        scrambled: Scrambled
+                        memorable: Memorable,
+                        rating: Rating,
+                        recommend: Recommend
 
                     }).then(()=>{
-                        window.location.href = "index.html";
+                        window.location.href = "main.html";
                     })
                 })
                    
@@ -63,7 +65,6 @@ function writeReview() {
     });
 
 }
-
 
 function updateTextInput(val) {
     document.getElementById('textInput').value=val; 
