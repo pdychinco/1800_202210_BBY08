@@ -187,100 +187,110 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
 
   var resultsRef = db.collection("surveyResults");
   if(typeof ans4 == "undefined") {
-      switch(ans2) {
-        case "option1":
-        //   db.collection("restaurants").where(stats["SUV02"]))
-        //   .get()
-        //     .then(searchResult => {
-        //       searchResult.forEach(doc => {
-        //         resultsRef.add({
-        //           code: doc.data().code,
-        //           name: doc.data().name,
-        //           details: doc.data().details,
-        //           address: doc.data().address,
-        //           telephone: doc.data().telephone,
-        //           email: doc.data().email
-        //         });
-        //       }).log(searchResult.data());
+    console.log(db.collection("restaurants").where("stats.get('SUV02')", "==",ans2));
+    // db.collection("restaurants").where("stats.SUV02", "==", ans2)
+    //   .get()
+    //     .then((querySnapshot) => {
+    //       querySnapshot.forEach((doc) => {
+    //         console.log("name of resto: " + doc.data().name);
+    //       });
+    //       console.log("hello capped out at 3");
+    //     })
+        
+    //   switch(ans2) {
+    //     case "option1":
+    //     //   db.collection("restaurants").where(stats["SUV02"]))
+    //     //   .get()
+    //     //     .then(searchResult => {
+    //     //       searchResult.forEach(doc => {
+    //     //         resultsRef.add({
+    //     //           code: doc.data().code,
+    //     //           name: doc.data().name,
+    //     //           details: doc.data().details,
+    //     //           address: doc.data().address,
+    //     //           telephone: doc.data().telephone,
+    //     //           email: doc.data().email
+    //     //         });
+    //     //       }).log(searchResult.data());
               
-        //     })
-        // break;
-        case "option2":
-          db.collection("restaurants").where("time", "<", 3)
-          .get()
-            .then(searchResult => {
-              console.log(searchResult.data());
-              resultsRef.add({
-                stuff: searchResult.data()
-              });
-            })
-        break;
-        case "option3":
-          db.collection("restaurants").where("time", "<", 4)
-          .get()
-            .then(searchResult => {
-              console.log(searchResult.data());
-              resultsRef.add({
-                stuff: searchResult.data()
-              });
-            })
-        break;
-        case "option4":
-          db.collection("restaurants").where("time", "<", 5)
-          .get()
-            .then(searchResult => {
-              console.log(searchResult.data());
-              resultsRef.add({
-                stuff: searchResult.data()
-              });
-            })
-        break;
-    }
+    //     //     })
+    //     // break;
+    //     case "option2":
+    //       db.collection("restaurants").where("time", "<", 3)
+    //       .get()
+    //         .then(searchResult => {
+    //           console.log(searchResult.data());
+    //           resultsRef.add({
+    //             stuff: searchResult.data()
+    //           });
+    //         })
+    //     break;
+    //     case "option3":
+    //       db.collection("restaurants").where("time", "<", 4)
+    //       .get()
+    //         .then(searchResult => {
+    //           console.log(searchResult.data());
+    //           resultsRef.add({
+    //             stuff: searchResult.data()
+    //           });
+    //         })
+    //     break;
+    //     case "option4":
+    //       db.collection("restaurants").where("time", "<", 5)
+    //       .get()
+    //         .then(searchResult => {
+    //           console.log(searchResult.data());
+    //           resultsRef.add({
+    //             stuff: searchResult.data()
+    //           });
+    //         })
+    //     break;
+    // }
 
-    switch(ans3) {
-      case "option1":
-        db.collection("restaurants").where("price", "<", 2)
-        .get()
-          .then(searchResult => {
-            console.log(searchResult.data());
-            resultsRef.add({
-              stuff: searchResult.data()
-            });
-          })
-      break;
-      case "option2":
-        db.collection("restaurants").where("price", "<", 3)
-        .get()
-          .then(searchResult => {
-            console.log(searchResult.data());
-            resultsRef.add({
-              stuff: searchResult.data()
-            });
-          })
-      break;
-      case "option3":
-        db.collection("restaurants").where("price", "<", 4)
-        .get()
-          .then(searchResult => {
-            console.log(searchResult.data());
-            resultsRef.add({
-              stuff: searchResult.data()
-            });
-          })
-      break;
-      case "option4":
-        db.collection("restaurants").where("price", "<", 5)
-        .get()
-          .then(searchResult => {
-            console.log(searchResult.data());
-            resultsRef.add({
-              stuff: searchResult.data()
-            });
-          })
-      break;
-      }
+    // switch(ans3) {
+    //   case "option1":
+    //     db.collection("restaurants").where("price", "<", 2)
+    //     .get()
+    //       .then(searchResult => {
+    //         console.log(searchResult.data());
+    //         resultsRef.add({
+    //           stuff: searchResult.data()
+    //         });
+    //       })
+    //   break;
+    //   case "option2":
+    //     db.collection("restaurants").where("price", "<", 3)
+    //     .get()
+    //       .then(searchResult => {
+    //         console.log(searchResult.data());
+    //         resultsRef.add({
+    //           stuff: searchResult.data()
+    //         });
+    //       })
+    //   break;
+    //   case "option3":
+    //     db.collection("restaurants").where("price", "<", 4)
+    //     .get()
+    //       .then(searchResult => {
+    //         console.log(searchResult.data());
+    //         resultsRef.add({
+    //           stuff: searchResult.data()
+    //         });
+    //       })
+    //   break;
+    //   case "option4":
+    //     db.collection("restaurants").where("price", "<", 5)
+    //     .get()
+    //       .then(searchResult => {
+    //         console.log(searchResult.data());
+    //         resultsRef.add({
+    //           stuff: searchResult.data()
+    //         });
+    //       })
+    //   break;
+    //   }
 
-      console.log("hello capped out at 3");
+      
 
   } else if (typeof ans5 == "undefined") {
     console.log("capped out at 4");
