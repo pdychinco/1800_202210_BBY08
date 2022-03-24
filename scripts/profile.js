@@ -13,6 +13,9 @@ function populateInfo() {
                     //get the data fields of the user
                     var userName = userDoc.data().name;
                     var userEmail = userDoc.data().email;
+                    var userPhone = userDoc.data().phone;
+                    var userAddress = userDoc.data().address;
+                    var userCity = userDoc.data().city;
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
@@ -20,6 +23,15 @@ function populateInfo() {
                     }
                     if (userEmail != null) {
                         document.getElementById("emailInput").value = userEmail;
+                    }
+                    if (userPhone != null) {
+                        document.getElementById("phoneInput").value = userPhone;
+                    }
+                    if (userAddress != null) {
+                        document.getElementById("addressInput").value = userAddress;
+                    }
+                    if (userCity != null) {
+                        document.getElementById("cityInput").value = userCity;
                     }
                 })
         } else {
@@ -36,3 +48,25 @@ function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
 }
+
+function saveUserInfo() {
+    userName = document.getElementById('nameInput').value; //get the value of the field with id="nameInput"
+    userEmail = document.getElementById('emailInput').value; //get the value of the field with id="schoolInput"
+    userPhone = document.getElementById('phoneInput').value; //get the value of the field with id="phoneInput"
+    userAddress = document.getElementById('addressInput').value; //get the value of the field with id="addressInput"
+    userCity = document.getElementById('cityInput').value; //get the value of the field with id="cityInput"
+  
+    currentUser.update({
+        name: userName,
+        email: userEmail,
+        phone: userPhone,
+        address: userAddress,
+        city: userCity
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+  
+    document.getElementById('personalInfoFields').disabled = true;
+  
+  }
