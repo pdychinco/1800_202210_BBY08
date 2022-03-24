@@ -1,12 +1,14 @@
+//use search query as location: text || price: text || rating: text then use split method to get first item
 
-function displayRestaurants() {
-  testSearch = document.getElementById("searchBar").value;
-  if (testSearch != null && testSearch != "") {
-      db.collection("restaurants").where("rating", "==", testSearch)
+function displaySearchRestaurants() {
+  // var testSearch = document.getElementById("searchBarQuery").value;
+  var testSearch = 3;
+  // console.log("testSearch = " + testSearch);
+  if (testSearch == 3) {
+      db.collection("restaurants").where("price", "==", testSearch)
       .get() 
           .then(searchResult => { 
               size = searchResult.size;
-              console.log(size);
               populateRestaurants(searchResult);
           })
   } else {
@@ -17,12 +19,12 @@ function displayRestaurants() {
   }
 }
 
-displayRestaurants();
+displaySearchRestaurants();
+
 
 function populateRestaurants(docs) {
   let searchCardTemplate = document.getElementById("searchCardTemplate");
   let searchCardGroup = document.getElementById("searchCardGroup");
-  console.log(docs.size);
   while (searchCardGroup.firstChild){
     searchCardGroup.removeChild(searchCardGroup.firstChild)
 }
