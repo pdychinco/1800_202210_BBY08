@@ -45,10 +45,11 @@
   <!---------------------------------------------->
   <!-------- Restaurant Reviews goes here -------->
   <!---------------------------------------------->
-<br><br>
+  <br><br>
   <div class="container">
     <br>
-    <h1>Review for <span id="RestaurantName"></span></h1>
+    <h2>Write a review for <span id="RestaurantName"></span></h2>
+    <h6>Help other food olympians find where eat to by writing review.</h6>
     <br>
     <form>
       <div class="form-group">
@@ -56,69 +57,68 @@
         <input type="text" class="form-control" id="title" placeholder="Title">
       </div><br>
       <div class="form-group">
-        <label for="exampleFormControlSelect1">How was your dining experience?</label>
-        <select class="form-control" id="level">
-          <option>I would definitely come back and bring all my friends!</option>
-          <option>It was just okay.</option>
-          <option>The food was bland...</option>
+        <label for="exampleFormControlTextarea1">Tell us anything about your dining experience</label>
+        <textarea class="form-control" id="description" rows="7"></textarea>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">What was the most memorable?</label>
+        <select class="form-control" id="season">
+          <option>The food was chef's kiss (really delicious)</option>
+          <option>The ambiance was lively and great for destressing</option>
+          <option>It's the perfect spot for a romantic date</option>
+          <option>It's a small restaurant that's cozy and like home</option>
+          <option>The staff deserve a gold medal for their service</option>
+          <option>The interior design is nice and the restaurant is clean</option>
+          <option>This restaurant is a gem, everything was great</option>
+          <option>Unfortunately, nothing was memorable...</option>
         </select>
         <br>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Give the restaurant a rating.</label>
-          <select class="form-control" id="season">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <br>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">What did you think of the trail?</label>
-          <textarea class="form-control" id="description" rows="3"></textarea>
-        </div>
-        <br>
-        <!--Flooded-->
-        <label>Flooded <span style="display:inline-block; width: 26pt;"></span></label>
+      </div>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="flooded" value="Yes">
-          <label>Yes</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="flooded" value="No">
-          <label>No</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="flooded" value="unSure" checked="">
-          <label>Not sure</label>
-        </div>
-        <br>
-        <!--Scramble-->
-        <label>Scramble <span style="display:inline-block; width: 20pt;"></span></label>
+      <br>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="scrambled" value="Yes">
-          <label>Yes</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="scrambled" value="No">
-          <label>No</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="scrambled" value="unSure" checked="">
-          <label>Not sure</label>
-        </div>
 
-        <br>
-        <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writeReview()">Submit</button>
-        </div>
+      <div class="form-group">
+
+        <label>How satisfied were you with your dining experience?
+          <span style="display:inline-block;"></span></label><br><br>
+        <label for="customRange2" class="form-label">Give a rating from 1 to 5:</label>
+        <input type="text" id="textInput" value="" style="width: 40px; text-align: center; margin-left: 10px;"> <br><br>
+        <input style="width: 500px;" type="range" class="form-range" min="0" max="5" id="customRange2"
+          onchange="updateTextInput(this.value);"><br>
+
+      </div>
+
+
+
+
+      <br>
+
+      <label>Would you recommend this restaurant to a friend?<span
+          style="display:inline-block; width: 20pt;"></span></label>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="scrambled" value="Yes">
+        <label>Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="scrambled" value="No">
+        <label>No</label>
+      </div>
+
+
+
+
+      <br>
+      <div class="d-flex justify-content-start mt-4">
+        <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writeReview()">Submit</button>
       </div>
     </form>
   </div>
-<br><br><br>
+
+
+  <br><br><br>
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
