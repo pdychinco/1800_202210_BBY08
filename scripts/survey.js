@@ -129,7 +129,7 @@ function addClick() {
   } else {
     saveSurveyInput(ans);
     filterRestaurant();
-    // location.href = "../searchresult.html";
+    location.href = "../searchresult.html";
   }
 }
 
@@ -154,7 +154,26 @@ function filterRestaurant() {
   getSurveyInput();
   displaySurveyRestaurants(ansDict["ans2"],ansDict["ans3"],ansDict["ans4"],ansDict["ans5"],ansDict["ans6"],ansDict["ans7"]);
 
-
+  // for(let i = 1; i<= clickCounter; i++) {
+  //   switch(ansDict["ans" + i]) {
+  //     case "option1":
+  //       console.log(i);
+  //       console.log("selected option 1");
+  //       break;
+  //     case "option2":
+  //       console.log(i);
+  //       console.log("selected option 2");
+  //       break;
+  //     case "option3":
+  //       console.log(i);
+  //       console.log("selected option 3");
+  //       break;
+  //     case "option4":
+  //       console.log(i);
+  //       console.log("selected option 4");
+  //       break;
+  //   }
+  // }
 }
 
 function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
@@ -168,181 +187,67 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
 
   var resultsRef = db.collection("surveyResults");
   if(typeof ans4 == "undefined") {
-<<<<<<< HEAD
-    console.log(db.collection("restaurants").where("stats.get('SUV02')", "==",ans2));
-    // db.collection("restaurants").where("stats.SUV02", "==", ans2)
-    //   .get()
-    //     .then((querySnapshot) => {
-    //       querySnapshot.forEach((doc) => {
-    //         console.log("name of resto: " + doc.data().name);
-    //       });
-    //       console.log("hello capped out at 3");
-    //     })
-        
-    //   switch(ans2) {
-    //     case "option1":
-    //     //   db.collection("restaurants").where(stats["SUV02"]))
-    //     //   .get()
-    //     //     .then(searchResult => {
-    //     //       searchResult.forEach(doc => {
-    //     //         resultsRef.add({
-    //     //           code: doc.data().code,
-    //     //           name: doc.data().name,
-    //     //           details: doc.data().details,
-    //     //           address: doc.data().address,
-    //     //           telephone: doc.data().telephone,
-    //     //           email: doc.data().email
-    //     //         });
-    //     //       }).log(searchResult.data());
-              
-    //     //     })
-    //     // break;
-    //     case "option2":
-    //       db.collection("restaurants").where("time", "<", 3)
-    //       .get()
-    //         .then(searchResult => {
-    //           console.log(searchResult.data());
-    //           resultsRef.add({
-    //             stuff: searchResult.data()
-    //           });
-    //         })
-    //     break;
-    //     case "option3":
-    //       db.collection("restaurants").where("time", "<", 4)
-    //       .get()
-    //         .then(searchResult => {
-    //           console.log(searchResult.data());
-    //           resultsRef.add({
-    //             stuff: searchResult.data()
-    //           });
-    //         })
-    //     break;
-    //     case "option4":
-    //       db.collection("restaurants").where("time", "<", 5)
-    //       .get()
-    //         .then(searchResult => {
-    //           console.log(searchResult.data());
-    //           resultsRef.add({
-    //             stuff: searchResult.data()
-    //           });
-    //         })
-    //     break;
-    // }
-
-    // switch(ans3) {
-    //   case "option1":
-    //     db.collection("restaurants").where("price", "<", 2)
-    //     .get()
-    //       .then(searchResult => {
-    //         console.log(searchResult.data());
-    //         resultsRef.add({
-    //           stuff: searchResult.data()
-    //         });
-    //       })
-    //   break;
-    //   case "option2":
-    //     db.collection("restaurants").where("price", "<", 3)
-    //     .get()
-    //       .then(searchResult => {
-    //         console.log(searchResult.data());
-    //         resultsRef.add({
-    //           stuff: searchResult.data()
-    //         });
-    //       })
-    //   break;
-    //   case "option3":
-    //     db.collection("restaurants").where("price", "<", 4)
-    //     .get()
-    //       .then(searchResult => {
-    //         console.log(searchResult.data());
-    //         resultsRef.add({
-    //           stuff: searchResult.data()
-    //         });
-    //       })
-    //   break;
-    //   case "option4":
-    //     db.collection("restaurants").where("price", "<", 5)
-    //     .get()
-    //       .then(searchResult => {
-    //         console.log(searchResult.data());
-    //         resultsRef.add({
-    //           stuff: searchResult.data()
-    //         });
-    //       })
-    //   break;
-    //   }
-
-      
-
-=======
-    console.log("hello capped out at 3");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3)
-      .get()
-        .then(searchResult => {
-          searchResult.forEach(doc => {
-            resultsRef.add({
-              code: doc.data().id,
-              name: doc.data().name,
-              details: doc.data().details,
-              address: doc.data().address,
-              telephone: doc.data().telephone,
-              email: doc.data().email
-            });
-          })  
-          
-        })
-        
->>>>>>> 1fa9a8ee99affe5b35aca7e89a1b84a459160a67
-  } else if (typeof ans5 == "undefined") {
-    console.log("capped out at 4");
-    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
-      .get()
-        .then(searchResult => {
-          searchResult.forEach(doc => {
-            resultsRef.add({
-              code: doc.data().id,
-              name: doc.data().name,
-              details: doc.data().details,
-              address: doc.data().address,
-              telephone: doc.data().telephone,
-              email: doc.data().email
-            });
-          })  
-          
-        })
-  } else if (typeof ans6 == "undefined") {
-    console.log("capped out at 5");
-    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans5)
-      .get()
-        .then(searchResult => {
-          searchResult.forEach(doc => {
-            resultsRef.add({
-              code: doc.data().id,
-              name: doc.data().name,
-              details: doc.data().details,
-              address: doc.data().address,
-              telephone: doc.data().telephone,
-              email: doc.data().email
-            });
-          })  
-          
-        })
-  } else {
-    console.log("capped out at 7");
-    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==",ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
       .then(searchResult => {
         searchResult.forEach(doc => {
           resultsRef.add({
-            code: doc.data().id,
+            id: doc.data().id,
             name: doc.data().name,
             details: doc.data().details,
             address: doc.data().address,
             telephone: doc.data().telephone,
             email: doc.data().email
           });
-        })  
-        
+        })
+      })
+  }else if (typeof ans5 == "undefined") {
+    console.log("capped out at 4");
+    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
+    .get()
+      .then(searchResult => {
+        searchResult.forEach(doc => {
+          resultsRef.add({
+            id: doc.data().id,
+            name: doc.data().name,
+            details: doc.data().details,
+            address: doc.data().address,
+            telephone: doc.data().telephone,
+            email: doc.data().email
+          });
+        })
+      })
+  } else if (typeof ans6 == "undefined") {
+    console.log("capped out at 5");
+    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
+    .get()
+      .then(searchResult => {
+        searchResult.forEach(doc => {
+          resultsRef.add({
+            id: doc.data().id,
+            name: doc.data().name,
+            details: doc.data().details,
+            address: doc.data().address,
+            telephone: doc.data().telephone,
+            email: doc.data().email
+          });
+        })
+      })
+  } else {
+    console.log("capped out at 7");
+    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
+    .get()
+      .then(searchResult => {
+        searchResult.forEach(doc => {
+          resultsRef.add({
+            id: doc.data().id,
+            name: doc.data().name,
+            details: doc.data().details,
+            address: doc.data().address,
+            telephone: doc.data().telephone,
+            email: doc.data().email
+          });
+        })
       })
   }
 }
