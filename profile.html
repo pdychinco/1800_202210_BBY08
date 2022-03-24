@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Team BBY08 Project</title>
+  <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
+
+  <!------------------------>
+  <!-- Required meta tags -->
+  <!------------------------>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!------------------------------------------>
+  <!-- Bootstrap Library CSS JS CDN go here -->
+  <!------------------------------------------>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+  <!-------------------------------------------->
+  <!-- Other libraries and styles of your own -->
+  <!-------------------------------------------->
+  <link type="text/css" href="./styles/style.css">
+</head>
+
+<body>
+  <!---------------------------------------------->
+  <!---------- Navigation Bar goes here ---------->
+  <!---------------------------------------------->
+  <nav id="navbarPlaceholder"></nav>
+
+  <!---------------------------------------------->
+  <!----------- Profile body goes here ----------->
+  <!---------------------------------------------->
+
+  <div class="container">
+    <h1>My Profile </h1>
+    <form>
+        <fieldset class="mb-3" id="personalInfoFields" disabled>
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label >Email</label>
+                <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
+            </div>
+        </fieldset>
+        <div class="d-flex justify-content-end mt-5">
+            <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+            <span style="width: 10px"></span>
+            <button type="button" class="btn btn-info">Save</button>
+        </div>
+    </form>
+</div>
+
+  <!---------------------------------------------->
+  <!-------------- Footer goes here -------------->
+  <!---------------------------------------------->
+  <nav id="footerPlaceholder"></nav>
+
+  <!---------------------------------------------->
+  <!--- Your own JavaScript functions go here ---->
+  <!---------------------------------------------->
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
+  <script src="./scripts/authentication.js"></script>
+</body>
+
+</html>
