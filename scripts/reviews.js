@@ -12,9 +12,9 @@ db.collection("restaurants").where("id", "==", restaurantID)
         //the query is more than one, we can check it right now and clean the DB if needed.
         if (size = 1) {
             var thisRestaurant = Restaurants[0].data();
-            restaurantName = thisRestaurant.name;
+            name = thisRestaurant.name;
             console.log(restaurantName);
-            document.getElementById("RestaurantName").innerHTML = restaurantName;
+            document.getElementById("RestaurantName").innerHTML = name;
         } else {
             console.log("Query has more than one data")
         }
