@@ -262,5 +262,5 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
 }
 
 function redirect() {
-  location.href = "../searchresult.html";
+  location.href = "../surveyresult.html";
 }
