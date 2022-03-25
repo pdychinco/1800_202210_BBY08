@@ -1,35 +1,50 @@
+<style>
+    #back {
+        background-color: rgba(243, 255, 174, 0.733);
+    }
+    #back:hover {
+        background-color: rgb(243, 255, 174);
+    }
+    #next {
+        background-color:rgb(152, 248, 255);
+    }
+    #next:hover {
+        background-color: rgb(72, 225, 236);
+    }
+</style>
+
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
     
-    <h3 class="text-info fw-bold" id="question"></h3>
+    <h3 class="fw-bold text-white" id="question"></h3>
 </div>
 <br>
 <div class="d-grid gap-2 justify-content-md-center w-100 h-75">
     <div class="form-check">
         <input class="form-check-input" type="radio" name="optionRadioDefault" id="optionRadio1" value="option1" checked>
-        <label class="form-check-label text-info fw-bold fs-4" for="optionRadio1" id="optionRadioText1">
+        <label class="form-check-label fw-bold fs-4 text-white" for="optionRadio1" id="optionRadioText1">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio"  name="optionRadioDefault" id="optionRadio2" value="option2">
-        <label class="form-check-label text-info fw-bold fs-4" for="optionRadio2" id="optionRadioText2">
+        <label class="form-check-label fw-bold fs-4 text-white" for="optionRadio2" id="optionRadioText2">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio"  name="optionRadioDefault" id="optionRadio3" value="option3">
-        <label class="form-check-label text-info fw-bold fs-4" for="optionRadio3" id="optionRadioText3">
+        <label class="form-check-label fw-bold fs-4 text-white" for="optionRadio3" id="optionRadioText3">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="optionRadioDefault" id="optionRadio4" value="option4">
-        <label class="form-check-label text-info fw-bold fs-4" for="optionRadio4" id="optionRadioText4">
+        <label class="form-check-label fw-bold fs-4 text-white" for="optionRadio4" id="optionRadioText4">
         </label>
     </div>
 </div>
 <br>
 <div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button type="button" class="btn btn-outline-primary" id="back" onclick=minusClick()>Back</button>
-        <button type="button" class="btn btn-info" id="next" onclick=addClick()>Next</button>
+        <button type="button" class="btn" id="back" onclick=minusClick()>Back</button>
+        <button type="button" class="btn" id="next" onclick=addClick()>Next</button>
     </div>
 </div>
