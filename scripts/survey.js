@@ -192,7 +192,6 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
       .then((searchResult) => {
-        console.log(searchResult);
         searchResult.forEach(doc => {
            resultsRef.doc(doc.data().id).set({
             id: doc.data().id,
@@ -200,7 +199,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
             details: doc.data().details,
             address: doc.data().address,
             telephone: doc.data().telephone,
-            email: doc.data().email
+            email: doc.data().email,
+            rating: doc.data().rating,
+            price: doc.data().price
           });
         })
       })
@@ -215,7 +216,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
             details: doc.data().details,
             address: doc.data().address,
             telephone: doc.data().telephone,
-            email: doc.data().email
+            email: doc.data().email,
+            rating: doc.data().rating,
+            price: doc.data().price
           });
         })
       })
@@ -230,7 +233,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
             details: doc.data().details,
             address: doc.data().address,
             telephone: doc.data().telephone,
-            email: doc.data().email
+            email: doc.data().email,
+            rating: doc.data().rating,
+            price: doc.data().price
           });
         })
       })
@@ -245,7 +250,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
             details: doc.data().details,
             address: doc.data().address,
             telephone: doc.data().telephone,
-            email: doc.data().email
+            email: doc.data().email,
+            rating: doc.data().rating,
+            price: doc.data().price
           });
         })
       })

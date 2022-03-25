@@ -48,28 +48,37 @@
   <!---------------------------------------------->
 
 
-  <template id="searchCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem;">
-      <img class="card-image card-img-top w-100 h-100" src="..." alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
-        <a class="btn btn-primary card-href">See More</a>
+  <template id="restaurantCardTemplate">
+    <div class="card-group">
+      <div class="card mb-3" style="max-width: 380px;">
+          <img class="card-image card-img-top h-100" src=" ..." alt="..." style="object-fit: cover;">
+          <div class="card-body">
+        <!-- Below is the icon we added to the card template that will be shown in each card later -->
+        <i class="material-icons" style="float: right; cursor: pointer;">favorite_border</i>
+        <h5 class="card-title">placeholder</h5>
+        <p class="card-length">placeholder</p>
+        <a href="review.html" class="link-primary">Write a review</a>
+        <br>
+        <p class="card-text">
+        </p>
+        <a href="#" class="btn btn-primary" style="float: right; cursor: pointer;">Read more</a>
       </div>
+      <div class="card-footer" style="text-align: center;">
+        <small class="text-muted">Earn a medal by dining here</small>
+      </div>
+    </div>
+
     </div>
   </template>
 
 
   <div class="container">
-    <h1>Results</h1>
-    <!-- Here is container for cards  -->
-    <div class="container">
-        <div id="surveyResult-go-here" class="row row-cols-auto">
-          Hello
-        </div>
+    <div id="restaurantCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
+
     </div>
 </div>
+
+  <br><br>
 
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
