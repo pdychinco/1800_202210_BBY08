@@ -40,8 +40,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS01",
         name: "Suika",
+        details: "Japanese Izakaya restaurant",
         city: "Vancouver",
-        details: "Japanese Izakaya restaurant in Vancouver, BC.",
         address: "1626 W Broadway, Vancouver, BC V6J 1X6",
         telephone: "604-730-1678",
         email: "info@suika-snackbar.com",
@@ -58,7 +58,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS02",
         name: "Kook Korean BBQ",
-        details: "Korean BBQ restaurant in Vancouver, BC.",
+        details: "Korean BBQ restaurant",
+        city: "Vancouver",
         address: "2800 E1st Ave #211A Vancouver, BC V5M 4N8",
         telephone: "604-566-5665",
         email: "info@kookbbq.ca",
@@ -75,7 +76,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS03",
         name: "Medina Cafe",
-        details: "Mediterranean Brunch Cafe in Vancouver, BC.",
+        details: "Mediterranean Brunch Cafe",
+        city: "Vancouver",
         address: "780 Richards St. Vancouver, BC V6B 3A4",
         telephone: "604-879-3114",
         email: "info@medinacafe.com",
@@ -92,7 +94,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS04",
         name: "Mott 32",
-        details: "High-end restaurant featuring innovative Chinese dishes in Vancouver, BC.",
+        details: "High-end Chinese fusion restaurant",
+        city: "Vancouver",
         address: "1161 W Georgia St, Vancouver, BC V6E 0C6",
         telephone: "604-861-0032",
         email: "reservations.van@mott32.ca",
@@ -109,8 +112,9 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS05",
         name: "John 3:16 Malaysian Delights",
-        details: "Southeast Asian eats family-owned cafe in Richmond, BC.",
-        address: "6832 &, 6838 No. 3 Rd, Richmond, BC V6Y 2C4",
+        details: "Southeast Asian eats family-owned cafe",
+        city: "Richmond",
+        address: "6838 No. 3 Rd, Richmond, BC V6Y 2C4",
         telephone: "604-214-8181",
         email: "john316mydelights@gmail.com",
         price: 2,
@@ -126,10 +130,11 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS06",
         name: "Sushi By Yuji",
-        details: "Small local sushi restaurant in Vancouver, BC.",
+        details: "Small local sushi restaurant",
+        city: "Vancouver",
         address: "2252 Kingsway, Vancouver, BC V5N 2T7",
         telephone: "604-434-0003",
-        email: "Not available.",
+        email: "Not available",
         price: 2,
         rating: 4,
         SUV02: "option3",
@@ -143,7 +148,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS07",
         name: "L'Abattoir",
-        details: "High-end French restaurant located in the historic Gastown in Vancouver, BC.",
+        details: "High-end French restaurant in Gastown",
+        city: "Vancouver",
         address: "217 Carrall St Vancouver, BC V6B 2J2",
         telephone: "604-568-1701",
         email: "info@labattoir.ca",
@@ -160,7 +166,8 @@ function writeRestaurants() {
     restaurantRef.add({
         id: "RS08",
         name: "Jolibee",
-        details: "Filipino Fast Food located on Granville Strip in Vancouver, BC.",
+        details: "Filipino Fast Food located on Granville Strip",
+        city: "Vancouver",
         address: "833 Granville Street, Vancouver, BC V5M 2C9",
         telephone: "604-265-7353",
         email: "Not available",
@@ -175,7 +182,7 @@ function writeRestaurants() {
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
 }
-// writeRestaurants();
+//writeRestaurants();
 
 //populates retaurants in order based on scores
 function populateCardsDynamically() {
@@ -184,7 +191,7 @@ function populateCardsDynamically() {
 
     db.collection("restaurants")
         .orderBy("scores", "desc")
-        .limit(4)
+        .limit(3)
         .get()
         .then(allRestaurants => {
             //gets one doc
@@ -198,9 +205,9 @@ function populateCardsDynamically() {
                 //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
+                    "Location: " + doc.data().city + "<br>" +
                     "Telephone: " + doc.data().telephone + "<br>" +
-                    "Email: " + doc.data().email + "<br>" + 
-                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" +
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
@@ -228,7 +235,7 @@ function populateCardsDynamically2() {
 
     db.collection("restaurants")
         .orderBy("rating", "desc")
-        .limit(4)
+        .limit(3)
         .get()
         .then(allRestaurants => {
             //gets one doc
@@ -242,9 +249,9 @@ function populateCardsDynamically2() {
                 //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
+                    "Location: " + doc.data().city + "<br>" +
                     "Telephone: " + doc.data().telephone + "<br>" +
-                    "Email: " + doc.data().email + "<br>" + 
-                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" +
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
@@ -266,13 +273,13 @@ function populateCardsDynamically2() {
 populateCardsDynamically2();
 
 //populates restaurants in order based on ratings
-function populateCardsDynamically3() {
+function populateCards3() {
     let restaurantCardTemplate = document.getElementById("restaurantCardTemplate3");
     let restaurantCardGroup = document.getElementById("restaurantCardGroup3");
 
     db.collection("restaurants")
         .orderBy("price")
-        .limit(4)
+        .limit(3)
         .get()
         .then(allRestaurants => {
             //gets one doc
@@ -286,9 +293,9 @@ function populateCardsDynamically3() {
                 //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
+                    "Location: " + doc.data().city + "<br>" +
                     "Telephone: " + doc.data().telephone + "<br>" +
-                    "Email: " + doc.data().email + "<br>" + 
-                    "Rating: " + doc.data().rating + "<br>" + 
+                    "Rating: " + doc.data().rating + "<br>" +
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
@@ -307,45 +314,45 @@ function populateCardsDynamically3() {
 
         })
 }
-populateCardsDynamically3();
+populateCards3();
 
 function setRestaurantData(id) {
     localStorage.setItem('restaurantID', id);
 }
 
 
-function addLikes(restaurantID) {  
-  db.collection("restaurants").where("id", "==", restaurantID)
-  .get()
-  .then(queryRestaurant => {
-      //see how many results you have got from the query
-      size = queryRestaurant.size;
-      // get the documents of query
-      Restaurants = queryRestaurant.docs;
-      if (size = 1) {
-          id = Restaurants[0].id;
-          console.log(id);
-          //update method will add to the specified field in database, if that field does not exist, it will create that.
-          db.collection("restaurants").doc(id).update({
-              //Firebase documentation has this method for incrementation.
-              scores: firebase.firestore.FieldValue.increment(1),
-          })
-          currentUser.set({
-            favourites: firebase.firestore.FieldValue.arrayUnion(restaurantID)
-        }, {
-            merge: true
+function addLikes(restaurantID) {
+    db.collection("restaurants").where("id", "==", restaurantID)
+        .get()
+        .then(queryRestaurant => {
+            //see how many results you have got from the query
+            size = queryRestaurant.size;
+            // get the documents of query
+            Restaurants = queryRestaurant.docs;
+            if (size = 1) {
+                id = Restaurants[0].id;
+                console.log(id);
+                //update method will add to the specified field in database, if that field does not exist, it will create that.
+                db.collection("restaurants").doc(id).update({
+                    //Firebase documentation has this method for incrementation.
+                    scores: firebase.firestore.FieldValue.increment(1),
+                })
+                currentUser.set({
+                        favourites: firebase.firestore.FieldValue.arrayUnion(restaurantID)
+                    }, {
+                        merge: true
+                    })
+                    .then(function () {
+                        console.log("restaurant has been favourited for: " + currentUser);
+                        var iconID = 'save-' + restaurantID;
+                        //console.log(iconID);
+                        document.getElementById(iconID).innerText = 'favorite';
+                    });
+            } else {
+                console.log("Query has more than one data")
+            }
         })
-        .then(function () {
-            console.log("restaurant has been favourited for: " + currentUser);
-            var iconID = 'save-' + restaurantID;
-            //console.log(iconID);
-            document.getElementById(iconID).innerText = 'favorite';
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
         });
-      } else {
-          console.log("Query has more than one data")
-      }
-  })
-  .catch((error) => {
-      console.log("Error getting documents: ", error);
-  });
 }
