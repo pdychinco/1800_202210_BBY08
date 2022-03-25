@@ -147,6 +147,7 @@ function saveSurveyInput(input) {
 function getSurveyInput() {
   for(let i = 1; i <= clickCounter; i++) {
     ansDict["ans" + i] = localStorage.getItem("ans" + i);
+    console.log(ansDict["ans" + i]);
   }
 }
 
@@ -187,10 +188,14 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
 
   var resultsRef = db.collection("surveyResults");
   if(typeof ans4 == "undefined") {
-    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3)
+    console.log("inside first if statement");
+    db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
-      .then(searchResult => {
+      .then((searchResult) => {
+        console.log(searchResult);
         searchResult.forEach(doc => {
+          console.log(doc);
+          console.log("insider adder");
           resultsRef.add({
             id: doc.data().id,
             name: doc.data().name,
@@ -203,10 +208,12 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
       })
   }else if (typeof ans5 == "undefined") {
     console.log("capped out at 4");
+    console.log("inside second if statement");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
-      .then(searchResult => {
+      .then((searchResult) => {
         searchResult.forEach(doc => {
+          console.log("insider adder");
           resultsRef.add({
             id: doc.data().id,
             name: doc.data().name,
@@ -221,8 +228,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     console.log("capped out at 5");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
-      .then(searchResult => {
+      .then((searchResult) => {
         searchResult.forEach(doc => {
+          console.log("insider adder");
           resultsRef.add({
             id: doc.data().id,
             name: doc.data().name,
@@ -237,8 +245,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     console.log("capped out at 7");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
-      .then(searchResult => {
+      .then((searchResult) => {
         searchResult.forEach(doc => {
+          console.log("insider adder");
           resultsRef.add({
             id: doc.data().id,
             name: doc.data().name,

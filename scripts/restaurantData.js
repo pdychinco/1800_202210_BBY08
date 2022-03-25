@@ -162,7 +162,7 @@ function writeRestaurants() {
         name: "Jolibee",
         details: "Filipino Fast Food located on Granville Strip in Vancouver, BC.",
         address: "833 Granville Street, Vancouver, BC V5M 2C9",
-        telephone: "Not available",
+        telephone: "604-265-7353",
         email: "Not available",
         price: 1,
         rating: 4,
@@ -349,10 +349,3 @@ function addLikes(restaurantID) {
       console.log("Error getting documents: ", error);
   });
 }
-
-function addRestaurants() {
-    var restaurantRef = db.collection("restaurants");
-
-    
-}
-//addRestaurants();
