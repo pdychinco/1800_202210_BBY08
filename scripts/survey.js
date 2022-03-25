@@ -129,7 +129,7 @@ function addClick() {
   } else {
     saveSurveyInput(ans);
     filterRestaurant();
-    location.href = "../searchresult.html";
+    
   }
 }
 
@@ -185,18 +185,16 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
   console.log("value of ans5: " + ans5);
   console.log("value of ans6: " + ans6);
   console.log("value of ans7: " + ans7);
+  
 
   var resultsRef = db.collection("surveyResults");
   if(typeof ans4 == "undefined") {
-    console.log("inside first if statement");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
       .then((searchResult) => {
         console.log(searchResult);
         searchResult.forEach(doc => {
-          console.log(doc);
-          console.log("insider adder");
-          resultsRef.add({
+           resultsRef.doc(doc.data().id).set({
             id: doc.data().id,
             name: doc.data().name,
             details: doc.data().details,
@@ -207,14 +205,11 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
         })
       })
   }else if (typeof ans5 == "undefined") {
-    console.log("capped out at 4");
-    console.log("inside second if statement");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-          console.log("insider adder");
-          resultsRef.add({
+           resultsRef.doc(doc.data().id).set({
             id: doc.data().id,
             name: doc.data().name,
             details: doc.data().details,
@@ -225,13 +220,11 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
         })
       })
   } else if (typeof ans6 == "undefined") {
-    console.log("capped out at 5");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-          console.log("insider adder");
-          resultsRef.add({
+           resultsRef.doc(doc.data().id).set({
             id: doc.data().id,
             name: doc.data().name,
             details: doc.data().details,
@@ -242,13 +235,11 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
         })
       })
   } else {
-    console.log("capped out at 7");
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-          console.log("insider adder");
-          resultsRef.add({
+           resultsRef.doc(doc.data().id).set({
             id: doc.data().id,
             name: doc.data().name,
             details: doc.data().details,
@@ -259,4 +250,10 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
         })
       })
   }
+  setTimeout(redirect, 750);
+  alert("Calculating. Please wait 3 seconds.")
+}
+
+function redirect() {
+  location.href = "../searchresult.html";
 }
