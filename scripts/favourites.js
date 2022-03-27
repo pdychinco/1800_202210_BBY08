@@ -66,6 +66,10 @@ function getFav(user) {
                       newCard.querySelector('.card-length').innerHTML = restaurantDetails;
                       newCard.querySelector('.card-text').innerHTML = restaurantAddress;
                       newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+
+                      newCard.querySelector('i').id = 'save-' + restaurantID;
+                      // this line will call a function to save the hikes to the user's document       
+                      newCard.querySelector('i').onclick = () => removeFav(restaurantID);
                       newCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
                       restaurantCardGroup.appendChild(newCard);
                   } else {
@@ -77,3 +81,48 @@ function getFav(user) {
           });
       })
 }
+
+// testRestaurantCard.querySelector('i').id = 'save-' + restaurantID;
+// // this line will call a function to save the hikes to the user's document             
+// testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
+// testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
+
+function setRestaurantData(id) {
+    localStorage.setItem('restaurantID', id);
+}
+
+function removeFav(restaurantID) {
+    db.collection("restaurants").where("id", "==", restaurantID)
+        .get()
+        .then(queryRestaurant => {
+            //see how many results you have got from the query
+            size = queryRestaurant.size;
+            // get the documents of query
+            Restaurants = queryRestaurant.docs;
+            if (size = 1) {
+                id = Restaurants[0].id;
+                console.log(id);
+                //update method will add to the specified field in database, if that field does not exist, it will create that.
+                db.collection("restaurants").doc(id).update({
+                    //Firebase documentation has this method for incrementation.
+                    favourites: firebase.firestore.FieldValue.arrayRemove(restaurantID)
+                })
+                currentUser.set({
+                        favourites: firebase.firestore.FieldValue.arrayRemove(restaurantID)
+                    }, {
+                        merge: true
+                    })
+                    .then(function () {
+                        console.log("restaurant has been removed for: " + currentUser);
+                        var iconID = 'save-' + restaurantID;
+                        //console.log(iconID);
+                        document.getElementById(iconID).innerText = 'favorite_border';
+                    });
+            } else {
+                console.log("Query has more than one data")
+            }
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+  }
