@@ -9,5 +9,6 @@ function loadSkeleton(){
   console.log($('#heroPlaceholder').load('./text/hero.html'));
   console.log($('#surveyPlaceholder').load('./text/surveyskeleton.html'));
   console.log($('#searchPlaceholder').load('./text/search.html'));
+  console.log($('#hero2Placeholder').load('./text/hero-version2.html'));
 }
 loadSkeleton();  //invoke the function
