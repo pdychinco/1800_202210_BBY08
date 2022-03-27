@@ -117,6 +117,7 @@ function removeFav(restaurantID) {
                         var iconID = 'save-' + restaurantID;
                         //console.log(iconID);
                         document.getElementById(iconID).innerText = 'favorite_border';
+                        window.location.assign("usersFavourites.html"); 
                     });
             } else {
                 console.log("Query has more than one data")

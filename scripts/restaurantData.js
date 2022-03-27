@@ -149,6 +149,7 @@ function writeRestaurants() {
         id: "RS07",
         name: "L'Abattoir",
         details: "High-end French restaurant in Gastown",
+        description: "Located in historic Gastown between Gaoler's Mews and Blood Alley, built in the 19th century on the site of Vancouver's first jail and originally buttressed to the city's main butchery and meat packing district, the name L'Abattoir pays homage to the neighbourhood's colourful past. Set in a refurbished brick and beam building combining classic French tile work with industrial fixtures and natural wood, the restaurant offers a bar and lounge, elevated dining room and a plush, light soaked atrium as well as private dining rooms. Chef/Owner Lee Cooper is dedicated to highlighting the finer points of eating & drinking in L'Abattoir's informed but informal setting. Service is expertly orchestrated to be unpretentious yet refined. The French-influenced West Coast fare is paired with the eclectic wine program and the bar team's innovative cocktail list to offer a truly unique dining experience.",
         city: "Vancouver",
         address: "217 Carrall St Vancouver, BC V6B 2J2",
         telephone: "604-568-1701",
@@ -182,7 +183,7 @@ function writeRestaurants() {
         lastupdate: firebase.firestore.FieldValue.serverTimestamp()
     });
 }
-//writeRestaurants();
+// writeRestaurants();
 
 //populates retaurants in order based on scores
 function populateCardsDynamically() {
@@ -307,5 +308,3 @@ populateCards3();
 function setRestaurantData(id) {
     localStorage.setItem('restaurantID', id);
 }
-
-
