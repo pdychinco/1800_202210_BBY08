@@ -10,5 +10,6 @@ function loadSkeleton(){
   console.log($('#surveyPlaceholder').load('./text/surveyskeleton.html'));
   console.log($('#searchPlaceholder').load('./text/search.html'));
   console.log($('#hero2Placeholder').load('./text/hero-version2.html'));
+  console.log($('#footer2Placeholder').load('./text/index-footer.html'));
 }
 loadSkeleton();  //invoke the function
