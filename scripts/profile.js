@@ -16,6 +16,7 @@ function populateInfo() {
                     var userPhone = userDoc.data().phone;
                     var userAddress = userDoc.data().address;
                     var userCity = userDoc.data().city;
+                    var userFav = userDoc.data().favourite_cuisine;
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
@@ -32,6 +33,9 @@ function populateInfo() {
                     }
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
+                    }
+                    if (userFav != null) {
+                        document.getElementById("userFav").value = userFav;
                     }
                 })
         } else {
@@ -55,13 +59,15 @@ function saveUserInfo() {
     userPhone = document.getElementById('phoneInput').value; //get the value of the field with id="phoneInput"
     userAddress = document.getElementById('addressInput').value; //get the value of the field with id="addressInput"
     userCity = document.getElementById('cityInput').value; //get the value of the field with id="cityInput"
+    userFav = document.getElementById('userFav').value;
   
     currentUser.update({
         name: userName,
         email: userEmail,
         phone: userPhone,
         address: userAddress,
-        city: userCity
+        city: userCity,
+        favourite_cuisine: userFav
       })
       .then(() => {
         console.log("Document successfully updated!");
