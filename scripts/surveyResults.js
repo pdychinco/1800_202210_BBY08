@@ -33,6 +33,8 @@ function populateCardsDynamically6(user) {
       let results = userDoc.data().surveyResult;
       console.log(results);
       console.log("size of results is: " + results.length);
+      console.log("index 2 is: " +results[2]);
+      // console.log("dateStamp at index 2 is:" +results[2].dateStamp);
       if(results.length == 0) {
         let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
         testRestaurantCard.querySelector('.card-title').innerHTML = "No matches! Try again";
