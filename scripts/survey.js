@@ -178,16 +178,21 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
   console.log("value of ans6: " + ans6);
   console.log("value of ans7: " + ans7);
   
-
-  var resultsRef = db.collection("surveyResults");
   if(typeof ans4 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-          let id = doc.data().id;
+          let restaurantID = doc.data().id;
+          // let timeStamp = new Date().toLocalDateString + " " + Date().toLocaleTimeString();
           currentUser.set({
-            surveyResult: firebase.firestore.FieldValue.arrayUnion(id)
+            surveyResult: firebase.firestore.FieldValue.arrayUnion({
+              entry : {
+                id : restaurantID,
+                dateStamp: new Date().toLocaleDateString(),
+                timeStamp: new Date().toLocaleTimeString()
+              }
+              })
             }, {
                 merge: true
             })
@@ -196,50 +201,60 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
   }else if (typeof ans5 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
-      .then((searchResult) => {
-        searchResult.forEach(doc => {
-          let id = doc.data().id;
-          currentUser.set({
-            surveyResult: firebase.firestore.FieldValue.arrayUnion(id)
-            }, {
-                merge: true
+    .then((searchResult) => {
+      searchResult.forEach(doc => {
+        let restaurantID = doc.data().id;
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
             })
-        })
+          }
+        }, {
+              merge: true
+          })
       })
+    })
   } else if (typeof ans6 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
-      .then((searchResult) => {
-        searchResult.forEach(doc => {
-           resultsRef.doc(doc.data().id).set({
-            id: doc.data().id,
-            name: doc.data().name,
-            details: doc.data().details,
-            address: doc.data().address,
-            telephone: doc.data().telephone,
-            email: doc.data().email,
-            rating: doc.data().rating,
-            price: doc.data().price
-          });
-        })
+    .then((searchResult) => {
+      searchResult.forEach(doc => {
+        let restaurantID = doc.data().id;
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
+            })
+          }
+        }, {
+              merge: true
+          })
       })
+    })
   } else {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
-      .then((searchResult) => {
-        searchResult.forEach(doc => {
-           resultsRef.doc(doc.data().id).set({
-            id: doc.data().id,
-            name: doc.data().name,
-            details: doc.data().details,
-            address: doc.data().address,
-            telephone: doc.data().telephone,
-            email: doc.data().email,
-            rating: doc.data().rating,
-            price: doc.data().price
-          });
-        })
+    .then((searchResult) => {
+      searchResult.forEach(doc => {
+        let restaurantID = doc.data().id;
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
+            })
+          }
+        }, {
+              merge: true
+          })
       })
+    })
   }
   setTimeout(redirect, 750);
   alert("Calculating. Please wait 3 seconds.")
