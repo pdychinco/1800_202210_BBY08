@@ -36,10 +36,11 @@ function writeReview() {
         if (user) {
             var currentUser = db.collection("users").doc(user.uid)
             var userID = user.uid;
+            // var userName = user.name;
             //get the document for current user.
             currentUser.get()
                 .then(userDoc => {
-                    var userEmail = userDoc.data().email;
+                    var userName = userDoc.data().name;
                     db.collection("reviews").add({
                         id: restaurantID,
                         userID: userID,
@@ -47,7 +48,8 @@ function writeReview() {
                         description: Description,
                         best_quality: Memorable,
                         rating: Rating,
-                        recommended: Scrambled
+                        recommended: Scrambled,
+                        userName: userName
 
                     }).then(() => {
                         window.location.href = "main.html";
@@ -71,6 +73,7 @@ function updateTextInput(val) {
 //Populate card
 function displayCards(collection) {
     let reviewCardTemplate = document.getElementById("reviewCardTemplate");
+
   
     db.collection(collection).get()
         .then(snap => {

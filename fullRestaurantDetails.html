@@ -38,8 +38,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--MapBox CDN for using map API-->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
 
 
 </head>
@@ -55,20 +55,20 @@
   <!---------------------------------------------->
   <style type="text/css">
     #info {
-    display: table;
-    position: relative;
-    margin: 0px auto;
-    word-wrap: anywhere;
-    white-space: pre-wrap;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    font-size: 12px;
-    text-align: center;
-    color: #222;
-    background: #fff;
+      display: table;
+      position: relative;
+      margin: 0px auto;
+      word-wrap: anywhere;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      text-align: center;
+      color: #222;
+      background: #fff;
     }
-    </style>
+  </style>
 
 
 
@@ -93,51 +93,98 @@
         <li id="restaurantLocation" style="margin-right: 5px; margin-left: 15px;">Location</li>
       </div>
       <br><br>
-      <div class="card mb-3 justify-content-center d-flex p-3">
-        <div class="card-body" id="restaurantDescription">
-          Restaurant full description
+
+    
+        <div class="card mb-3 justify-content-center d-flex p-3">
+          <div class="card-body" id="restaurantDescription">
+            Restaurant full description
+          </div>
         </div>
-      </div>
-      <div class="card mb-3 justify-content-center d-flex p-3" style="width: 700px; float: left;">
-        <div class="card-body">
-          <!-- Below is the icon we added to the card template that will be shown in each card later -->
-          Restaurant information
+
+
+        <div class="w-20 justify-content-center d-flex">
+        <div class="card p-3" style="float: left; width: 60%;">
+          <div class="card-body">
+            <h5>Address</h5>
+            <p id="restaurantAddress">Address</p>
+            <h5>Contact Information</h5>
+            <p id="restaurantPhoneNumber">Telephone</p>
+            <p id="restaurantEmail">Email</p>
+          </div>
         </div>
+
+
+
+        <div class="card" id="map"
+          style="width: 40%; float: right; position: relative; object-fit: cover;"></div>
+
+        <!-- <pre id="info"></pre> -->
+
+
       </div>
-
-
-
-      <div class="card mb-3 justify-content-center d-flex p-3" id="map"
-        style="width: 500px; height: 330px; float: right; position: relative; object-fit: cover;"></div>
-
-        <pre id="info"></pre>
-
-
-
 
     </div>
+    <br><br><br>
+
+    <h2 style="text-align: center;">Reviews</h2>
+    <br><br><br>
+
+    <!-- THIS CODE POPULATES ONLY ONE REVIEW -->
+    <!-- <div class="w-20 justify-content-center d-flex">
+      <div class="card p-3">
+        <div class="card-body">
+         
+          <div id="reviewTitle" style="font-size: 20px; font-weight: 500; float:left;">Title</div>
+          <div id="userName" style="float:right;">Username</div>
+          <br><br>
+          <div id="reviewSummary" style="float:left;">Summary</div>
+          <br><br>
+      <div id="reviewDescription">Description</div>
+      <br>
+      <div id="reviewRating">Rating</div>
+      <br>
+      <div id="reviewRecommended">Recommended?</div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <template id="reviewCardTemplate">
+      <div class="card-group justify-content-center d-flex">
+      <div class="card p-3">
+          <div class="card-body">
+              <h5 class="reviewTitle" style="float: left;">Title</h5>
+              <p class="userName" style="float: right;">Username</p>
+              <br><br>
+              <p class="reviewSummary" style="float: left;">Summary</p>
+              <p class="reviewDescription" style="float: left;">Description</p>
+              <p class="reviewRating" style="float: left;">Rating</p>
+              <br> <br> <br> <br> <br> <br>
+              <p class="reviewRecommended" style="float: left;">Recommended?</p>
+          </div>
+      </div>
+    </div>
+    </template>
 
 
 
+    <div class="container">
+      <div id="reviewCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
 
-
-
-
+      </div>
   </div>
 
 
 
 
+  
 
 
 
+  </div>
 
+  <br><br><br><br>
 
-  <br><br><br><br>
-  <br><br><br><br>
-  <br><br><br><br>
-  <br><br><br><br>
-  <br><br><br><br>
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
@@ -152,10 +199,10 @@
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-123.11505530238423, 49.277339442748655], // starting position
-    zoom: 9 // starting zoom
+      zoom: 9 // starting zoom
     });
 
-    
+
 
     // Create a default Marker and add it to the map.
     const marker1 = new mapboxgl.Marker()
@@ -163,18 +210,16 @@
       .addTo(map);
 
 
-//lets you see which coordinates you are at using the mouse pointer
-  // map.on('mousemove', (e) => {
-  //   document.getElementById('info').innerHTML =
-  //     // `e.point` is the x, y coordinates of the `mousemove` event
-  //     // relative to the top-left corner of the map.
-  //     JSON.stringify(e.point) +
-  //     '<br />' +
-  //     // `e.lngLat` is the longitude, latitude geographical position of the event.
-  //     JSON.stringify(e.lngLat.wrap());
-  // });
-
-
+    //lets you see which coordinates you are at using the mouse pointer
+    // map.on('mousemove', (e) => {
+    //   document.getElementById('info').innerHTML =
+    //     // `e.point` is the x, y coordinates of the `mousemove` event
+    //     // relative to the top-left corner of the map.
+    //     JSON.stringify(e.point) +
+    //     '<br />' +
+    //     // `e.lngLat` is the longitude, latitude geographical position of the event.
+    //     JSON.stringify(e.lngLat.wrap());
+    // });
   </script>
 
 
@@ -185,6 +230,9 @@
   <script src="/scripts/logout.js"></script>
   <script src="/scripts/addFav.js"></script>
   <script src="/scripts/fullRestaurantDetails.js"></script>
+
+
+  
 
 </body>
 

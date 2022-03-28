@@ -98,7 +98,7 @@ function writeRestaurants() {
         id: "RS04",
         name: "Mott 32",
         details: "High-end Chinese fusion restaurant",
-        description: "Coming Soon!",
+        description: "Mott 32 represents modern Hong Kong as well as a new chapter of Chinese dining. Named after the famed convenience store at 32 Mott Street in New York, the restaurant embodies the Chinese culture and philosophy that has been shaped from generation-to-generation. Mott 32 meticulously sources the finest ingredients, allowing the authentic flavours to shine with delicacies derived from Cantonese, Szechuan, and Beijing Cuisine. Mott 32 has been awarded Best New Restaurant, Best Fine Dining Restaurant, & Best Restaurant Wine List.",
         city: "Vancouver",
         address: "1161 W Georgia St, Vancouver, BC V6E 0C6",
         telephone: "604-861-0032",
