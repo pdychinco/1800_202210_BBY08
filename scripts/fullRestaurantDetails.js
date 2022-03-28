@@ -38,6 +38,7 @@ db.collection("restaurants").where("id", "==", restaurantID)
 
             console.log(restaurantName);
 
+
             document.getElementById("restaurantName").innerHTML = restaurantName;
             document.getElementById("restaurantDetails").innerHTML = restaurantDetails;
             document.getElementById("restaurantRating").innerHTML = restaurantRating;
@@ -144,18 +145,19 @@ function displayCards(collection) {
         .then(snap => {
             var i = 1;
             snap.forEach(doc => { //iterate thru each doc
-                var reviewTitle = doc.data().title; 
+                var reviewTitle = doc.data().title;
                 var reviewUsername = doc.data().userName;
                 var reviewSummary = doc.data().best_quality;
-                var reviewDescription = doc.data().description; 
+                var reviewDescription = doc.data().description;
                 var reviewRating = doc.data().rating;
                 var reviewRecommended = doc.data().recommended;
                 let newcard = reviewCardTemplate.content.cloneNode(true);
 
+
                 newcard.querySelector(".reviewTitle").innerHTML = reviewTitle;
                 newcard.querySelector(".userName").innerHTML = "Posted by: " + reviewUsername;
                 newcard.querySelector(".reviewSummary").innerHTML = reviewSummary + ".";
-                newcard.querySelector(".reviewDescription").innerHTML = reviewDescription; 
+                newcard.querySelector(".reviewDescription").innerHTML = reviewDescription;
                 newcard.querySelector(".reviewRating").innerHTML = "Give this restaruant a rating: " + reviewRating;
                 newcard.querySelector(".reviewRecommended").innerHTML = "Would you recommend this restaurant to a friend? " + reviewRecommended;
                 reviewCardGroup.appendChild(newcard);

@@ -1,26 +1,33 @@
+var currentUser;
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = db.collection("users").doc(user.uid); //global
+        console.log(currentUser);
+
+        // the following functions are always called when someone is logged in
+        insertName();
+        populateCardsDynamically6();
+    } else {
+        // No user is signed in.
+        console.log("No user is signed in");
+        // window.location.href = "login.html";
+    }
+});
+
+// Insert name function using the global variable "currentUser"
 function insertName() {
-  // to check if the user is logged in:
-  firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-          console.log(user.uid); // let me to know who is the user that logged in to get the UID
-          currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
-          currentUser.get().then(userDoc => {
-              //get the user name
-              var user_Name = userDoc.data().name;
-              console.log(user_Name);
-              $("#names-goes-here").text(user_Name); //jquery
-              // document.getElementByID("name-goes-here").innetText=user_Name;
-          })
-      }
-
-  })
+    currentUser.get().then(userDoc => {
+        //get the user name
+        var user_Name = userDoc.data().name;
+        console.log(user_Name);
+        $("#name-goes-here").text(user_Name); //jquery
+    })
 }
-insertName();
 
 
-function populateCardsDynamically() {
-  let restaurantCardTemplate = document.getElementById("restaurantCardTemplate");
-  let restaurantCardGroup = document.getElementById("restaurantCardGroup");
+function populateCardsDynamically6() {
+  let restaurantCardTemplate = document.getElementById("restaurantCardTemplate6");
+  let restaurantCardGroup = document.getElementById("restaurantCardGroup6");
   let surveyRef = db.collection("surveyResults");
   if(surveyRef.size == 0) {
     let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
@@ -65,4 +72,45 @@ function populateCardsDynamically() {
 
   
 }
-populateCardsDynamically();
+populateCardsDynamically6();
+
+
+function addLikes(restaurantID) {
+  db.collection("restaurants").where("id", "==", restaurantID)
+      .get()
+      .then(queryRestaurant => {
+          //see how many results you have got from the query
+          size = queryRestaurant.size;
+          // get the documents of query
+          Restaurants = queryRestaurant.docs;
+          if (size = 1) {
+              id = Restaurants[0].id;
+              console.log(id);
+              //update method will add to the specified field in database, if that field does not exist, it will create that.
+              db.collection("restaurants").doc(id).update({
+                  //Firebase documentation has this method for incrementation.
+                  scores: firebase.firestore.FieldValue.increment(1),
+              })
+              currentUser.set({
+                      favourites: firebase.firestore.FieldValue.arrayUnion(restaurantID)
+                  }, {
+                      merge: true
+                  })
+                  .then(function () {
+                      console.log("restaurant has been favourited for: " + currentUser);
+                      var iconID = 'save-' + restaurantID;
+                      //console.log(iconID);
+                      document.getElementById(iconID).innerText = 'favorite';
+                  });
+          } else {
+              console.log("Query has more than one data")
+          }
+      })
+      .catch((error) => {
+          console.log("Error getting documents: ", error);
+      });
+}
+
+function setRestaurantData(id) {
+    localStorage.setItem('restaurantID', id);
+}

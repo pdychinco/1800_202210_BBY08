@@ -80,7 +80,9 @@
     <div>
 
       <header style="object-fit: cover;">
+
         <h2 style="text-align: center;"><span id="restaurantName"></span></h2><br>
+
         <h6 style="text-align: center;" id="restaurantDetails">Here are the restaurant details.</h6>
       </header>
     </div>
@@ -94,15 +96,19 @@
       </div>
       <br><br>
 
-    
-        <div class="card mb-3 justify-content-center d-flex p-3">
-          <div class="card-body" id="restaurantDescription">
-            Restaurant full description
-          </div>
+
+      <div class="card mb-3 justify-content-center d-flex p-3">
+        
+     
+        <div class="card-body justify-content-center">
+          <h5 style="text-align:center;">Description</h5>
+          <p style="text-align:center;" id="restaurantDescription">Restaurant full description</p>
+        
         </div>
+      </div>
 
 
-        <div class="w-20 justify-content-center d-flex">
+      <div class="w-20 justify-content-center d-flex">
         <div class="card p-3" style="float: left; width: 60%;">
           <div class="card-body">
             <h5>Address</h5>
@@ -115,8 +121,7 @@
 
 
 
-        <div class="card" id="map"
-          style="width: 40%; float: right; position: relative; object-fit: cover;"></div>
+        <div class="card" id="map" style="width: 40%; float: right; position: relative; object-fit: cover;"></div>
 
         <!-- <pre id="info"></pre> -->
 
@@ -151,19 +156,20 @@
 
     <template id="reviewCardTemplate">
       <div class="card-group justify-content-center d-flex">
-      <div class="card p-3">
+        <div class="card p-3">
           <div class="card-body">
-              <h5 class="reviewTitle" style="float: left;">Title</h5>
-              <p class="userName" style="float: right;">Username</p>
-              <br><br>
-              <p class="reviewSummary" style="float: left;">Summary</p>
-              <p class="reviewDescription" style="float: left;">Description</p>
-              <p class="reviewRating" style="float: left;">Rating</p>
-              <br> <br> <br> <br> <br> <br>
-              <p class="reviewRecommended" style="float: left;">Recommended?</p>
+            <h5 class="reviewTitle" style="float: left;">Title</h5>
+            <div class="userName" style="float: right;">Username</div>
+            <br><br>
+            <div class="reviewSummary mb-4" style="float: left;">Summary</div>
+            
+            <div class="reviewDescription mb-4" style="float: left;">Description</div>
+            <div class="reviewRating mb-4" style="float: left;">Rating</div>
+            <br><br><br><br><br><br><br>
+            <div class="reviewRecommended mb-4" style="float: left;">Recommended?</div>
           </div>
+        </div>
       </div>
-    </div>
     </template>
 
 
@@ -172,12 +178,12 @@
       <div id="reviewCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
 
       </div>
-  </div>
+    </div>
 
 
 
 
-  
+
 
 
 
@@ -228,11 +234,11 @@
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
   <script src="/scripts/logout.js"></script>
-  <script src="/scripts/addFav.js"></script>
+
   <script src="/scripts/fullRestaurantDetails.js"></script>
 
 
-  
+
 
 </body>
 

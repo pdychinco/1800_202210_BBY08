@@ -312,6 +312,37 @@ function populateCards3() {
 }
 populateCards3();
 
-function setRestaurantData(id) {
-    localStorage.setItem('restaurantID', id);
+function populateCards4() {
+    let restaurantCardTemplate = document.getElementById("restaurantCardTemplate4");
+    let restaurantCardGroup = document.getElementById("restaurantCardGroup4");
+
+    db.collection("restaurants")
+        .get()
+        .then(allRestaurants => {
+            //gets one doc
+            allRestaurants.forEach(doc => {
+                var restaurantName = doc.data().name; //gets the name field
+                var restaurantID = doc.data().id; //gets the unique ID field
+                // var hikeLength = doc.data().length; //gets the length field
+                let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
+                testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
+
+                //NEW LINE: update to display length, duration, last updated
+                testRestaurantCard.querySelector('.card-length').innerHTML =
+                    doc.data().details + "<br>" +
+                    "Location: " + doc.data().city + "<br>" +
+                    "Telephone: " + doc.data().telephone + "<br>" +
+                    "Rating: " + doc.data().rating + "<br>" +
+                    "Price: " + doc.data().price;
+
+                testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+
+    
+                testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+                restaurantCardGroup.appendChild(testRestaurantCard);
+            })
+
+        })
 }
+populateCards4();

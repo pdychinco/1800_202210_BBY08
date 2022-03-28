@@ -95,4 +95,3 @@ function addLikes(restaurantID) {
             console.log("Error getting documents: ", error);
         });
 }
-

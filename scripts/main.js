@@ -16,3 +16,7 @@ function insertName() {
   })
 }
 insertName();
+
+function setRestaurantData(id) {
+    localStorage.setItem('restaurantID', id);
+}
