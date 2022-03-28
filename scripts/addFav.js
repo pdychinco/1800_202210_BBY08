@@ -68,7 +68,7 @@ function addLikes(restaurantID) {
             size = queryRestaurant.size;
             // get the documents of query
             Restaurants = queryRestaurant.docs;
-            if (size = 1) {
+            if (size == 1) {
                 id = Restaurants[0].id;
                 console.log(id);
                 //update method will add to the specified field in database, if that field does not exist, it will create that.

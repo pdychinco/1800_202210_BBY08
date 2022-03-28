@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(user => {
 
         // the following functions are always called when someone is logged in
         insertName();
-        populateCardsDynamically6();
+        populateCardsDynamically6(user);
     } else {
         // No user is signed in.
         console.log("No user is signed in");
@@ -25,52 +25,82 @@ function insertName() {
 }
 
 
-function populateCardsDynamically6() {
+function populateCardsDynamically6(user) {
   let restaurantCardTemplate = document.getElementById("restaurantCardTemplate6");
   let restaurantCardGroup = document.getElementById("restaurantCardGroup6");
-  let surveyRef = db.collection("surveyResults");
-  if(surveyRef.size == 0) {
-    let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
-    testRestaurantCard.querySelector('.card-title').innerHTML = "No matches! Try again";
-    restaurantCardGroup.appendChild(testRestaurantCard);
-  } else {
-    surveyRef
-    .limit(3)
-    .get()
-    .then(allRestaurants => {
-        //gets one doc
-        allRestaurants.forEach(doc => {
-            var restaurantName = doc.data().name; //gets the name field
-            var restaurantID = doc.data().id; //gets the unique ID field
-            // var hikeLength = doc.data().length; //gets the length field
-            let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
-            testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
+  db.collection("users").doc(user.uid).get()
+    .then(userDoc => {
+      let results = userDoc.data().surveyResult;
+      console.log(results);
+      console.log("size of results is: " + results.length);
+      if(results.length == 0) {
+        let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
+        testRestaurantCard.querySelector('.card-title').innerHTML = "No matches! Try again";
+        restaurantCardGroup.appendChild(testRestaurantCard);
+      } else if (results.length < 3) {
+        results.forEach(thisRestaurantID => {
+          console.log(thisRestaurantID);
+          db.collection("restaurants").where("id","==", thisRestaurantID).get()
+            .then(snap => {
+              size = snap.size;
+              console.log("size of query is : " + size);
+              queryData = snap.docs;
+              console.log("query data is: " + queryData[0].data().name);
+              if (size == 1) {
+                var doc = queryData[0].data();
+                var restaurantName = doc.name; //gets the name field
+                var restaurantID = doc.id; //gets the unique ID field
+                var restaurantDetails = doc.details; //gets the length field
+                var restaurantAddress = doc.address;
+                let newCard = restaurantCardTemplate.content.cloneNode(true);
+                newCard.querySelector('.card-title').innerHTML = restaurantName;
+                newCard.querySelector('.card-length').innerHTML = restaurantDetails;
+                newCard.querySelector('.card-text').innerHTML = restaurantAddress;
+                newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
 
-            //NEW LINE: update to display length, duration, last updated
-            testRestaurantCard.querySelector('.card-length').innerHTML =
-                doc.data().address + "<br>" +
-                "Telephone: " + doc.data().telephone + "<br>" +
-                "Rating: " + doc.data().rating + "<br>" +
-                "Price: " + doc.data().price;
-
-            testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-            //next 2 lines are new for demo#11
-            //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
-            //so later we know which hike to bookmark based on which hike was clicked
-            testRestaurantCard.querySelector('i').id = 'save-' + restaurantID;
-            // this line will call a function to save the hikes to the user's document             
-            testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
-            testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
-            testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-            // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
-            restaurantCardGroup.appendChild(testRestaurantCard);
+                newCard.querySelector('i').id = 'save-' + restaurantID;
+                // this line will call a function to save the hikes to the user's document       
+                newCard.querySelector('i').onclick = () => removeFav(restaurantID);
+                newCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                restaurantCardGroup.appendChild(newCard);
+              } else {
+                console.log("Query has more than one data");
+              }
+            })
         })
+      }
+      // }else {
+        results.orderBy("name").limit(3).forEach(thisRestaurantID => {
+          console.log(thisRestaurantID);
+          db.collection("restaurants").where("id","==", thisRestaurantID).get()
+            .then(snap => {
+              size = snap.size;
+              console.log("size of query is : " + size);
+              queryData = snap.docs;
+              console.log("query data is: " + queryData[0].data().name);
+              if (size == 1) {
+                var doc = queryData[0].data();
+                var restaurantName = doc.name; //gets the name field
+                var restaurantID = doc.id; //gets the unique ID field
+                var restaurantDetails = doc.details; //gets the length field
+                var restaurantAddress = doc.address;
+                let newCard = restaurantCardTemplate.content.cloneNode(true);
+                newCard.querySelector('.card-title').innerHTML = restaurantName;
+                newCard.querySelector('.card-length').innerHTML = restaurantDetails;
+                newCard.querySelector('.card-text').innerHTML = restaurantAddress;
+                newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
 
-    })
-  }
-
-  
+                newCard.querySelector('i').id = 'save-' + restaurantID;
+                // this line will call a function to save the hikes to the user's document       
+                newCard.querySelector('i').onclick = () => removeFav(restaurantID);
+                newCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
+                restaurantCardGroup.appendChild(newCard);
+              } else {
+                console.log("Query has more than one data");
+              }
+            })
+        })
+    });
 }
 populateCardsDynamically6();
 

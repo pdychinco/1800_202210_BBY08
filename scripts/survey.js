@@ -2,7 +2,20 @@
 var clickCounter = 1;
 var questionLimit = 0;
 var ansDict = {};
+var currentUser;
 
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = db.collection("users").doc(user.uid); //global
+        console.log(currentUser);
+
+        // the following functions are always called when someone is logged in
+    } else {
+        // No user is signed in.
+        console.log("No user is signed in");
+        // window.location.href = "login.html";
+    }
+});
 
 function setQuizLength() {
   if(localStorage.getItem("ans1") != null) {
@@ -154,27 +167,6 @@ function getSurveyInput() {
 function filterRestaurant() {
   getSurveyInput();
   displaySurveyRestaurants(ansDict["ans2"],ansDict["ans3"],ansDict["ans4"],ansDict["ans5"],ansDict["ans6"],ansDict["ans7"]);
-
-  // for(let i = 1; i<= clickCounter; i++) {
-  //   switch(ansDict["ans" + i]) {
-  //     case "option1":
-  //       console.log(i);
-  //       console.log("selected option 1");
-  //       break;
-  //     case "option2":
-  //       console.log(i);
-  //       console.log("selected option 2");
-  //       break;
-  //     case "option3":
-  //       console.log(i);
-  //       console.log("selected option 3");
-  //       break;
-  //     case "option4":
-  //       console.log(i);
-  //       console.log("selected option 4");
-  //       break;
-  //   }
-  // }
 }
 
 function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
@@ -193,16 +185,12 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-           resultsRef.doc(doc.data().id).set({
-            id: doc.data().id,
-            name: doc.data().name,
-            details: doc.data().details,
-            address: doc.data().address,
-            telephone: doc.data().telephone,
-            email: doc.data().email,
-            rating: doc.data().rating,
-            price: doc.data().price
-          });
+          let id = doc.data().id;
+          currentUser.set({
+            surveyResult: firebase.firestore.FieldValue.arrayUnion(id)
+            }, {
+                merge: true
+            })
         })
       })
   }else if (typeof ans5 == "undefined") {
@@ -210,16 +198,12 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     .get()
       .then((searchResult) => {
         searchResult.forEach(doc => {
-           resultsRef.doc(doc.data().id).set({
-            id: doc.data().id,
-            name: doc.data().name,
-            details: doc.data().details,
-            address: doc.data().address,
-            telephone: doc.data().telephone,
-            email: doc.data().email,
-            rating: doc.data().rating,
-            price: doc.data().price
-          });
+          let id = doc.data().id;
+          currentUser.set({
+            surveyResult: firebase.firestore.FieldValue.arrayUnion(id)
+            }, {
+                merge: true
+            })
         })
       })
   } else if (typeof ans6 == "undefined") {
