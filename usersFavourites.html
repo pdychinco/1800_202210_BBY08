@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <title>Team BBY08 Project</title>
   <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
@@ -40,6 +41,7 @@
 </head>
 
 <body>
+
   <!---------------------------------------------->
   <!---------- Navigation Bar goes here ---------->
   <!---------------------------------------------->
@@ -48,48 +50,54 @@
   <!---------------------------------------------->
   <!------ My Favourite Restaurant goes here ----->
   <!---------------------------------------------->
-
   <div class="container-fluid bg-dark text-light p-5">
     <div class="container bg-dark p-5">
-      <h1 class="display-4">Hello Food Olympian, <span id="name-goes-here" style="font-weight: 500; color:rgb(88, 88, 255)"></span></h1>
+      <h1 class="display-4">Hello Food Olympian, <span id="name-goes-here"
+          style="font-weight: 500; color:rgb(88, 88, 255)"></span></h1>
       <hr>
-      <p>Today's Restaurant Recommendation: <span id="recommendation-goes-here" style="color:rgb(163, 147, 255)">...</span></p>
+      <p>Today's Restaurant Recommendation: <span id="recommendation-goes-here"
+          style="color:rgb(163, 147, 255)">...</span></p>
     </div>
   </div>
+
   <br><br><br>
-<!-- the body of your page goes here -->
-<div class="container">
-  <h1 style="text-align: center;">My Favourited Restaurants</h1>
-  <br><br>
-  <!-- Here is container for cards  -->
+
+  <!-- the body of your page goes here -->
   <div class="container">
+    <h1 style="text-align: center;">My Favourited Restaurants</h1>
+
+    <br><br>
+
+    <!-- Here is container for cards -->
+    <div class="container">
       <div id="restaurantCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
-
       </div>
+    </div>
   </div>
-</div>
 
-<!-- Templates for general use, not displayed -->
-<template id="CardTemplate">
-  <div class="card-group">
-  <div class="card mb-3" style="max-width: 380px;">
-      <img class="card-image card-img-top h-100" src=" ..." alt="..." style="object-fit: cover;">
-      <div class="card-body">
-        <i class="material-icons" style="float: right; cursor: pointer;">favorite</i>
+  <!-- Templates for general use, not displayed -->
+  <template id="CardTemplate">
+    <div class="card-group">
+      <div class="card mb-3" style="max-width: 380px;">
+        <img class="card-image card-img-top h-100" src=" ..." alt="..." style="object-fit: cover;">
+        <div class="card-body">
+          <i class="material-icons" style="float: right; cursor: pointer;">favorite</i>
           <h5 class="card-title">Card title</h5>
           <p class="card-length">placeholder</p>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-          <a class="btn btn-primary card-href" style="float: right;">Get Details</a>
-        
+            card's content.</p>
+          <a href="fullRestaurantDetails.html" class="btn btn-primary" style="float: right; cursor: pointer;">Get
+            Details</a>
+        </div>
+        <div class="card-footer" style="text-align: center;">
+          <small class="text-muted">Earn a medal by dining here</small>
+        </div>
       </div>
-      <div class="card-footer" style="text-align: center;">
-        <small class="text-muted">Earn a medal by dining here</small>
-      </div>
-  </div>
-</div>
-</template>
-<br><br><br><br>
+    </div>
+  </template>
+
+  <br><br><br><br>
+  
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
@@ -99,13 +107,13 @@
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
-  <script src="./scripts/favourites.js"></script>
-  <script src="./scripts/filter.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/restaurantData.js"></script>
   <script src="/scripts/logout.js"></script>
-  
+  <script src="/scripts/favourites.js"></script>
+
 </body>
 
 </html>

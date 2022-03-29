@@ -80,8 +80,10 @@
     <div>
 
       <header style="object-fit: cover;">
-
+        <i class="material-icons" id="bookmark" style="float: right; cursor: pointer;" onclick="addFav(restaurantID)">favorite_border</i>
+  
         <h2 style="text-align: center;"><span id="restaurantName"></span></h2><br>
+    
 
         <h6 style="text-align: center;" id="restaurantDetails">Here are the restaurant details.</h6>
       </header>
@@ -183,11 +185,13 @@
 
 
 
-
-
-
-
+    <div class="container">
+      <div id="restaurantCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
+      </div>
+    </div>
   </div>
+
+
 
   <br><br><br>
 
@@ -199,7 +203,6 @@
   <!---------------------------------------------->
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
-
 
 
   <script src="./scripts/skeleton.js"></script>

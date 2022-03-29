@@ -13,6 +13,8 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+
+
 function populateCardsDynamically() {
   let restaurantCardTemplate = document.getElementById("restaurantCardTemplate");
   let restaurantCardGroup = document.getElementById("restaurantCardGroup");
@@ -43,6 +45,7 @@ function populateCardsDynamically() {
               testRestaurantCard.querySelector('i').onclick = () => addFav(restaurantID);
               testRestaurantCard.querySelector('i').onclick = () => addLikes(restaurantID);
            
+           
 
               //next 2 lines are new for demo#11
               //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
@@ -59,6 +62,8 @@ function populateCardsDynamically() {
 function setRestaurantData(id) {
     localStorage.setItem('restaurantID', id);
 }
+
+
 
 function addLikes(restaurantID) {
     db.collection("restaurants").where("id", "==", restaurantID)
@@ -95,3 +100,4 @@ function addLikes(restaurantID) {
             console.log("Error getting documents: ", error);
         });
 }
+

@@ -15,7 +15,11 @@ firebase.auth().onAuthStateChanged(user => {
 
 let restaurantID = localStorage.getItem("restaurantID");
 
+function setRestaurantData(id) {
+    localStorage.setItem('restaurantID', id);
+}
 
+function displayRestaurantDetails() {
 db.collection("restaurants").where("id", "==", restaurantID)
     .get()
     .then(queryRestaurant => {
@@ -48,7 +52,7 @@ db.collection("restaurants").where("id", "==", restaurantID)
             document.getElementById("restaurantAddress").innerHTML = restaurantAddress;
             document.getElementById("restaurantPhoneNumber").innerHTML = "Telephone: " + restaurantPhoneNumber;
             document.getElementById("restaurantEmail").innerHTML = "Email: " + restaurantEmail;
-            document.getElementById("image").src = `./images/${restaurantID}.jpeg`;
+            document.getElementById("image").src = `./images/${restaurantID}.jpeg`; 
         } else {
             console.log("Query has more than one data")
         }
@@ -57,13 +61,11 @@ db.collection("restaurants").where("id", "==", restaurantID)
         console.log("Error getting documents: ", error);
     });
 
-
-function setRestaurantData(id) {
-    localStorage.setItem('restaurantID', id);
 }
 
+displayRestaurantDetails();
 
-function addLikes(restaurantID) {
+function addFav(restaurantID) {
     db.collection("restaurants").where("id", "==", restaurantID)
         .get()
         .then(queryRestaurant => {
@@ -87,8 +89,8 @@ function addLikes(restaurantID) {
                     .then(function () {
                         console.log("restaurant has been favourited for: " + currentUser);
                         var iconID = 'save-' + restaurantID;
-                        //console.log(iconID);
-                        document.getElementById(iconID).innerText = 'favorite';
+                        console.log(iconID);
+                        document.getElementById("bookmark").innerText = 'favorite';
                     });
             } else {
                 console.log("Query has more than one data")
