@@ -34,19 +34,19 @@ function populateCardsDynamically6(user) {
     .then(userDoc => {
       console.log(userDoc);
       console.log(userDoc.data());
-      
-      console.log(userDoc.data()["surveyResult"][0]);
-      console.log(userDoc.data()["surveyResult"][0]["entry"]);
-      console.log(userDoc.data()["surveyResult"][0]["entry"]["timeStamp"]);
+      // console.log(userDoc.data()["surveyResult"][0]["date"]["time"]);
       // console.log(userDoc.data()["surveyResult"]);
       // let results = userDoc.data()["surveyResult"];
       let results = userDoc.data()["surveyResult"];
-      matchSurveyResults(results);
-      for(let i = 0; i < matchedResults.length;i++) {
-        db.collection("restaurants").where("id","==", matchedResults[i][0]).get()
+      let key = matchSurveyResults(results)
+      // console.log(key);
+          
+      // console.log(matchedResults[key]);
+      for(let i = 0; i < 2; i++) {
+        db.collection("restaurants").where("id","==", matchedResults[key][i][0]).get()
         .then(snap => {
-          // size = snap.size;
-          // console.log("size of query is : " + size);
+          size = snap.size;
+          console.log("size of query is : " + size);
           queryData = snap.docs;
           console.log(queryData);
           // console.log("query data is: " + queryData[0].data().name);
@@ -61,7 +61,7 @@ function populateCardsDynamically6(user) {
             newCard.querySelector('.card-length').innerHTML = restaurantDetails;
             newCard.querySelector('.card-text').innerHTML = restaurantAddress;
             newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
+  
             // newCard.querySelector('i').id = 'save-' + restaurantID;
             // // this line will call a function to save the hikes to the user's document       
             // newCard.querySelector('i').onclick = () => removeFav(restaurantID);
@@ -78,7 +78,6 @@ function populateCardsDynamically6(user) {
 }
 populateCardsDynamically6();
 
-
 function matchSurveyResults(results) {
   
   for(let i = 0; i < results.length; i++) {
@@ -87,22 +86,21 @@ function matchSurveyResults(results) {
       // ensures code does not check over the same item
       if(i != j) {
         // checks if datestamp and timestamp match to show that both entries are from the same survey result
-        if(results[i]["entry"]["dateStamp"] == results[j]["entry"]["dateStamp"] && results[i]["entry"]["timeStamp"] == results[j]["entry"]["timeStamp"]) {
-          console.log(`j value is :${j}`);
-          console.log(`The first id is: ${results[i]["entry"]["id"]} and the second id is: ${results[j]["entry"]["id"]}`)
-          console.log(`The date is ${results[i]["entry"]["dateStamp"]} and the time is ${results[i]["entry"]["timeStamp"]}`)
-          console.log([results[j]["entry"]["id"],results[i]["entry"]["id"]])
+        if(results[i]["date"]["date"] == results[j]["date"]["date"] && results[i]["date"]["time"]["time"] == results[j]["date"]["time"]["time"]) {
+          
           // check for duplicate
-          if(matchedResults[`${j},${i}`] != [results[i]["entry"]["id"],results[j]["entry"]["id"]]) {
-            matchedResults[`${i},${j}`] = [results[i]["entry"]["id"],results[j]["entry"]["id"]];
-            console.log(matchedResults[`${i},${j}`]);
-            // skips to the next possible set of results
-            i = j;
+          if(matchedResults[`${j},${i}`] != [results[i]["date"]["time"]["id"],results[j]["date"]["time"]["id"]]) {
+            matchedResults[`${i},${j}`] = [results[i]["date"]["time"]["id"],results[j]["date"]["time"]["id"]];
+            return `${i},${j}`;
+            // console.log(matchedResults[`${i},${j}`]);
+            // console.log(matchedResults[`${i},${j}`][0][0]);
+            // console.log(matchedResults[`${i},${j}`][1][0]);
+            // // skips to the next possible set of results
+            // i = j;
           }
-        } 
+        }
       }
-      }
-    
+    }
   }
 }
 
