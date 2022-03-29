@@ -123,25 +123,25 @@ function uploadUserProfilePic() {
             image.src = blob; // display this image
 
             //store using this name
-            var storageRef = storage.ref("images/" + user.uid + ".jpg");
+            var storageRef = firebase.storage().ref("images/" + user.uid + ".jpg");
 
             //upload the picked file
             storageRef.put(file)
                 .then(function () {
                     console.log('Uploaded to Cloud Storage.');
+                    //get the URL of stored file
+                    storageRef.getDownloadURL()
+                        .then(function (url) { // Get URL of the uploaded file
+                            console.log(url); // Save the URL into users collection
+                            db.collection("users").doc(user.uid).update({
+                                    "profilePic": url
+                                })
+                                .then(function () {
+                                    console.log('Added Profile Pic URL to Firestore.');
+                                })
+                        })
                 })
 
-            //get the URL of stored file
-            storageRef.getDownloadURL()
-                .then(function (url) { // Get URL of the uploaded file
-                    console.log(url); // Save the URL into users collection
-                    db.collection("users").doc(user.uid).update({
-                            "profilePic": url
-                        })
-                        .then(function () {
-                            console.log('Added Profile Pic URL to Firestore.');
-                        })
-                })
         })
     })
 }
