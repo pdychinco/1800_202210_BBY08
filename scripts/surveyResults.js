@@ -30,10 +30,16 @@ function populateCardsDynamically6(user) {
   let restaurantCardGroup = document.getElementById("restaurantCardGroup6");
   db.collection("users").doc(user.uid).get()
     .then(userDoc => {
+      console.log(userDoc);
+      console.log(userDoc.data());
+      console.log(userDoc.data()["surveyResult"]);
+      console.log(userDoc.data()["surveyResult"][0]);
+      console.log(userDoc.data()["surveyResult"][0]["entry"]);
+      console.log(userDoc.data()["surveyResult"][0]["entry"]["timeStamp"]);
       let results = userDoc.data().surveyResult;
-      console.log(results);
-      console.log("size of results is: " + results.length);
-      console.log("index 2 is: " +results[2]);
+      // console.log(results);
+      // console.log("size of results is: " + results.length);
+      // console.log("index 2 is: " +results[2]);
       // console.log("dateStamp at index 2 is:" +results[2].dateStamp);
       if(results.length == 0) {
         let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
