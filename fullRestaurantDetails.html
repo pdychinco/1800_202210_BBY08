@@ -189,7 +189,7 @@
 
   </div>
 
-  <br><br><br><br>
+  <br><br><br>
 
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
@@ -199,34 +199,6 @@
   <!---------------------------------------------->
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYnR5eW4iLCJhIjoiY2wxOW9rM2h0MHA2cjNicHMwejRqNDY4diJ9.Pw3Sao5OcY8HWcTBCi_DPQ';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-123.11505530238423, 49.277339442748655], // starting position
-      zoom: 9 // starting zoom
-    });
-
-
-
-    // Create a default Marker and add it to the map.
-    const marker1 = new mapboxgl.Marker()
-      .setLngLat([-123.11505530238423, 49.277339442748655])
-      .addTo(map);
-
-
-    //lets you see which coordinates you are at using the mouse pointer
-    // map.on('mousemove', (e) => {
-    //   document.getElementById('info').innerHTML =
-    //     // `e.point` is the x, y coordinates of the `mousemove` event
-    //     // relative to the top-left corner of the map.
-    //     JSON.stringify(e.point) +
-    //     '<br />' +
-    //     // `e.lngLat` is the longitude, latitude geographical position of the event.
-    //     JSON.stringify(e.lngLat.wrap());
-    // });
-  </script>
 
 
 
@@ -234,8 +206,9 @@
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
   <script src="/scripts/logout.js"></script>
-
+  <script src="/scripts/map.js"></script>
   <script src="/scripts/fullRestaurantDetails.js"></script>
+
 
 
 
