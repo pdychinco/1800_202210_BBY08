@@ -182,7 +182,9 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
       .then((searchResult) => {
+        console.log(searchResult);
         searchResult.forEach(doc => {
+          console.log(doc);
           let restaurantID = doc.data().id;
           // let timeStamp = new Date().toLocalDateString + " " + Date().toLocaleTimeString();
           currentUser.set({
@@ -197,7 +199,10 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
                 merge: true
             })
         })
-      })
+      }).then(() => {
+        setTimeout(redirect, 750);
+        alert("Calculating. Please wait 3 seconds.");
+      });
   }else if (typeof ans5 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
@@ -216,7 +221,10 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
               merge: true
           })
       })
-    })
+    }).then(() => {
+      setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
   } else if (typeof ans6 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
@@ -235,7 +243,10 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
               merge: true
           })
       })
-    })
+    }).then(() => {
+      // setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
   } else {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
@@ -254,10 +265,12 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
               merge: true
           })
       })
-    })
+    }).then(() => {
+      setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
   }
-  setTimeout(redirect, 750);
-  alert("Calculating. Please wait 3 seconds.")
+  
 }
 
 function redirect() {
