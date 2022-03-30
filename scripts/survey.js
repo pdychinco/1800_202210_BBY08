@@ -167,10 +167,10 @@ function getSurveyInput() {
 
 function filterRestaurant() {
   getSurveyInput();
-  displaySurveyRestaurants(ansDict["ans2"],ansDict["ans3"],ansDict["ans4"],ansDict["ans5"],ansDict["ans6"],ansDict["ans7"]);
+  saveSurveyRestaurants(ansDict["ans2"],ansDict["ans3"],ansDict["ans4"],ansDict["ans5"],ansDict["ans6"],ansDict["ans7"]);
 }
 
-function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
+function saveSurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
   // var testSearch = document.getElementById("searchBarQuery").value;
   console.log("value of ans2: " + ans2);
   console.log("value of ans3: " + ans3);
