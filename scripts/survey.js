@@ -2,7 +2,6 @@
 var clickCounter = 1;
 var questionLimit = 0;
 var ansDict = {};
-var arrayOfID = [];
 var currentUser;
 
 firebase.auth().onAuthStateChanged(user => {
@@ -183,75 +182,94 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03", "==", ans3)
     .get()
       .then((searchResult) => {
+        console.log(searchResult);
         searchResult.forEach(doc => {
           console.log(doc);
           let restaurantID = doc.data().id;
-          arrayOfID.push(restaurantID);
-          
+          // let timeStamp = new Date().toLocalDateString + " " + Date().toLocaleTimeString();
+          currentUser.set({
+            surveyResult: firebase.firestore.FieldValue.arrayUnion({
+              entry : {
+                id : restaurantID,
+                dateStamp: new Date().toLocaleDateString(),
+                timeStamp: new Date().toLocaleTimeString()
+              }
+              })
+            }, {
+                merge: true
+            })
         })
       }).then(() => {
-        currentUser.collection("surveyResults").add({
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          array : arrayOfID
-        })
-      })
-  setTimeout(redirect, 750);
-  alert("Calculating. Please wait 3 seconds.");
+        setTimeout(redirect, 750);
+        alert("Calculating. Please wait 3 seconds.");
+      });
   }else if (typeof ans5 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
     .then((searchResult) => {
-      console.log(searchResult);
       searchResult.forEach(doc => {
         let restaurantID = doc.data().id;
-        arrayOfID.push(restaurantID);
-        
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
+            })
+          }
+        }, {
+              merge: true
+          })
       })
     }).then(() => {
-      currentUser.collection("surveyResults").add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        array : arrayOfID
-      })
-    })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
-} else if (typeof ans6 == "undefined") {
+      setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
+  } else if (typeof ans6 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
     .then((searchResult) => {
- 
       searchResult.forEach(doc => {
         let restaurantID = doc.data().id;
-        arrayOfID.push(restaurantID);
-        
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
+            })
+          }
+        }, {
+              merge: true
+          })
       })
     }).then(() => {
-      currentUser.collection("surveyResults").add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        array : arrayOfID
-      })
-    })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
-} else {
+      // setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
+  } else {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
     .then((searchResult) => {
-
       searchResult.forEach(doc => {
         let restaurantID = doc.data().id;
-        arrayOfID.push(restaurantID);
-        
+        currentUser.set({
+          surveyResult: {
+            entry : firebase.firestore.FieldValue.arrayUnion({
+              id : restaurantID,
+              dateStamp: new Date().toLocaleDateString(),
+              timestamp: new Date().toLocaleDateString()
+            })
+          }
+        }, {
+              merge: true
+          })
       })
     }).then(() => {
-      currentUser.collection("surveyResults").add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        array : arrayOfID
-      })
-    })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
-}
+      setTimeout(redirect, 750);
+      alert("Calculating. Please wait 3 seconds.");
+    });
+  }
   
 }
 
