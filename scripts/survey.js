@@ -187,7 +187,6 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
           console.log(doc);
           let restaurantID = doc.data().id;
           arrayOfID.push(restaurantID);
-          
         })
       }).then(() => {
         currentUser.collection("surveyResults").add({
@@ -205,7 +204,6 @@ function displaySurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
       searchResult.forEach(doc => {
         let restaurantID = doc.data().id;
         arrayOfID.push(restaurantID);
-        
       })
     }).then(() => {
       currentUser.collection("surveyResults").add({
@@ -223,7 +221,6 @@ alert("Calculating. Please wait 3 seconds.");
       searchResult.forEach(doc => {
         let restaurantID = doc.data().id;
         arrayOfID.push(restaurantID);
-        
       })
     }).then(() => {
       currentUser.collection("surveyResults").add({
