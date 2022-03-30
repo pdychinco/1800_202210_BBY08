@@ -10,3 +10,27 @@
   cursor: pointer;
 }
 
+#info {
+  display: table;
+  position: relative;
+  margin: 0px auto;
+  word-wrap: anywhere;
+  white-space: pre-wrap;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+}
+
+#name-goes-here {
+  font-weight: 500; 
+  color:rgb(88, 88, 255);
+}
+
+#recommendation-goes-here {
+  color:rgb(163, 147, 255);
+}
+

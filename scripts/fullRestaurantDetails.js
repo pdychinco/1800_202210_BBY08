@@ -20,46 +20,46 @@ function setRestaurantData(id) {
 }
 
 function displayRestaurantDetails() {
-db.collection("restaurants").where("id", "==", restaurantID)
-    .get()
-    .then(queryRestaurant => {
-        //see how many results you have got from the query
-        size = queryRestaurant.size;
-        // get the documents of query
-        Restaurants = queryRestaurant.docs;
-        if (size = 1) {
-            var thisRestaurant = Restaurants[0].data();
-            restaurantName = thisRestaurant.name;
-            restaurantDetails = thisRestaurant.details;
-            restaurantID = thisRestaurant.id;
-            restaurantRating = "Rating " + thisRestaurant.rating;
-            restaurantPrice = "Price " + thisRestaurant.price;
-            restaurantLocation = thisRestaurant.city;
-            restaurantDescription = thisRestaurant.description;
-            restaurantAddress = thisRestaurant.address;
-            restaurantPhoneNumber = thisRestaurant.telephone;
-            restaurantEmail = thisRestaurant.email;
+    db.collection("restaurants").where("id", "==", restaurantID)
+        .get()
+        .then(queryRestaurant => {
+            //see how many results you have got from the query
+            size = queryRestaurant.size;
+            // get the documents of query
+            Restaurants = queryRestaurant.docs;
+            if (size = 1) {
+                var thisRestaurant = Restaurants[0].data();
+                restaurantName = thisRestaurant.name;
+                restaurantDetails = thisRestaurant.details;
+                restaurantID = thisRestaurant.id;
+                restaurantRating = "Rating " + thisRestaurant.rating;
+                restaurantPrice = "Price " + thisRestaurant.price;
+                restaurantLocation = thisRestaurant.city;
+                restaurantDescription = thisRestaurant.description;
+                restaurantAddress = thisRestaurant.address;
+                restaurantPhoneNumber = thisRestaurant.telephone;
+                restaurantEmail = thisRestaurant.email;
 
-            console.log(restaurantName);
+                console.log(restaurantName);
 
 
-            document.getElementById("restaurantName").innerHTML = restaurantName;
-            document.getElementById("restaurantDetails").innerHTML = restaurantDetails;
-            document.getElementById("restaurantRating").innerHTML = restaurantRating;
-            document.getElementById("restaurantPrice").innerHTML = restaurantPrice;
-            document.getElementById("restaurantLocation").innerHTML = restaurantLocation;
-            document.getElementById("restaurantDescription").innerHTML = restaurantDescription;
-            document.getElementById("restaurantAddress").innerHTML = restaurantAddress;
-            document.getElementById("restaurantPhoneNumber").innerHTML = "Telephone: " + restaurantPhoneNumber;
-            document.getElementById("restaurantEmail").innerHTML = "Email: " + restaurantEmail;
-            document.getElementById("image").src = `./images/${restaurantID}.jpeg`; 
-        } else {
-            console.log("Query has more than one data")
-        }
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
+                document.getElementById("restaurantName").innerHTML = restaurantName;
+                document.getElementById("restaurantDetails").innerHTML = restaurantDetails;
+                document.getElementById("restaurantRating").innerHTML = restaurantRating;
+                document.getElementById("restaurantPrice").innerHTML = restaurantPrice;
+                document.getElementById("restaurantLocation").innerHTML = restaurantLocation;
+                document.getElementById("restaurantDescription").innerHTML = restaurantDescription;
+                document.getElementById("restaurantAddress").innerHTML = restaurantAddress;
+                document.getElementById("restaurantPhoneNumber").innerHTML = "Telephone: " + restaurantPhoneNumber;
+                document.getElementById("restaurantEmail").innerHTML = "Email: " + restaurantEmail;
+                document.getElementById("image").src = `./images/${restaurantID}.jpeg`;
+            } else {
+                console.log("Query has more than one data")
+            }
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
 
 }
 
@@ -100,43 +100,34 @@ function addFav(restaurantID) {
             console.log("Error getting documents: ", error);
         });
 }
-// GENERATES ONE REVIEW
-// db.collection("reviews").where("id", "==", restaurantID)
-// .get()
-//     .then(queryReview => {
-//         //see how many results you have got from the query
-//         size = queryReview.size;
-//         // get the documents of query
-//         Reviews = queryReview.docs;
-//         if (size = 1) {
-// var thisReview = Reviews[0].data();
-// reviewTitle = thisReview.title;
-// reviewSummary = thisReview.best_quality;
-// reviewDescription = thisReview.description;
-// reviewRating = "Give this restaruant a rating: " + thisReview.rating;
-// reviewRecommended = "Would you recommend this restaurant to a friend? "
-// + thisReview.recommended;
-// // reviewPostID = thisReview.userID;
-// reviewUsername = thisReview.userName;
-// console.log(reviewDescription)
 
-// document.getElementById("reviewTitle").innerHTML = reviewTitle;
-// document.getElementById("userName").innerHTML = "Posted by: " + reviewUsername;
-// document.getElementById("reviewSummary").innerHTML = reviewSummary + ".";
-// document.getElementById("reviewDescription").innerHTML = reviewDescription; 
-// document.getElementById("reviewRating").innerHTML = reviewRating;
-// document.getElementById("reviewRecommended").innerHTML = reviewRecommended;
-//             // document.getElementById("reviewPostID").innerHTML = reviewPostID;
+//This gets all the images in the restaurant data to populate into a gallery
+db.collection("restaurants").where("id", "==", restaurantID)
+    .get()
+    .then(queryRestaurant => {
+        //see how many results you have got from the query
+        size = queryRestaurant.size;
+        // get the documents of query
+        Restaurants = queryRestaurant.docs;
+        if (size = 1) {
+            var thisRestaurant = Restaurants[0].data();
+            var code = thisRestaurant.code;
 
 
-//     } else {
-//         console.log("Query has more than one data")
-//     }
-// })
-// .catch((error) => {
-//     console.log("Error getting documents: ", error);
-// });
+            document.getElementById("galleryitem1").src = "./images/" + code + ".jpeg";
+            document.getElementById("galleryitem2").src = "./images/" + code + ".jpg";
+            document.getElementById("galleryitem3").src = "./images/" + code + ".webp";
+            console.log(code);
 
+
+
+        } else {
+            console.log("Query has more than one data")
+        }
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
 
 
 function displayCards(collection) {

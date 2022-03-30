@@ -33,7 +33,7 @@
   <!-------------------------------------------->
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
-  <link type="text/css" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -151,6 +151,39 @@
 
 
   <br><br><br>
+
+
+
+
+  <br><br><br>
+  <div class="container">
+    <h1 class="text-center">Restaurant Reviews</h1>
+    <!-- Here is container for cards  -->
+    <div class="container">
+      <div id="reviews-go-here" class="row row-cols-auto">
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- Templates for general use, not displayed -->
+<template id="reviewCardTemplate">
+  <div class="card py-2 mx-2" style="width: 100rem;">
+      <img class="card-image card-img-top" src=" ..." alt="...">
+      <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-length">placeholder</p>
+          <p class="card-text" id="name-goes-here">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+          <a class="btn btn-primary card-href" style="float: right;">See More</a>
+      </div>
+  </div>
+</template>
+<br><br><br><br>
+
+
+  
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
