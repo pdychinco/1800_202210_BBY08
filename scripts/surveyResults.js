@@ -61,8 +61,6 @@ function populateCardsDynamically6(user) {
               newCard.querySelector('.card-title').innerHTML = restaurantName;
               newCard.querySelector('.card-length').innerHTML = restaurantDetails;
               newCard.querySelector('.card-text').innerHTML = restaurantAddress;
-     
-           
               newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
               newCard.querySelector("#getdetails").onclick = () => setRestaurantData(restaurantID);
               newCard.querySelector('i').id = 'save-' + restaurantID;
@@ -81,63 +79,4 @@ function populateCardsDynamically6(user) {
         }
       });
     })
-    // .then(snap => {
-    //   // console.log(userDoc);
-    //   // console.log(userDoc.data());
-    //   // console.log(userDoc.data()["surveyResult"][0]["date"]["time"]);
-    //   // console.log(userDoc.data()["surveyResult"]);
-    //   // let results = userDoc.data()["surveyResult"];
-    //   // let results = userDoc.collection("surveyResults").orderBy("timestamp", "desc");
-    //   // console.log(results);
-    //   // console.log(key);
-          
-    //   // console.log(matchedResults[key]);
-   
-
-
-    // });
-}
-
-
-
-// function oldCode() {
-  // if(results.length == 0) {
-//   let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
-//   testRestaurantCard.querySelector('.card-title').innerHTML = "No matches! Try again";
-//   restaurantCardGroup.appendChild(testRestaurantCard);
-// } else if (results.length < 3) {
-
-// }else {
-//   console.log(results.length);
-//   results.limit(3).forEach(thisRestaurantID => {
-//     console.log(thisRestaurantID);
-//     db.collection("restaurants").where("id","==", thisRestaurantID).get()
-//       .then(snap => {
-//         size = snap.size;
-//         console.log("size of query is : " + size);
-//         queryData = snap.docs;
-//         console.log("query data is: " + queryData[0].data().name);
-//         if (size == 1) {
-//           var doc = queryData[0].data();
-//           var restaurantName = doc.name; //gets the name field
-//           var restaurantID = doc.id; //gets the unique ID field
-//           var restaurantDetails = doc.details; //gets the length field
-//           var restaurantAddress = doc.address;
-//           let newCard = restaurantCardTemplate.content.cloneNode(true);
-//           newCard.querySelector('.card-title').innerHTML = restaurantName;
-//           newCard.querySelector('.card-length').innerHTML = restaurantDetails;
-//           newCard.querySelector('.card-text').innerHTML = restaurantAddress;
-//           newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-//           // newCard.querySelector('i').id = 'save-' + restaurantID;
-//           // // this line will call a function to save the hikes to the user's document       
-//           // newCard.querySelector('i').onclick = () => removeFav(restaurantID);
-//           newCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-//           restaurantCardGroup.appendChild(newCard);
-//         } else {
-//           console.log("Query has more than one data");
-//         }
-//       })
-//     })
-//   }
-// }
+  }
