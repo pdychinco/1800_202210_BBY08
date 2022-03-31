@@ -1,6 +1,5 @@
 var currentUser;
-// create dictionary to hold survey batches
-var matchedResults = {};
+
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUser = db.collection("users").doc(user.uid); //global
@@ -88,11 +87,6 @@ function populateCardsDynamically6(user) {
     // });
 }
 
-
-function getSurveyResults(userDoc) {
-  
-
-}
 
 function setRestaurantData(id) {
     localStorage.setItem('restaurantID', id);
