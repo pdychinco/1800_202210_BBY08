@@ -46,33 +46,28 @@
   <!---------------------------------------------->
   <!---------- Body Contents goes here ----------->
   <!---------------------------------------------->
-  <style>
-    #roulette {
-      transition-duration: 3s;
-    }
-
-    #roulette.animate {
-      transition-property: transform;
-      transition-duration: 2s;
-      transition-timing-function: ease-out;
-      transform: rotate(1000deg);
-    }
-  </style>
+  <br><br><br>
   <div id="container">
-    <div class="row">
-      <h1 class="display-6" style="text-align: center;">Hey, <span id="name-goes-here" style="font-weight: 500; color:rgb(88, 88, 255)"></span> spin to select a random restaurant </h1>
+
+    <div class="justify-content-center">
+      <h1 class="display-6" style="text-align: center;">Hey, <span id="name-goes-here">
+      </span> spin to select a random restaurant </h1>
     </div>
-    <div class="row">
-      <img src="./images/arrow.png" alt="" width="10" height="100" class="align-text-top my-3">
+    <div class="justify-content-center d-inline-flex w-100">
+      <img src="./images/arrow.png" alt="" id="arrow" class="my-3">
     </div>
-    <div class="row">
-      <img src="./images/r.png" id="roulette"alt="" class="d-inline-block align-text-top my-3">
+    <br>
+    <div class="justify-content-center d-inline-flex w-100">
+      <img src="./images/r.png" id="roulette" alt="" class="my-3">
     </div>
-    <div class="row">
-      <button id="spin" type="button" class="btn btn-info" onclick="spinImage()">Spin!</button>
+    <br><br><br>
+    <div>
+      <button id="spin" type="button" class="btn btn-info w-100" onclick="spinImage()">Spin!</button>
     </div>
    
   </div>
+
+
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->

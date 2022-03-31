@@ -90,7 +90,7 @@ function displayCards(collection) {
                 newcard.querySelector('.card-text').innerHTML = "Rating: " + rating
                 + "<br>Recommended? " + recommended;
                 newcard.querySelector('.card-length').innerHTML = details;
-                
+                newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
                 // newcard.querySelector('.card-image').src = "./images/" + code + ".jpg"; //hikes.jpg
   
                 newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);

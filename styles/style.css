@@ -34,3 +34,21 @@
   color:rgb(163, 147, 255);
 }
 
+#roulette {
+  transition-duration: 3s;
+  width: 30%; 
+  height: 30%;
+}
+
+#arrow {
+  width: 25px; 
+  height: 25px
+}
+
+#roulette.animate {
+  transition-property: transform;
+  transition-duration: 2s;
+  transition-timing-function: ease-out;
+  transform: rotate(1000deg);
+}
+
