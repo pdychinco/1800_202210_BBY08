@@ -87,7 +87,7 @@ function populateCardsDynamically6(user) {
 
     // });
 }
-populateCardsDynamically6();
+
 
 function getSurveyResults(userDoc) {
   
