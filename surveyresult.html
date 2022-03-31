@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <title>Team BBY08 Project</title>
   <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
@@ -35,6 +36,7 @@
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
   <link rel="stylesheet" href="./styles/style.css">
+
 </head>
 
 <body>
@@ -48,10 +50,9 @@
   <!--------- Restaurant Cards goes here --------->
   <!---------------------------------------------->
 
-
   <br><br>
   <div class="container">
-    <h1 class="display-6" style="text-align: center;">Hey, <span id="name-goes-here" style="font-weight: 500; color:rgb(88, 88, 255)"></span> 
+    <h1 class="display-6">Hey, <span id="name-goes-here"></span> 
       here are your matches!</h1>
     <hr>
   </div>
@@ -61,34 +62,31 @@
   <template id="restaurantCardTemplate6">
     <div class="card-group">
       <div class="card mb-3" style="max-width: 380px;">
-        <img class="card-image card-img-top h-100" src=" ..." alt="..." style="object-fit: cover;">
+        <img class="card-image card-img-top h-100" src=" ..." alt="...">
         <div class="card-body">
           <!-- Below is the icon we added to the card template that will be shown in each card later -->
-          <i class="material-icons" style="float: right; cursor: pointer;">favorite_border</i>
+          <i class="material-icons">favorite_border</i>
           <h5 class="card-title">placeholder</h5>
           <p class="card-length">placeholder</p>
           <a href="review.html" class="link-primary">Write a review</a>
           <br>
           <p class="card-text">
           </p>
-          <a href="fullRestaurantDetails.html" id="getdetails" class="btn btn-primary" style="float: right; cursor: pointer;">Get Details</a>
+          <a href="fullRestaurantDetails.html" id="getdetails" class="btn btn-primary getdetails_btn">Get Details</a>
         </div>
         <div class="card-footer" style="text-align: center;">
           <small class="text-muted">Earn a medal by dining here</small>
         </div>
       </div>
-
     </div>
   </template>
 
   <div class="container">
     <div id="restaurantCardGroup6" class="row row-cols-auto" style="justify-content: center; float: center;">
-
     </div>
   </div>
 
-
-  <br><br><br><br>
+  <br><br><br>
 
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
@@ -101,12 +99,9 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/surveyResults.js"></script>
-  <script src="/scripts/logout.js"></script>
-  <script src="/scripts/addFav.js"></script>
-  <script src="/scripts/main.js"></script>
-
-
-
+  <script src="./scripts/logout.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/addFav.js"></script>
 
 </body>
 

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <title>Team BBY08 Project</title>
     <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
@@ -31,10 +32,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-  <!-------------------------------------------->
-  <!-- Other libraries and styles of your own -->
-  <!-------------------------------------------->
-  <link rel="stylesheet" href="./styles/style.css">
+    <!-------------------------------------------->
+    <!-- Other libraries and styles of your own -->
+    <!-------------------------------------------->
+    <link rel="stylesheet" href="./styles/style.css">
+
 </head>
 
 <body>
@@ -49,6 +51,7 @@
     <br><br><br>
     <div class="container d-inline-block;" style="width: 60%;">
         <h1 style="text-align:center;">My Profile </h1>
+        <br><br>
         <form>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
                 <div class="form-group">
@@ -77,24 +80,26 @@
                     <input type="text" id="userFav" class="form-control"
                         placeholder="Enter your favourite type of cuisine">
                 </div>
+
             </fieldset>
+
+            <br><br>
+            <h5>Add a profile picture</h5>
+            <div class="container py-3">
+                <img id="mypic-goes-here" src="..." alt="..">
+                <input type="file" id="mypic-input" accept="image/*">
+            </div>
+
             <div class="d-flex justify-content-center mt-5">
                 <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
                 <span style="width: 10px"></span>
                 <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
             </div>
-        </form>
-        <br><br><br>
-        <h1 style="text-align:center;">Profile Picture </h1>
-        <br>
-        
-        <div class="container text-center py-3">
-            <img id="mypic-goes-here" src=""  width=50 height=50/>
-            <input type="file" id="mypic-input" accept="image/*" />
-        </div>
 
+        </form>
     </div>
     <br><br><br>
+
     <!---------------------------------------------->
     <!-------------- Footer goes here -------------->
     <!---------------------------------------------->

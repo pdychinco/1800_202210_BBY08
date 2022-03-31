@@ -36,7 +36,7 @@
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
   <link rel="stylesheet" href="./styles/style.css">
-  <!-- Google Icons (Material Design)-->
+  <!-- Google Icons (Material Design) -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -61,7 +61,7 @@
 
   <br><br><br>
 
-  <!-- the body of your page goes here -->
+  <!-- the body of our page goes here -->
   <div class="container">
     <h1 style="text-align: center;">My Favourited Restaurants</h1>
 
@@ -78,24 +78,25 @@
   <template id="CardTemplate">
     <div class="card-group">
       <div class="card mb-3" style="max-width: 380px;">
-        <img class="card-image card-img-top h-100" src=" ..." alt="..." style="object-fit: cover;">
+        <img class="card-image card-img-top h-100" src=" ..." alt="...">
         <div class="card-body">
-          <i class="material-icons" style="float: right; cursor: pointer;">favorite</i>
+          <i class="material-icons">favorite</i>
           <h5 class="card-title">Card title</h5>
+          <br>
           <p class="card-length">placeholder</p>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
             card's content.</p>
-          <a href="fullRestaurantDetails.html" class="btn btn-primary" style="float: right; cursor: pointer;">Get
-            Details</a>
+            <br><br>
+          <a href="fullRestaurantDetails.html" class="btn btn-primary getdetails_btn">Get Details</a>
         </div>
-        <div class="card-footer" style="text-align: center;">
+        <div class="card-footer">
           <small class="text-muted">Earn a medal by dining here</small>
         </div>
       </div>
     </div>
   </template>
 
-  <br><br><br><br>
+  <br><br><br>
   
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
@@ -108,10 +109,10 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/logout.js"></script>
   <script src="./scripts/main.js"></script>
   <script src="./scripts/restaurantData.js"></script>
-  <script src="/scripts/logout.js"></script>
-  <script src="/scripts/favourites.js"></script>
+  <script src="./scripts/favourites.js"></script>
 
 </body>
 

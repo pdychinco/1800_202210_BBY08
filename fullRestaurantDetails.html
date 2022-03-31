@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <title>Team BBY08 Project</title>
   <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
@@ -42,10 +43,10 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
 
-
 </head>
 
 <body>
+
   <!---------------------------------------------->
   <!---------- Navigation Bar goes here ---------->
   <!---------------------------------------------->
@@ -60,14 +61,10 @@
   <br>
   <div class="container py-3 px-5 justify-content-center">
     <div>
-
       <header style="object-fit: cover;">
         <i class="material-icons" id="bookmark" style="float: right; cursor: pointer;"
           onclick="addFav(restaurantID)">favorite_border</i>
-
         <h2 style="text-align: center;"><span id="restaurantName"></span></h2><br>
-
-
         <h6 style="text-align: center;" id="restaurantDetails">Here are the restaurant details.</h6>
       </header>
     </div>
@@ -81,17 +78,12 @@
       </div>
       <br><br>
 
-
       <div class="card mb-3 justify-content-center d-flex p-3">
-
-
         <div class="card-body justify-content-center">
           <h5 style="text-align:center;">Description</h5>
           <p style="text-align:center;" id="restaurantDescription">Restaurant full description</p>
-
         </div>
       </div>
-
 
       <div class="w-20 justify-content-center d-flex">
         <div class="card p-3" style="float: left; width: 60%;">
@@ -104,40 +96,14 @@
           </div>
         </div>
 
-
-
-        <div class="card" id="map" style="width: 40%; float: right; position: relative; object-fit: cover;"></div>
-
-        <!-- <pre id="info"></pre> -->
-
-
+        <div class="card" id="map" style="width: 40%; float: right; position: relative; object-fit: cover;">
+        </div>
       </div>
-
     </div>
     <br><br>
 
     <h2 style="text-align: center;">Reviews</h2>
     <br><br>
-
-    <!-- THIS CODE POPULATES ONLY ONE REVIEW -->
-    <!-- <div class="w-20 justify-content-center d-flex">
-      <div class="card p-3">
-        <div class="card-body">
-         
-          <div id="reviewTitle" style="font-size: 20px; font-weight: 500; float:left;">Title</div>
-          <div id="userName" style="float:right;">Username</div>
-          <br><br>
-          <div id="reviewSummary" style="float:left;">Summary</div>
-          <br><br>
-      <div id="reviewDescription">Description</div>
-      <br>
-      <div id="reviewRating">Rating</div>
-      <br>
-      <div id="reviewRecommended">Recommended?</div>
-        </div>
-      </div>
-    </div> -->
-
 
     <template id="reviewCardTemplate">
       <div class="card w-20 justify-content-center d-flex">
@@ -157,82 +123,49 @@
       </div>
     </template>
 
-
-
     <div class="container">
       <div id="reviewCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
-
       </div>
     </div>
-
-
-
 
     <div class="container">
       <div id="restaurantCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
       </div>
     </div>
 
-
     <br><br>
 
     <h2 style="text-align: center;">Photo Gallery</h2>
     <br><br>
 
-
     <div class="galleryCard w-20 justify-content-center d-flex">
 
-
-        
-
-<div class="card">
-
+      <div class="card">
 
         <div class="row g-1 m-1">
           <div class="col g-0 w-100 m-1">
-
             <img src="..." class="card-img w-100 h-100" id="galleryitem1" alt="..." style="object-fit: cover;">
-
           </div>
 
           <div class="col g-0 w-100 m-1">
             <div class="row g-1">
-
               <img src="..." class="card-img w-100 h-100" id="galleryitem2" alt="..." style="object-fit: cover;">
-
             </div>
 
             <div class="row mt-2">
-
               <img src="..." class="card-img w-100 h-100" id="galleryitem3" alt="..." style="object-fit: cover;">
-
             </div>
           </div>
 
         </div>
-
-
       </div>
-
     </div>
-
-
-
-
-
-
-
-
 
     <div class="container">
       <div id="galleryCardGroup" class="row row-cols-auto" style="justify-content: center; float: center;">
       </div>
     </div>
-
-
   </div>
-
-
 
   <br><br><br>
 
@@ -244,18 +177,12 @@
   <!---------------------------------------------->
   <!--- Your own JavaScript functions go here ---->
   <!---------------------------------------------->
-
-
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
   <script src="./scripts/authentication.js"></script>
   <script src="/scripts/logout.js"></script>
   <script src="/scripts/map.js"></script>
   <script src="/scripts/fullRestaurantDetails.js"></script>
-
-
-
-
 
 </body>
 

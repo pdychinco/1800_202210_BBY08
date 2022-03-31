@@ -7,6 +7,7 @@
 }
 
 .material-icons{
+  float: right; 
   cursor: pointer;
 }
 
@@ -52,3 +53,35 @@
   transform: rotate(1000deg);
 }
 
+.card-image {
+  object-fit: cover;
+}
+
+.getdetails_btn {
+  float: right; 
+  cursor: pointer;
+}
+
+.display-6 {
+  text-align: center;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+#back {
+  background-color: rgba(243, 255, 174, 0.733);
+}
+
+#back:hover {
+  background-color: rgb(243, 255, 174);
+}
+
+#next {
+  background-color:rgb(152, 248, 255);
+}
+
+#next:hover {
+  background-color: rgb(72, 225, 236);
+}

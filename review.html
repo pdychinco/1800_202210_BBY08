@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <title>Team BBY08 Project</title>
   <meta name="COMP1800 Template" content="Team BBY08 1800 Project">
 
@@ -35,6 +36,7 @@
   <!-- Other libraries and styles of your own -->
   <!-------------------------------------------->
   <link rel="stylesheet" href="./styles/style.css">
+
 </head>
 
 <body>
@@ -46,11 +48,8 @@
   <!---------------------------------------------->
   <!-------- Restaurant Reviews goes here -------->
   <!---------------------------------------------->
-  <br><br><br>
+  <br><br>
   <div class="container py-3 px-5">
-
-
-
     <br>
     <h2>Write a review for <span id="restaurantName"></span></h2>
     <h6>Help other food olympians find where eat to by writing review.</h6>
@@ -82,34 +81,16 @@
 
         <br>
 
-
         <div class="form-group">
-
           <label>How satisfied were you with your dining experience?
             <span style="display:inline-block;"></span></label><br><br>
           <label for="customRange2" class="form-label">Give a rating from 1 to 5:</label>
           <input type="text" id="rating" value="" style="width: 40px; text-align: center; margin-left: 10px;"> <br><br>
           <input style="width: 500px;" type="range" class="form-range w-50" min="0" max="5" id="customRange2"
             onchange="updateTextInput(this.value);"><br>
-
         </div>
 
-        <br>
-
-        <!-- <div class="container text-center py-3">
-        <img id="mypic-goes-here" src="images/blah.jpg" width=50 height=50/>
-        <input type="file" id="mypic-input" accept="image/*" /> 
-        </div> -->
-
-
-        <!-- <div class="input-group mb-3 w-50">
-          <input type="file" class="form-control" id="inputGroupFile02">
-          <label class="input-group-text" for="inputGroupFile02">Upload</label>
-        </div> -->
-
-
-        <br>
-
+        <br><br>
 
         <label>Would you recommend this restaurant to a friend?<span
             style="display:inline-block; width: 20pt;"></span></label>
@@ -130,13 +111,9 @@
       </div>
     </form>
 
-
-
   </div>
 
-
-
-  <br><br><br><br>
+  <br><br><br>
   <!---------------------------------------------->
   <!-------------- Footer goes here -------------->
   <!---------------------------------------------->
@@ -147,10 +124,10 @@
   <!---------------------------------------------->
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/firebaseAPI_TEAMBBY08.js"></script>
+  <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/logout.js"></script>
   <script src="./scripts/reviews.js"></script>
   <script src="./scripts/restaurantData.js"></script>
-  <script src="./scripts/authentication.js"></script>
-  <script src="/scripts/logout.js"></script>
 
 </body>
 
