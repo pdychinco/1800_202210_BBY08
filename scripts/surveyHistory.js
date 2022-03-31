@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(user => {
 
         // the following functions are always called when someone is logged in
         insertName();
-        populateCardsDynamically();
+        populateCardsDynamically7();
     } else {
         // No user is signed in.
         console.log("No user is signed in");
@@ -26,7 +26,7 @@ function insertName() {
 }
 
 
-function populateCardsDynamically() {
+function populateCardsDynamically7() {
     let surveyCollection = currentUser.collection("surveyResults").orderBy("timestamp", "desc");
     let counter = 1;
     surveyCollection.limit(3).get()
@@ -60,6 +60,11 @@ function populateCardsDynamically() {
                     newCard.querySelector('.card-length').innerHTML = restaurantDetails;
                     newCard.querySelector('.card-text').innerHTML = restaurantAddress;
                     newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
+                    newCard.querySelector("#getdetails2").onclick = () => setRestaurantData(restaurantID);
+                    newCard.querySelector('i').id = 'save-' + restaurantID;
+                    // this line will call a function to save the hikes to the user's document             
+                    newCard.querySelector('i').onclick = () => addFav(restaurantID);
+                    newCard.querySelector('i').onclick = () => addLikes(restaurantID);
                     // historyTitle.innerHTML = doc.timestamp.toDate();
                     // newCard.querySelector('i').id = 'save-' + restaurantID;
                     // // this line will call a function to save the hikes to the user's document       
@@ -78,7 +83,7 @@ function populateCardsDynamically() {
         });
     })
 }
-populateCardsDynamically();
+populateCardsDynamically7();
 
 
 

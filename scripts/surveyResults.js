@@ -26,6 +26,11 @@ function insertName() {
 }
 
 
+function setRestaurantData(id) {
+  localStorage.setItem('restaurantID', id);
+}
+
+
 function populateCardsDynamically6(user) {
   let restaurantCardTemplate = document.getElementById("restaurantCardTemplate6");
   let restaurantCardGroup = document.getElementById("restaurantCardGroup6");
@@ -56,8 +61,14 @@ function populateCardsDynamically6(user) {
               newCard.querySelector('.card-title').innerHTML = restaurantName;
               newCard.querySelector('.card-length').innerHTML = restaurantDetails;
               newCard.querySelector('.card-text').innerHTML = restaurantAddress;
+     
+           
               newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-    
+              newCard.querySelector("#getdetails").onclick = () => setRestaurantData(restaurantID);
+              newCard.querySelector('i').id = 'save-' + restaurantID;
+              // this line will call a function to save the hikes to the user's document             
+              newCard.querySelector('i').onclick = () => addFav(restaurantID);
+              newCard.querySelector('i').onclick = () => addLikes(restaurantID);
               // newCard.querySelector('i').id = 'save-' + restaurantID;
               // // this line will call a function to save the hikes to the user's document       
               // newCard.querySelector('i').onclick = () => removeFav(restaurantID);
@@ -87,10 +98,6 @@ function populateCardsDynamically6(user) {
     // });
 }
 
-
-function setRestaurantData(id) {
-    localStorage.setItem('restaurantID', id);
-}
 
 
 // function oldCode() {
