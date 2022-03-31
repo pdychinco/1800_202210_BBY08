@@ -35,7 +35,6 @@ function populateCardsDynamically() {
             console.log(doc.data().timestamp.toDate());
             console.log(doc.data().array);
             arrayOfRestID = doc.data().array;
-            
             let restaurantCardTemplate = document.getElementById("restaurantCardTemplate6");
             let restaurantCardGroup = document.getElementById("restaurantCardGroup" + counter);
             let historyTitle = document.getElementById("restaurantCardGroup"+ counter+"Title");

@@ -194,8 +194,8 @@ function saveSurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
           array : arrayOfID
         })
       })
-  setTimeout(redirect, 750);
-  alert("Calculating. Please wait 3 seconds.");
+  setTimeout(redirect, 500);
+  
   }else if (typeof ans5 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4)
     .get()
@@ -211,8 +211,8 @@ function saveSurveyRestaurants(ans2, ans3, ans4, ans5, ans6, ans7) {
         array : arrayOfID
       })
     })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
+setTimeout(redirect, 500);
+// alert("Calculating. Please wait 3 seconds.");
 } else if (typeof ans6 == "undefined") {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5)
     .get()
@@ -228,8 +228,8 @@ alert("Calculating. Please wait 3 seconds.");
         array : arrayOfID
       })
     })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
+setTimeout(redirect, 500);
+// alert("Calculating. Please wait 3 seconds.");
 } else {
     db.collection("restaurants").where("SUV02", "==", ans2).where("SUV03","==", ans3).where("SUV04", "==", ans4).where("SUV05","==", ans5).where("SUV06","==",ans6).where("SUV07","==", ans7)
     .get()
@@ -246,12 +246,13 @@ alert("Calculating. Please wait 3 seconds.");
         array : arrayOfID
       })
     })
-setTimeout(redirect, 750);
-alert("Calculating. Please wait 3 seconds.");
+setTimeout(redirect, 500);
+
 }
   
 }
 
 function redirect() {
+  alert("Calculating. Please wait 3 seconds.");
   location.href = "../surveyresult.html";
 }
