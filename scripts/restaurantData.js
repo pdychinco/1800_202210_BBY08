@@ -346,3 +346,24 @@ function populateCards4() {
         })
 }
 populateCards4();
+
+function updateRestaurant() {
+
+var restaurantRef = db.collection("restaurants").doc("XOR4vnouzR3CfqugkRPa");
+
+// Set the "code" field of the restaurant doc with the id specified
+return restaurantRef.update({
+    code: "RG05",
+    description: "John 3:16 Malaysian Delights has a warm, inviting atmosphere reminiscent of the cuisine we cook. Our friendly staff make our customers feel like a valued part of our family, and we place a high priority on the guest experience, always endeavouring to deliver excellent service."
+})
+.then(() => {
+    console.log("Document successfully updated!");
+})
+.catch((error) => {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+});
+
+}
+
+// updateRestaurant();

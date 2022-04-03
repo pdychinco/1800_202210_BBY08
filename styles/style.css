@@ -85,3 +85,52 @@
 #next:hover {
   background-color: rgb(72, 225, 236);
 }
+
+.app-name {
+  color:rgb(243, 255, 174);
+  font-size: 38px;
+  font-weight: 600;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.app-name-color {
+  color:rgb(243, 255, 174);
+}
+
+#navbarDropdown {
+  float:right; 
+  color: #eb7878; 
+  text-transform: uppercase; 
+  font-size: 23px; 
+  margin-top: 3px;
+}
+
+.navbar {
+  background-color: rgb(24, 40, 69);
+}
+
+.footer {
+  background-color: rgb(24, 40, 69);
+}
+
+.display-5 {
+  color:rgb(78, 163, 170);
+}
+
+.hero-title {
+  color: #eb7878;
+}
+
+.btn-info {
+  background-color: rgb(78, 163, 170);
+}
+
+.btn-primary {
+  background-color:rgb(73, 154, 225);
+  border-color: rgb(73, 154, 225);
+}
+
+.btn-primary:hover {
+  background-color: rgb(52, 103, 147);
+  border-color: rgb(52, 103, 147);
+}
