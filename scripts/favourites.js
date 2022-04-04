@@ -4,18 +4,18 @@ firebase.auth().onAuthStateChanged(user => {
         currentUser = db.collection("users").doc(user.uid); //global
         console.log(currentUser);
 
-        //The following functions are always called when someone is logged in.
+        // The following functions are always called when someone is logged in
         read_display_Recommendation();
         insertName();
         populateCardsDynamically();
         getFav(user)
     } else {
-        //No user is signed in.
+        // No user is signed in
         console.log("No user is signed in");
     }
 });
 
-//Displays the recommended restaurant in the specified collection and doc.
+// Displays the recommended restaurant in the specified collection and doc
 function read_display_Recommendation() {
     db.collection("recommendations").doc("korean")
         .onSnapshot(function (koreanDoc) {
@@ -23,7 +23,7 @@ function read_display_Recommendation() {
         })
 }
 
-//Insert name function using the global variable "currentUser".
+// Insert name function using the global variable "currentUser"
 function insertName() {
     currentUser.get().then(userDoc => {
         //get the user name
@@ -34,7 +34,7 @@ function insertName() {
 }
 
 // Gets the list of restaurants saved as favourites in the current logged in user's doc
-// and populates the specified restaurant fields and values in a card template.
+// and populates the specified restaurant fields and values in a card template
 function getFav(user) {
     db.collection("users").doc(user.uid).get()
         .then(userDoc => {
@@ -77,21 +77,21 @@ function getFav(user) {
         })
 }
 
-//Removes the restaurant from the user's doc.
+// Removes the restaurant from the user's doc
 function removeFav(restaurantID) {
     db.collection("restaurants").where("id", "==", restaurantID)
         .get()
         .then(queryRestaurant => {
-            //See how many results you have got from the query.
+            // See how many results you have got from the query
             size = queryRestaurant.size;
-            //Get the documents of query.
+            // Get the documents of query
             Restaurants = queryRestaurant.docs;
             if (size = 1) {
                 id = Restaurants[0].id;
                 console.log(id);
-                //Update method will add to the specified field in database, if that field does not exist, it will create that.
+                // Update method will add to the specified field in database, if that field does not exist, it will create that
                 db.collection("restaurants").doc(id).update({
-                    //Firebase documentation has this method for incrementation.
+                    // Firebase documentation has this method for incrementation
                     favourites: firebase.firestore.FieldValue.arrayRemove(restaurantID)
                 })
                 currentUser.set({

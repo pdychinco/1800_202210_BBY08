@@ -11,7 +11,6 @@ firebase.auth().onAuthStateChanged(user => {
     } else {
         // No user is signed in.
         console.log("No user is signed in");
-        // window.location.href = "login.html";
     }
 });
 
@@ -52,7 +51,7 @@ function populateCardsDynamically6(user) {
             var doc = queryData[0].data();
             var restaurantName = doc.name; //gets the name field
             var restaurantID = doc.id; //gets the unique ID field
-            var restaurantDetails = doc.details; //gets the length field
+            var restaurantDetails = doc.details; //gets the details field
             var restaurantAddress = doc.address;
             let newCard = restaurantCardTemplate.content.cloneNode(true);
             newCard.querySelector('.card-title').innerHTML = restaurantName;
@@ -61,11 +60,10 @@ function populateCardsDynamically6(user) {
             newCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
             newCard.querySelector("#getdetails").onclick = () => setRestaurantData(restaurantID);
             newCard.querySelector('i').id = 'save-' + restaurantID;
-            // this line will call a function to save the hikes to the user's document             
+            // this line will call a function to save the restaurant to the user's document             
             newCard.querySelector('i').onclick = () => addFav(restaurantID);
             newCard.querySelector('i').onclick = () => addLikes(restaurantID);
             // newCard.querySelector('i').id = 'save-' + restaurantID;
-            // // this line will call a function to save the hikes to the user's document       
             // newCard.querySelector('i').onclick = () => removeFav(restaurantID);
             newCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
             restaurantCardGroup.appendChild(newCard);

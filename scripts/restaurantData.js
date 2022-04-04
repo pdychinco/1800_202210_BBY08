@@ -206,11 +206,10 @@ function populateCardsDynamically() {
             allRestaurants.forEach(doc => {
                 var restaurantName = doc.data().name; //gets the name field
                 var restaurantID = doc.data().id; //gets the unique ID field
-                // var hikeLength = doc.data().length; //gets the length field
+
                 let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
                 testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
 
-                //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
                     "Location: " + doc.data().city + "<br>" +
@@ -219,13 +218,8 @@ function populateCardsDynamically() {
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-                //next 2 lines are new for demo#11
-                //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
-                //so later we know which hike to bookmark based on which hike was clicked
-     
                 testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+
                 restaurantCardGroup.appendChild(testRestaurantCard);
             })
 
@@ -247,11 +241,10 @@ function populateCardsDynamically2() {
             allRestaurants.forEach(doc => {
                 var restaurantName = doc.data().name; //gets the name field
                 var restaurantID = doc.data().id; //gets the unique ID field
-                // var hikeLength = doc.data().length; //gets the length field
+
                 let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
                 testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
 
-                //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
                     "Location: " + doc.data().city + "<br>" +
@@ -260,13 +253,8 @@ function populateCardsDynamically2() {
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-                //next 2 lines are new for demo#11
-                //this line sets the id attribute for the <i> tag in the format of "save-hikdID" 
-                //so later we know which hike to bookmark based on which hike was clicked
-
                 testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+
                 restaurantCardGroup.appendChild(testRestaurantCard);
             })
 
@@ -288,11 +276,10 @@ function populateCards3() {
             allRestaurants.forEach(doc => {
                 var restaurantName = doc.data().name; //gets the name field
                 var restaurantID = doc.data().id; //gets the unique ID field
-                // var hikeLength = doc.data().length; //gets the length field
+
                 let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
                 testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
 
-                //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
                     "Location: " + doc.data().city + "<br>" +
@@ -301,10 +288,8 @@ function populateCards3() {
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-    
                 testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+
                 restaurantCardGroup.appendChild(testRestaurantCard);
             })
 
@@ -323,11 +308,9 @@ function populateCards4() {
             allRestaurants.forEach(doc => {
                 var restaurantName = doc.data().name; //gets the name field
                 var restaurantID = doc.data().id; //gets the unique ID field
-                // var hikeLength = doc.data().length; //gets the length field
                 let testRestaurantCard = restaurantCardTemplate.content.cloneNode(true);
                 testRestaurantCard.querySelector('.card-title').innerHTML = restaurantName;
 
-                //NEW LINE: update to display length, duration, last updated
                 testRestaurantCard.querySelector('.card-length').innerHTML =
                     doc.data().details + "<br>" +
                     "Location: " + doc.data().city + "<br>" +
@@ -336,10 +319,8 @@ function populateCards4() {
                     "Price: " + doc.data().price;
 
                 testRestaurantCard.querySelector('a').onclick = () => setRestaurantData(restaurantID);
-
-    
                 testRestaurantCard.querySelector('img').src = `./images/${restaurantID}.jpeg`;
-                // testRestaurantCard.querySelector('.read-more').href = "eachHike.html?hikeName=" + hikeName + "&id=" + hikeID;
+
                 restaurantCardGroup.appendChild(testRestaurantCard);
             })
 
@@ -349,20 +330,20 @@ populateCards4();
 
 function updateRestaurant() {
 
-var restaurantRef = db.collection("restaurants").doc("XOR4vnouzR3CfqugkRPa");
+    var restaurantRef = db.collection("restaurants").doc("XOR4vnouzR3CfqugkRPa");
 
-// Set the "code" field of the restaurant doc with the id specified
-return restaurantRef.update({
-    code: "RG05",
-    description: "John 3:16 Malaysian Delights has a warm, inviting atmosphere reminiscent of the cuisine we cook. Our friendly staff make our customers feel like a valued part of our family, and we place a high priority on the guest experience, always endeavouring to deliver excellent service."
-})
-.then(() => {
-    console.log("Document successfully updated!");
-})
-.catch((error) => {
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-});
+    // Set the "code" field of the restaurant doc with the id specified
+    return restaurantRef.update({
+            code: "RG05",
+            description: "John 3:16 Malaysian Delights has a warm, inviting atmosphere reminiscent of the cuisine we cook. Our friendly staff make our customers feel like a valued part of our family, and we place a high priority on the guest experience, always endeavouring to deliver excellent service."
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
 
 }
 

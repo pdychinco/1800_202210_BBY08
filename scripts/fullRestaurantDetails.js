@@ -4,12 +4,11 @@ firebase.auth().onAuthStateChanged(user => {
         currentUser = db.collection("users").doc(user.uid); //global
         console.log(currentUser);
 
-        // the following functions are always called when someone is logged in
+        // The following functions are always called when someone is logged in
         populateCardsDynamically();
     } else {
-        // No user is signed in.
+        // No user is signed in
         console.log("No user is signed in");
-        // window.location.href = "login.html";
     }
 });
 
@@ -23,9 +22,9 @@ function displayRestaurantDetails() {
     db.collection("restaurants").where("id", "==", restaurantID)
         .get()
         .then(queryRestaurant => {
-            //see how many results you have got from the query
+            // See how many results you have got from the query
             size = queryRestaurant.size;
-            // get the documents of query
+            // Get the documents of query
             Restaurants = queryRestaurant.docs;
             if (size = 1) {
                 var thisRestaurant = Restaurants[0].data();
@@ -69,16 +68,16 @@ function addFav(restaurantID) {
     db.collection("restaurants").where("id", "==", restaurantID)
         .get()
         .then(queryRestaurant => {
-            //see how many results you have got from the query
+            // See how many results you have got from the query
             size = queryRestaurant.size;
-            // get the documents of query
+            // Get the documents of query
             Restaurants = queryRestaurant.docs;
             if (size = 1) {
                 id = Restaurants[0].id;
                 console.log(id);
-                //update method will add to the specified field in database, if that field does not exist, it will create that.
+                // Update method will add to the specified field in database, if that field does not exist, it will create that.
                 db.collection("restaurants").doc(id).update({
-                    //Firebase documentation has this method for incrementation.
+                    // Firebase documentation has this method for incrementation.
                     scores: firebase.firestore.FieldValue.increment(1),
                 })
                 currentUser.set({
@@ -101,25 +100,22 @@ function addFav(restaurantID) {
         });
 }
 
-//This gets all the images in the restaurant data to populate into a gallery
+// This gets all the images in the restaurant data to populate into a gallery
 db.collection("restaurants").where("id", "==", restaurantID)
     .get()
     .then(queryRestaurant => {
-        //see how many results you have got from the query
+        // See how many results you have got from the query
         size = queryRestaurant.size;
-        // get the documents of query
+        // Get the documents of query
         Restaurants = queryRestaurant.docs;
         if (size = 1) {
             var thisRestaurant = Restaurants[0].data();
             var code = thisRestaurant.code;
 
-
             document.getElementById("galleryitem1").src = "./images/" + code + ".jpeg";
             document.getElementById("galleryitem2").src = "./images/" + code + ".jpg";
             document.getElementById("galleryitem3").src = "./images/" + code + ".webp";
             console.log(code);
-
-
 
         } else {
             console.log("Query has more than one data")
@@ -137,7 +133,7 @@ function displayCards(collection) {
         .get()
         .then(snap => {
             var i = 1;
-            snap.forEach(doc => { //iterate thru each doc
+            snap.forEach(doc => { // iterate thru each doc
                 var reviewTitle = doc.data().title;
                 var reviewUsername = doc.data().userName;
                 var reviewSummary = doc.data().best_quality;
@@ -145,7 +141,6 @@ function displayCards(collection) {
                 var reviewRating = doc.data().rating;
                 var reviewRecommended = doc.data().recommended;
                 let newcard = reviewCardTemplate.content.cloneNode(true);
-
 
                 newcard.querySelector(".reviewTitle").innerHTML = reviewTitle;
                 newcard.querySelector(".userName").innerHTML = "Posted by: " + reviewUsername;
@@ -160,49 +155,3 @@ function displayCards(collection) {
 }
 
 displayCards("reviews");
-
-
-//THIS ONLY GENERATES THE REVIEW AT THE SPECIFIED INDEX
-// function displayCards(collection) {
-//     let reviewCardTemplate = document.getElementById("reviewCardTemplate");
-//     let reviewCardGroup = document.getElementById("reviewCardGroup");
-//     db.collection(collection).where("id", "==", restaurantID)
-//         .get()
-//         .then(queryReview => {
-//             //see how many results you have got from the query
-//             size = queryReview.size;
-//             // get the documents of query
-//             Reviews = queryReview.docs;
-//             if (size = 1) {
-//                 var thisReview = Reviews[0].data();
-//                 reviewTitle = thisReview.title;
-//                 reviewSummary = thisReview.best_quality;
-//                 reviewDescription = thisReview.description;
-//                 reviewRating = "Give this restaruant a rating: " + thisReview.rating;
-//                 reviewRecommended = "Would you recommend this restaurant to a friend? "
-//                 + thisReview.recommended;
-//                 // reviewPostID = thisReview.userID;
-//                 reviewUsername = thisReview.userName;
-//                 console.log(reviewDescription)
-
-//                 let newcard = reviewCardTemplate.content.cloneNode(true);
-
-//                 newcard.querySelector(".reviewTitle").innerHTML = reviewTitle;
-//                 newcard.querySelector(".userName").innerHTML = "Posted by: " + reviewUsername;
-//                 newcard.querySelector(".reviewSummary").innerHTML = reviewSummary + ".";
-//                 newcard.querySelector(".reviewDescription").innerHTML = reviewDescription; 
-//                 newcard.querySelector(".reviewRating").innerHTML = reviewRating;
-//                 newcard.querySelector(".reviewRecommended").innerHTML = reviewRecommended;
-
-//                 reviewCardGroup.appendChild(newcard);
-//             } else {
-//                 console.log("Query has more than one data")
-//             }
-//         })
-//         .catch((error) => {
-//             console.log("Error getting documents: ", error);
-//         });
-
-// }
-
-// displayCards("reviews");

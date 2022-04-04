@@ -64,7 +64,7 @@ function editUserInfo() {
 
 function saveUserInfo() {
     userName = document.getElementById('nameInput').value; //get the value of the field with id="nameInput"
-    userEmail = document.getElementById('emailInput').value; //get the value of the field with id="schoolInput"
+    userEmail = document.getElementById('emailInput').value; //get the value of the field with id="emailInput"
     userPhone = document.getElementById('phoneInput').value; //get the value of the field with id="phoneInput"
     userAddress = document.getElementById('addressInput').value; //get the value of the field with id="addressInput"
     userCity = document.getElementById('cityInput').value; //get the value of the field with id="cityInput"
@@ -85,11 +85,6 @@ function saveUserInfo() {
     document.getElementById('personalInfoFields').disabled = true;
 
 }
-
-//PROFILE PIC
-//PROFILE PIC
-//PROFILE PIC
-
 
 function showUploadedPicture() {
     const fileInput = document.getElementById("mypic-input"); // pointer #1
