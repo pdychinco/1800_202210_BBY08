@@ -28,11 +28,17 @@
 
 #name-goes-here {
   font-weight: 500; 
-  color:rgb(88, 88, 255);
+  color:rgb(243, 255, 174);
 }
 
 #recommendation-goes-here {
-  color:rgb(163, 147, 255);
+  color:#85c6ff; 
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.recommend-bar {
+  background-color: #2952a2; 
 }
 
 #roulette {
@@ -71,19 +77,24 @@
 }
 
 #back {
-  background-color: rgba(243, 255, 174, 0.733);
+  background-color: rgb(78, 163, 170);
+  border-color: rgb(78, 163, 170);
 }
 
 #back:hover {
-  background-color: rgb(243, 255, 174);
+  background-color: rgb(101, 212, 222);
+  border-color: rgb(101, 212, 222);
 }
 
 #next {
-  background-color:rgb(152, 248, 255);
+  background-color: rgb(52, 103, 147);
+  border-color: rgb(52, 103, 147);
+  color: white;
 }
 
 #next:hover {
-  background-color: rgb(72, 225, 236);
+  background-color:rgb(73, 154, 225);
+  border-color: rgb(73, 154, 225);
 }
 
 .app-name {
@@ -111,6 +122,97 @@
 
 .footer {
   background-color: rgb(24, 40, 69);
+  color: aliceblue;
+}
+
+#text-reset1 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset2 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset3 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset4 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset5 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset1:hover {
+  color:#eb7878; 
+}
+
+#text-reset2:hover {
+  color:#eb7878; 
+}
+
+#text-reset3:hover {
+  color:#eb7878; 
+}
+
+#text-reset4:hover {
+  color:rgb(243, 255, 174);
+}
+
+#text-reset5:hover {
+  color:rgb(243, 255, 174);
+}
+
+#text-reset6 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset7 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset8 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset9 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset10 {
+  color:aliceblue;
+  text-decoration: none;
+}
+
+#text-reset6:hover {
+  color:#eb7878; 
+}
+
+#text-reset7:hover {
+  color:#eb7878; 
+}
+
+#text-reset8:hover {
+  color:#eb7878; 
+}
+
+#text-reset9:hover {
+  color:rgb(243, 255, 174);
+}
+
+#text-reset10:hover {
+  color:rgb(243, 255, 174);
 }
 
 .display-5 {
@@ -123,14 +225,28 @@
 
 .btn-info {
   background-color: rgb(78, 163, 170);
+  border-color: rgb(78, 163, 170);
+}
+
+.btn-info:hover {
+  background-color: rgb(101, 212, 222);
+  border-color: rgb(101, 212, 222);
 }
 
 .btn-primary {
+  background-color: rgb(52, 103, 147);
+  border-color: rgb(52, 103, 147);
+}
+
+.btn-primary:hover {
   background-color:rgb(73, 154, 225);
   border-color: rgb(73, 154, 225);
 }
 
-.btn-primary:hover {
-  background-color: rgb(52, 103, 147);
-  border-color: rgb(52, 103, 147);
+.text-center1 {
+  color:rgb(103, 152, 194);
+}
+
+.text-body1 {
+  color: rgb(78, 163, 170);
 }
