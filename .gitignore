@@ -2,3 +2,9 @@
 *.logs
 node_modules/
 firebaseAPI_TEAMBBY08.js
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
+.firebase
