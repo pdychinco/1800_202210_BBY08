@@ -31,5 +31,5 @@ function spinImage() {
 }
 
 function redirect() {
-    location.href = "../rouletteresult.html";
+    location.href = "../../rouletteresult.html";
 }
